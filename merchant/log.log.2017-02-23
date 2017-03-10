@@ -1,0 +1,7 @@
+2017-02-23 11:29:01,998 INFO  com.connectto.wallet.merchant.web.util.Initializer (deRegistering:130) [localhost-startStop-2] - DeRegistering jdbc driver: com.mysql.jdbc.Driver@68f1abe4
+2017-02-23 11:29:02,106 DEBUG org.mybatis.spring.SqlSessionUtils (getSqlSession:109) [localhost-startStop-2] - Creating a new SqlSession
+2017-02-23 11:29:02,107 DEBUG org.mybatis.spring.SqlSessionUtils (getSqlSession:145) [localhost-startStop-2] - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@93c8340] was not registered for synchronization because synchronization is not active
+2017-02-23 11:29:02,107 DEBUG org.mybatis.spring.SqlSessionUtils (closeSqlSession:173) [localhost-startStop-2] - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@93c8340]
+2017-02-23 11:29:02,110 DEBUG org.mybatis.spring.SqlSessionUtils (getSqlSession:109) [localhost-startStop-2] - Creating a new SqlSession
+2017-02-23 11:29:02,110 DEBUG org.mybatis.spring.SqlSessionUtils (getSqlSession:145) [localhost-startStop-2] - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4de51506] was not registered for synchronization because synchronization is not active
+2017-02-23 11:29:02,111 DEBUG org.mybatis.spring.SqlSessionUtils (closeSqlSession:173) [localhost-startStop-2] - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4de51506]

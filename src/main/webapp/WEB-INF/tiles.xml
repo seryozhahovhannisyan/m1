@@ -1,0 +1,159 @@
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+    <!--vb-->
+
+    <!--real tiles-->
+
+    <definition name="web-general" template="/WEB-INF/pages/layout/main-general.jsp">
+        <put-attribute name="header-area" value="/WEB-INF/pages/layout/header-area.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/pages/layout/footer.jsp"/>
+        <put-attribute name="content" value=""/>
+        <put-attribute name="modal" value="/WEB-INF/pages/general/modal.jsp"/>
+    </definition>
+
+
+
+    <definition name="web" template="/WEB-INF/pages/layout/main.jsp">
+        <put-attribute name="header" value="/WEB-INF/pages/layout/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/pages/layout/menu.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/pages/layout/footer.jsp"/>
+        <put-attribute name="content" value=""/>
+
+        <put-attribute name="add" value=""/>
+        <put-attribute name="detail" value=""/>
+        <put-attribute name="edit" value=""/>
+        <put-attribute name="upload" value=""/>
+        <put-attribute name="message" value="/WEB-INF/pages/layout/message.jsp"/>
+    </definition>
+
+
+    <!-- for mobile-->
+    <!--<definition name="mobile" template="/WEB-INF/pages/demo/layout/main-mobile.jsp">-->
+    <!--<put-attribute name="header" value="/WEB-INF/pages/demo/layout/header.jsp"/>-->
+    <!--<put-attribute name="footer" value="/WEB-INF/pages/demo/layout/footer.jsp"/>-->
+    <!--<put-attribute name="content" value=" "/>-->
+    <!--</definition>-->
+
+    <!--<definition name="guest.view" extends="web">-->
+    <!--<put-attribute name="content" value="/WEB-INF/pages/demo/general/home.jsp"/>-->
+    <!--</definition>-->
+
+    <definition name="general-internal-error" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/error/internal.jsp"/>
+    </definition>
+
+    <definition name="start" extends="web-general">
+        <put-attribute name="content" value="/WEB-INF/pages/general/home.jsp"/>
+    </definition>
+
+    <definition name="company-area" extends="web-general">
+        <put-attribute name="content" value="/WEB-INF/pages/general/area-company.jsp"/>
+    </definition>
+
+    <definition name="cashier-area" extends="web-general">
+        <put-attribute name="content" value="/WEB-INF/pages/general/area-cashier.jsp"/>
+    </definition>
+
+    <definition name="cashier-entry" extends="web-general">
+        <put-attribute name="content" value="/WEB-INF/pages/general/cashier-entry.jsp"/>
+    </definition>
+
+    <definition name="forgot-password" extends="web-general">
+        <put-attribute name="content" value="/WEB-INF/pages/general/forgot-password.jsp"/>
+    </definition>
+
+    <definition name="signup" extends="web-general">
+        <put-attribute name="content" value="/WEB-INF/pages/general/signup.jsp"/>
+    </definition>
+
+    <definition name="unverified" extends="web-general">
+        <put-attribute name="content" value="/WEB-INF/pages/general/unverified.jsp"/>
+    </definition>
+
+    <!--<definition name="admin-company-form-request-load" extends="web">
+        <put-attribute name="content"  value="/WEB-INF/pages/demo/company-form-request/admin-company-form-request-load.jsp"/>
+    </definition>-->
+
+    <definition name="company-activation" extends="web-general">
+        <put-attribute name="content"  value="/WEB-INF/pages/general/company-request-activation.jsp"/>
+    </definition>
+
+    <!--cashier-->
+
+    <definition name="cashier-home" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/cashier/home.jsp"/>
+        <put-attribute name="detail" value="/WEB-INF/pages/general/modal.jsp"/>
+    </definition>
+
+    <!--branch-->
+
+    <definition name="branches" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/branch/list.jsp"/>
+
+        <put-attribute name="add" value="/WEB-INF/pages/branch/add.jsp"/>
+        <put-attribute name="detail" value="/WEB-INF/pages/branch/detail.jsp"/>
+        <put-attribute name="edit" value="/WEB-INF/pages/branch/edit.jsp"/>
+        <put-attribute name="upload" value="/WEB-INF/pages/branch/upload.jsp"/>
+    </definition>
+
+    <definition name="branch" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/branch/detail.jsp"/>
+    </definition>
+
+    <!--cashier-->
+
+    <definition name="cashiers" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/cashier/list.jsp"/>
+
+        <put-attribute name="add" value="/WEB-INF/pages/cashier/add.jsp"/>
+        <put-attribute name="detail" value="/WEB-INF/pages/cashier/detail.jsp"/>
+        <put-attribute name="edit" value="/WEB-INF/pages/cashier/edit.jsp"/>
+        <put-attribute name="upload" value="/WEB-INF/pages/cashier/upload.jsp"/>
+    </definition>
+
+    <definition name="roles" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/role/list.jsp"/>
+
+        <put-attribute name="add" value="/WEB-INF/pages/role/add.jsp"/>
+        <put-attribute name="detail" value="/WEB-INF/pages/role/detail.jsp"/>
+        <put-attribute name="edit" value="/WEB-INF/pages/role/edit.jsp"/>
+    </definition>
+
+    <definition name="cashier-profile" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/profile/detail.jsp"/>
+        <put-attribute name="edit" value="/WEB-INF/pages/profile/edit.jsp"/>
+    </definition>
+
+    <definition name="cashier-search-wallet" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/wallet/list.jsp"/>
+        <put-attribute name="detail" value="/WEB-INF/pages/general/modal.jsp"/>
+    </definition>
+
+    <definition name="transaction-pending" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/wallet/list-transaction.jsp"/>
+        <put-attribute name="detail" value="/WEB-INF/pages/general/modal.jsp"/>
+    </definition>
+
+    <!--Provider Action-->
+
+    <definition name="provider-admin-company" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/provide/admin-company.jsp"/>
+        <put-attribute name="detail" value="/WEB-INF/pages/general/modal.jsp"/>
+    </definition>
+
+    <definition name="provider-admin-branch" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/provide/admin-branch.jsp"/>
+        <put-attribute name="detail" value="/WEB-INF/pages/general/modal.jsp"/>
+    </definition>
+
+    <definition name="provider-cashier" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/provide/cashier.jsp"/>
+        <put-attribute name="detail" value="/WEB-INF/pages/general/modal.jsp"/>
+    </definition>
+
+
+
+</tiles-definitions>

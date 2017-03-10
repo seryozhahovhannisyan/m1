@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.CompanyFormResponseMap">
+
+
+    <resultMap id="rmCompanyFormResponse" type="CompanyFormResponse">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="message" column="message"/>
+        <result property="allowedRemoteAddressValues" column="allowed_remote_addresses"/>
+        <result property="status" column="status"/>
+        <result property="responseAt" column="respnse_at"/>
+        <association property="agreementDocument" column="agreement_document_id" select="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.FileDataMap.getById"/>
+    </resultMap>
+
+    <insert id="add" parameterType="CompanyFormResponse">
+
+        INSERT INTO c_company_form_response(
+        `u_id`,
+        `title`,
+        `message`,
+        `allowed_remote_addresses`,
+        `allowed_partition_values`,
+        `status`,
+        `respnse_at`,
+        `agreement_document_id`
+        ) VALUES (
+        #{userId},
+        #{title},
+        #{message},
+        #{allowedRemoteAddressValues},
+        #{allowedPartitionValues},
+        #{status},
+        #{responseAt},
+        #{agreementDocumentId}
+        )
+
+        <selectKey keyProperty="id" resultType="_long">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>
+    
+    <select id="getById"
+            resultMap="rmCompanyFormResponse"
+            parameterType="_long">
+
+        SELECT * FROM c_company_form_response WHERE id = #{id}
+
+    </select>
+
+
+</mapper>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.FileDataMap">
+
+
+    <resultMap id="rmFileDataSimple" type="FileData">
+        <id property="id" column="id"/>
+        <result property="fileName" column="file_name"/>
+        <result property="contentType" column="content_type"/>
+        <result property="size" column="size"/>
+        <result property="creationDate" column="creation_date"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <!--
+    ###################################################################################################################
+    ################################################    Create     ####################################################
+    ###################################################################################################################
+    -->
+
+    <insert id="add" parameterType="FileData">
+
+        INSERT INTO c_data(
+        `file_name`,
+        `content_type`,
+        `size`,
+        `creation_date`,
+        `status`,
+        `company_id`,
+        `branch_id`,
+        `cashier_id`
+        ) VALUES (
+        #{fileName},
+        #{contentType},
+        #{size},
+        #{creationDate},
+        #{status},
+        #{companyId},
+        #{branchId},
+        #{cashierId}
+        )
+
+        <selectKey keyProperty="id" resultType="_long">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>
+
+    <!--
+   ###################################################################################################################
+   ################################################    Read     ####################################################
+   ###################################################################################################################
+   -->
+    <select id="getById"
+            resultMap="rmFileDataSimple"
+            parameterType="_long">
+
+        SELECT * FROM c_data
+        WHERE id = #{id}
+        AND status = 1
+
+    </select>
+
+    <select id="getByParams"
+            resultMap="rmFileDataSimple"
+            parameterType="map">
+
+        SELECT * FROM c_data
+
+    </select>
+    <!--
+   ###################################################################################################################
+   ################################################    Update     ####################################################
+   ###################################################################################################################
+   -->
+    <update id="update" parameterType="FileData">
+        UPDATE c_data
+        SET status = #{status}
+        WHERE id = #{id}
+    </update>
+
+    <update id="delete" parameterType="FileData">
+        UPDATE c_data
+        SET status = #{status}
+        WHERE id = #{id}
+    </update>
+    <!--
+   ###################################################################################################################
+   ################################################    Delete     ####################################################
+   ###################################################################################################################
+   -->
+
+    <delete id="forceDelete" parameterType="_long">
+        DELETE FROM c_data WHERE id = #{id}
+    </delete>
+
+
+</mapper>

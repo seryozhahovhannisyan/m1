@@ -1,0 +1,18 @@
+2017-03-01 11:34:22,262 DEBUG org.apache.ibatis.logging.LogFactory (setImplementation:135) [RMI TCP Connection(2)-127.0.0.1] - Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+2017-03-01 11:35:32,220 INFO  com.connectto.wallet.merchant.web.util.Initializer (contextInitialized:62) [RMI TCP Connection(2)-127.0.0.1] - -- start application -- 
+2017-03-01 11:35:32,249 INFO  com.connectto.wallet.merchant.web.util.Initializer (deRegistering:130) [RMI TCP Connection(2)-127.0.0.1] - DeRegistering jdbc driver: com.mysql.jdbc.Driver@6e79064d
+2017-03-01 11:35:32,283 DEBUG org.mybatis.spring.SqlSessionUtils (getSqlSession:109) [RMI TCP Connection(2)-127.0.0.1] - Creating a new SqlSession
+2017-03-01 11:35:32,293 DEBUG org.mybatis.spring.SqlSessionUtils (getSqlSession:145) [RMI TCP Connection(2)-127.0.0.1] - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@f451e41] was not registered for synchronization because synchronization is not active
+2017-03-01 11:35:32,294 DEBUG org.mybatis.spring.SqlSessionUtils (closeSqlSession:173) [RMI TCP Connection(2)-127.0.0.1] - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@f451e41]
+2017-03-01 11:35:32,299 DEBUG org.mybatis.spring.SqlSessionUtils (getSqlSession:109) [RMI TCP Connection(2)-127.0.0.1] - Creating a new SqlSession
+2017-03-01 11:35:32,299 DEBUG org.mybatis.spring.SqlSessionUtils (getSqlSession:145) [RMI TCP Connection(2)-127.0.0.1] - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@50bffa37] was not registered for synchronization because synchronization is not active
+2017-03-01 11:35:32,300 DEBUG org.mybatis.spring.SqlSessionUtils (closeSqlSession:173) [RMI TCP Connection(2)-127.0.0.1] - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@50bffa37]
+2017-03-01 11:36:22,613 DEBUG org.apache.ibatis.logging.LogFactory (setImplementation:135) [RMI TCP Connection(3)-127.0.0.1] - Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+2017-03-01 11:36:25,352 INFO  com.connectto.wallet.merchant.web.util.Initializer (contextInitialized:62) [RMI TCP Connection(3)-127.0.0.1] - -- start application -- 
+2017-03-01 11:36:25,362 INFO  com.connectto.wallet.merchant.web.util.Initializer (deRegistering:130) [RMI TCP Connection(3)-127.0.0.1] - DeRegistering jdbc driver: com.mysql.jdbc.Driver@5c2f8a44
+2017-03-01 11:36:25,397 DEBUG org.mybatis.spring.SqlSessionUtils (getSqlSession:109) [RMI TCP Connection(3)-127.0.0.1] - Creating a new SqlSession
+2017-03-01 11:36:25,406 DEBUG org.mybatis.spring.SqlSessionUtils (getSqlSession:145) [RMI TCP Connection(3)-127.0.0.1] - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1c4298c9] was not registered for synchronization because synchronization is not active
+2017-03-01 11:36:25,406 DEBUG org.mybatis.spring.SqlSessionUtils (closeSqlSession:173) [RMI TCP Connection(3)-127.0.0.1] - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1c4298c9]
+2017-03-01 11:36:25,412 DEBUG org.mybatis.spring.SqlSessionUtils (getSqlSession:109) [RMI TCP Connection(3)-127.0.0.1] - Creating a new SqlSession
+2017-03-01 11:36:25,413 DEBUG org.mybatis.spring.SqlSessionUtils (getSqlSession:145) [RMI TCP Connection(3)-127.0.0.1] - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@e1e3971] was not registered for synchronization because synchronization is not active
+2017-03-01 11:36:25,413 DEBUG org.mybatis.spring.SqlSessionUtils (closeSqlSession:173) [RMI TCP Connection(3)-127.0.0.1] - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@e1e3971]

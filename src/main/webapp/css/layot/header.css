@@ -1,0 +1,13 @@
+.notification_list_div img {
+    width: 30px;
+    height: 30px;
+}
+.notification_list_li{
+    cursor: pointer;
+}
+.notification_list_li:hover {
+    background-color: #d9dee4
+}
+.flip_iteven{
+    min-height: 180px;
+}

@@ -1,0 +1,276 @@
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline-width: 0 !important;
+    border:none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+.header_container {
+    margin-bottom:30px;
+}
+header{
+    padding: 15px
+}
+
+.text_hover{
+    width: 0;
+    background-color: #3daeae;
+    height: 5px;
+    margin: 0 auto;
+    -webkit-transition: width 0.5s ease-in-out;
+    -moz-transition: width 0.5s ease-in-out;
+    -o-transition: width 0.5s ease-in-out;
+    transition: width 0.5s ease-in-out;
+}
+
+
+
+
+
+.clear_both {
+    clear: both;
+}
+.sign_up {
+    background-image: url("./../../img/main/merchant_main_header_background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+}
+.sign-up-forward-header-padding-top {
+    padding-top:20px;
+}
+.right_menu_block {
+    display: inline-block;
+}
+
+.sign-up-form {
+    max-width: 600px;
+    border: 2px solid #27ccc0;
+    background-color: #212430;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: inline-table;
+    padding: 10px;
+}
+.sign_up_forward_right_block {
+    padding-right:40px;
+}
+.sign_up_form_title {
+    color: #cdcdcd;
+    text-align: center;
+    padding: 20px 20px 30px;
+    font-size: 130%;
+    text-transform: uppercase;
+}
+
+.sign_up_form_first_name, .sign_up_form_password, .sign_up_form_last_name, .sign_up_form_email, .sign_up_form_phone_number {
+    font-size:120%;
+}
+.sign_up_form_phone_number {
+    padding: 0px 30px;
+}
+
+.sign_up_form_dont_have_account {
+    font-size: 150%;
+    color: #cdcdcd;
+    text-align: center;
+}
+.sign_up_form_dont_have_account a{
+    color: #27c4b9;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.sign_up_form_dont_have_account a:hover{
+    color: #ffffff;
+}
+.merchant_right_icon {
+    cursor: pointer;
+}
+.show_hide_password {
+    position: absolute;
+    right: 0;
+    bottom: 5px;
+    width: 37px;
+    cursor: pointer;
+}
+.sign_up_button {
+    background-color: #27ccc0;
+    padding: 6px 12px;
+    font-size: 150%;
+    color: #eeefef;
+    border: none;
+    display: inherit;
+    margin: 20px auto;
+    float: none;
+    border: 1px solid #27ccc0;
+    border-radius: 6px;
+}
+.ist_mult {
+    position: absolute;
+    top: -10px;
+}
+.sign_up_button:hover {
+    color: #ffffff;
+    border:1px solid #27CCC0;
+    background-color: transparent;
+    padding: 6px 12px;
+
+}
+
+.multiSelect > button{
+    background-color: #212430!important;
+}
+.istevens_parent_div{
+
+}
+button:disabled{
+    cursor: no-drop!important;
+}
+.isteven_company{
+    height: 50px;
+    border-bottom:1px solid #27CCC0;
+    float: none;
+    margin: auto;
+    margin-bottom:25px ;
+    padding: 0;
+}
+.isteven_branch{
+    height: 50px;
+    border-bottom:1px solid #27CCC0;
+    float: none;
+    margin: auto;
+    margin-bottom:25px ;
+    padding: 0;
+}
+
+.form-control{
+    border:none;
+    text-align: center;
+    outline:none;
+    color: #eeefef;
+    background-color: transparent;
+}
+.form-group-first-name{
+    background-image: url("../../img/main/merchant_main_username_icon.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    border-bottom: 2px solid #27ccc0;
+    margin-bottom: 25px;
+    padding-right:0;
+}
+.form-group-last-name{
+    background-image: url("../../img/main/merchant_main_username_icon.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    border-bottom: 2px solid #27ccc0;
+    margin-bottom: 25px;
+    padding-right:0;
+}
+.form-group-email{
+    background-image: url("../../img/cashier-sign-up/email_icon.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    border-bottom: 2px solid #27ccc0;
+    margin-bottom: 25px;
+    padding-right:0;
+}
+
+.form-group-phone-number {
+    border-bottom: 2px solid #27ccc0;
+    margin-bottom: 20px;
+    padding:0;
+}
+.form-group-password {
+    background: url("../../img/main/merchant_main_password_icon.png") no-repeat left;
+    border-bottom: 2px solid #27ccc0;
+    padding-right:0;
+}
+
+/*phone code*/
+
+.phone_code_inpute {
+    background-color: transparent;
+    margin-left: -15px! important;
+    height: 5vh;
+    width: 0;
+    border: none;
+    border-radius: 10px;
+    min-height: 60px;
+    margin-top: 15px;
+}
+.note-editable{
+    min-height:100px;
+}
+.toggle_for_phone_code {
+    cursor: pointer;
+    float: left;
+    padding: 7px 3px;
+    border-radius: 5px;
+    background-color: #aeafb0;
+}
+.toggle_for_phone_code:hover {
+    background-color: #dbdbdb;
+}
+.toggle_for_phone_code img{
+
+}
+.request_form_code_flag {
+    float: left;
+    padding-left: 20px;
+    padding-right: 10px;
+    width: 62px;
+    margin-top:-3px;
+}
+.request_form_phone_code {
+    outline: none;
+    border: none;
+    color: #939393;
+    font-size: 220%;
+    display: inline-block;
+    float: left;
+    width: 60px;
+    background-color: transparent;
+}
+.request-form-phone-number {
+    width:50%;
+    text-align: left;
+}
+.toggle_block_for_phone_code {
+    width: 60%;
+    background-color: #dbdbdb;
+    border-radius: 0 10px 10px;
+    position: absolute;
+    margin-top: 30px;
+    display: none;
+    z-index: 1;
+}
+.toggle_block_items {
+    cursor: pointer;
+    margin: 10px 0;
+}
+.toggle_block_items:hover {
+    background-color: #aeafb0;
+}
+.toggle_block_item_code {
+    color: #6f7071;
+    font-size: 220%;
+    padding-left: 5px;
+    padding-top: 15px;
+    display: inline-block;
+    min-width: 55px;
+}
+.toggle_block_item_flag {
+    width: 33px;
+    margin: 20px 8px;
+    margin-top: 12px;
+}
+.toggle_block_item_country {
+    font-size: 220%;
+}

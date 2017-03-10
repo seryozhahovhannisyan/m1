@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+
+<struts>
+
+    <package name="merchant-action" namespace="/" extends="struts-default">
+
+        <result-types>
+            <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+        </result-types>
+
+        <interceptors>
+            <interceptor name="language" class="com.connectto.wallet.merchant.web.interceptor.LanguageInterceptor"/>
+            <interceptor name="authenticateInterceptor" class="com.connectto.wallet.merchant.web.interceptor.AuthenticateInterceptor"/>
+            <interceptor name="transactionInterceptor" class="com.connectto.wallet.merchant.web.interceptor.TransactionInterceptor"/>
+
+            <interceptor-stack name="userStack">
+                <interceptor-ref name="language"/>
+                <interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="authenticateInterceptor"/>
+            </interceptor-stack>
+
+            <interceptor-stack name="transactionStackView">
+                <interceptor-ref name="language"/>
+                <interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="authenticateInterceptor"/>
+                <interceptor-ref name="transactionInterceptor"/>
+            </interceptor-stack>
+
+        </interceptors>
+
+        <default-interceptor-ref name="userStack"/>
+
+        <global-results>
+            <result name="login" type="redirect">entry-view.htm</result>
+            <result name="pending" type="redirect">transaction-pending.htm</result>
+            <result name="cashier-exception" type="chain">cashier-exception</result>
+        </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="cashier-exception"/>
+        </global-exception-mappings>
+
+        <action name="cashier-exception" class="ExceptionHandlerAction">
+            <result type="redirect">error.htm</result>
+        </action>
+
+        <action name="error">
+            <result>/WEB-INF/pages/error/500.jsp</result>
+        </action>
+
+        <action name="cashier-logout" class="Logout">
+            <interceptor-ref name="defaultStack"/>
+            <result type="redirect">entry-view.htm</result>
+        </action>
+
+        <action name="cashier-profile" class="ProfileAction" method="viewProfile">
+            <result name="success" type="tiles">cashier-profile</result>
+        </action>
+
+        <action name="cashier-settings" class="HomeAction" method="view">
+            <result name="success" type="tiles">cashier-home</result>
+        </action>
+
+        <action name="cashier-help" class="HomeAction" method="view">
+            <result name="success" type="tiles">cashier-home</result>
+        </action>
+
+        <action name="cashier-home" class="HomeAction" method="view">
+            <result name="success" type="tiles">cashier-home</result>
+        </action>
+
+        <action name="cashier-search-wallet" class="SearchWalletAction" method="listView">
+            <interceptor-ref name="transactionStackView"/>
+            <result name="success" type="tiles">cashier-search-wallet</result>
+        </action>
+
+        <action name="transaction-pending" class="TransactionAction" method="listView">
+            <result name="success" type="tiles">transaction-pending</result>
+        </action>
+
+
+        <!--
+            BranchAction
+        -->
+
+        <action name="branches" class="BranchAction" method="listView">
+            <result name="success" type="tiles">branches</result>
+        </action>
+
+        <action name="branch" class="BranchAction" method="branchView">
+            <result name="success" type="tiles">branch</result>
+        </action>
+
+        <action name="branch-add" class="BranchAction" method="add">
+            <result name="success" type="redirect">branches.htm</result>
+            <result name="error" type="tiles">branches</result>
+        </action>
+
+        <action name="branch-delete" class="BranchAction" method="delete">
+            <result name="success" type="redirect">branches.htm</result>
+            <result name="error" type="tiles">branches</result>
+        </action>
+
+        <action name="branch-delete-multiple" class="BranchAction" method="deleteMultiple">
+            <result name="success" type="redirect">branches.htm</result>
+            <result name="error" type="tiles">branches</result>
+        </action>
+
+        <!--
+            CashierAction
+        -->
+
+        <action name="cashiers" class="CashierAction" method="listView">
+            <result name="success" type="tiles">cashiers</result>
+        </action>
+
+        <action name="current-branch-cashiers" class="CashierAction" method="currentBranchListView">
+            <result name="success" type="tiles">cashiers</result>
+        </action>
+
+        <action name="cashier-add" class="CashierAction" method="add">
+            <result name="success" type="redirect">cashiers.htm</result>
+            <result name="error" type="tiles">cashiers</result>
+        </action>
+
+        <action name="cashier-delete" class="CashierAction" method="delete">
+            <result name="success" type="redirect">cashiers.htm</result>
+            <result name="error" type="tiles">cashiers</result>
+        </action>
+
+        <action name="cashier-delete-multiple" class="CashierAction" method="deleteMultiple">
+            <result name="success" type="redirect">cashiers.htm</result>
+            <result name="error" type="tiles">cashiers</result>
+        </action>
+        <!---->
+
+        <!--
+            RoleAction
+        -->
+
+        <action name="roles" class="RoleAction" method="listView">
+            <result name="success" type="tiles">roles</result>
+        </action>
+
+        <action name="role-add" class="RoleAction" method="add">
+            <result name="success" type="redirect">roles.htm</result>
+            <result name="error" type="tiles">roles</result>
+        </action>
+
+        <action name="role-delete" class="RoleAction" method="delete">
+            <result name="success" type="redirect">roles.htm</result>
+            <result name="error" type="tiles">roles</result>
+        </action>
+
+        <action name="role-delete-multiple" class="RoleAction" method="deleteMultiple">
+            <result name="success" type="redirect">roles.htm</result>
+            <result name="error" type="tiles">roles</result>
+        </action>
+
+        <!--Data upload/download-->
+
+        <action name="data-upload" class="DataUploadAction" method="upload">
+            <result name="success" type="stream">
+                <param name="contentType">text/html</param>
+                <param name="inputName">result</param>
+            </result>
+            <result name="input" type="stream">
+                <param name="contentType">text/html</param>
+                <param name="inputName">result</param>
+            </result>
+        </action>
+
+        <action name="data-download" class="DataDownloadAction">
+            <result name="success" type="stream">
+                <param name="contentType">application/octet-stream</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename="${dataFileName}"</param>
+                <param name="bufferSize">4096</param>
+            </result>
+            <result name="start" type="redirect">start.htm</result>
+        </action>
+
+        <!--Provider Action-->
+
+        <action name="provide" class="ProviderAction" method="toPage">
+            <result name="company" type="tiles">provider-admin-company</result>
+            <result name="branch" type="tiles">provider-admin-branch</result>
+            <result name="cashier" type="tiles">provider-cashier</result>
+        </action>
+
+
+    </package>
+
+</struts>

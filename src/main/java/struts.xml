@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+
+    <constant name="struts.configuration.xml.reload" value="true"/>
+
+    <constant name="struts.action.extension" value="htm"/>
+
+    <constant name="struts.serve.static.browserCache" value="false"/>
+
+    <constant name="struts.custom.i18n.resources" value="message"/>
+
+    <constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory"/>
+
+    <constant name="struts.devMode" value="true"/>
+
+    <constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
+
+    <!---->
+    <constant name="struts.enable.SlashesInActionNames" value="true"/>
+    <!--<constant name="struts.ui.theme" value="simple"/>-->
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+    <!--1048576(Bytes)= 1024 *1024 = 1Mb -->
+    <constant name="struts.multipart.maxSize" value="10485760"/>
+
+    <!--New Design-->
+    <include file="config/struts/custom-json-default.xml"/>
+
+    <!--New Design-->
+    <include file="config/struts/guest.xml"/>
+
+    <!-- User package -->
+    <include file="config/struts/merchant-general.xml"/>
+
+    <include file="config/struts/merchant.xml"/>
+
+    <include file="config/struts/merchant-json.xml"/>
+
+    <include file="config/struts/transaction-json.xml"/>
+
+    <package name="merchant-default" namespace="/" extends="json-default">
+
+        <action name="send-custom-mail" class="MailAction" method="execute">
+            <result name="success" type="json"/>
+        </action>
+    </package>
+
+</struts>

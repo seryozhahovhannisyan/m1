@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+>
+
+    <!-- Spring transaction support -->
+    <!--<bean id="sqlTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    &lt;!&ndash; Enable the configuration of transactional behavior based on annotations &ndash;&gt;
+    <tx:annotation-driven transaction-manager="sqlTransactionManager"/>
+
+
+
+    <bean id="placeholderImgSize" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="location" value="classpath:config/img-size.properties"/>
+    </bean>
+
+    &lt;!&ndash;<bean id="imageSizeLoader" class="am.rs.touragency.common.util.ImageSizeLoader" scope="singleton">
+        <constructor-arg ref="placeholderImgSize"/>
+    </bean>&ndash;&gt;
+
+    <bean id="placeholderSetup" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="location" value="classpath:config/setup.properties"/>
+    </bean>
+
+    &lt;!&ndash;<bean id="setupInfo" class="am.rs.touragency.common.util.SetupInfo" scope="singleton">
+        <constructor-arg ref="placeholderSetup"/>
+    </bean>&ndash;&gt;
+
+    <bean id="emailSetup" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="location" value="classpath:config/mail/config.properties"/>
+    </bean>-->
+
+    <!--<bean id="emailPropertyLoader" class="am.rs.touragency.common.util.EmailPropertyLoader" scope="singleton">
+        <constructor-arg ref="emailSetup"/>
+    </bean>-->
+
+
+    <bean id="placeholderSetup" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="location" value="classpath:config/setup.properties"/>
+    </bean>
+
+    <bean name="setupInfo" class="com.connectto.wallet.merchant.common.util.SetupInfo">
+        <constructor-arg ref="placeholderSetup"/>
+    </bean>
+
+</beans>

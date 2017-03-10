@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="BranchManagerImpl" class="com.connectto.wallet.merchant.business.merchant.impl.BranchManagerImpl">
+        <property name="dao" ref="BranchDao"/>
+        <property name="branchCashBoxDao" ref="BranchCashBoxDao"/>
+        <property name="cashierDao" ref="CashierDao"/>
+        <property name="cashierCashBoxDao" ref="CashierCashBoxDao"/>
+        <property name="fileDataDao" ref="FileDataDao"/>
+    </bean>
+
+    <bean id="BranchCashBoxProviderManagerImpl" class="com.connectto.wallet.merchant.business.merchant.impl.BranchCashBoxProviderManagerImpl">
+        <property name="dao" ref="BranchCashBoxProviderDao"/>
+        <property name="branchCashBoxDao" ref="BranchCashBoxDao"/>
+        <property name="branchDao" ref="BranchDao"/>
+        <property name="companyCashBoxDao" ref="CompanyCashBoxDao"/>
+    </bean>
+
+    <bean id="BranchCashBoxTakerManagerImpl" class="com.connectto.wallet.merchant.business.merchant.impl.BranchCashBoxTakerManagerImpl">
+        <property name="dao" ref="BranchCashBoxTakerDao"/>
+        <property name="branchCashBoxDao" ref="BranchCashBoxDao"/>
+        <property name="branchCashBoxProviderDao" ref="BranchCashBoxProviderDao"/>
+        <property name="branchDao" ref="BranchDao"/>
+        <property name="companyCashBoxDao" ref="CompanyCashBoxDao"/>
+    </bean>
+
+    <bean id="CashierManagerImpl" class="com.connectto.wallet.merchant.business.merchant.impl.CashierManagerImpl">
+        <property name="dao" ref="CashierDao"/>
+        <property name="roleDao" ref="RoleDao"/>
+        <property name="cashierCashBoxDao" ref="CashierCashBoxDao"/>
+        <property name="fileDataDao" ref="FileDataDao"/>
+    </bean>
+
+    <bean id="CompanyFormRequestManagerImpl" class="com.connectto.wallet.merchant.business.merchant.impl.CompanyFormRequestManagerImpl">
+        <property name="dao" ref="CompanyFormRequestDao"/>
+        <property name="companyDao" ref="CompanyDao"/>
+        <property name="branchDao" ref="BranchDao"/>
+        <property name="branchCashBoxDao" ref="BranchCashBoxDao"/>
+        <property name="cashierDao" ref="CashierDao"/>
+        <property name="roleDao" ref="RoleDao"/>
+        <property name="cashierCashBoxDao" ref="CashierCashBoxDao"/>
+        <property name="fileDataDao" ref="FileDataDao"/>
+
+        <property name="companyCashBoxDao" ref="CompanyCashBoxDao"/>
+        <property name="responseDao" ref="CompanyFormResponseDao"/>
+
+    </bean>
+
+    <bean id="CompanyManagerImpl" class="com.connectto.wallet.merchant.business.merchant.impl.CompanyManagerImpl">
+        <property name="dao" ref="CompanyDao"/>
+    </bean>
+
+    <bean id="companyCashBoxManagerImpl" class="com.connectto.wallet.merchant.business.merchant.impl.CompanyCashBoxManagerImpl">
+        <property name="dao" ref="CompanyCashBoxDao"/>
+    </bean>
+
+    <bean id="FileDataManagerImpl" class="com.connectto.wallet.merchant.business.merchant.impl.FileDataManagerImpl">
+        <property name="dao" ref="FileDataDao"/>
+    </bean>
+
+    <bean id="MerchantLoggerManagerImpl" class="com.connectto.wallet.merchant.business.merchant.impl.MerchantLoggerManagerImpl">
+        <property name="dao" ref="MerchantLoggerDao"/>
+    </bean>
+
+    <bean id="RoleManagerImpl" class="com.connectto.wallet.merchant.business.merchant.impl.RoleManagerImpl">
+        <property name="dao" ref="RoleDao"/>
+    </bean>
+
+    <bean id="TransactionManagerImpl" class="com.connectto.wallet.merchant.business.merchant.impl.TransactionManagerImpl">
+        <property name="dao" ref="TransactionDaoImpl"/>
+        <property name="exchangeDao" ref="TransactionExchangeDaoIml"/>
+        <property name="exchangeTaxDao" ref="TransactionExchangeTaxDaoImpl"/>
+        <property name="processDao" ref="TransactionProcessDaoImpl"/>
+        <property name="processTaxDao" ref="TransactionProcessTaxDaoImpl"/>
+        <property name="taxDao" ref="TransactionTaxDaoImpl"/>
+        <property name="walletTransactionDao" ref="WalletTransactionDaoImpl"/>
+        <property name="walletTransactionTaxDao" ref="WalletTransactionTaxDaoImpl"/>
+        <property name="cashierCashBoxDao" ref="CashierCashBoxDao"/>
+        <property name="walletDao" ref="WalletDao"/>
+    </bean>
+
+    <bean id="TransferTransactionManagerImpl" class="com.connectto.wallet.merchant.business.merchant.impl.TransferTransactionManagerImpl">
+        <property name="dao" ref="TransferTransactionDaoImpl"/>
+        <property name="walletResultDao" ref="TransferTransactionWalletResultDaoImpl"/>
+        <property name="ticketDao" ref="TransferTicketDaoImpl"/>
+        <property name="companyDao" ref="CompanyDao"/>
+        <property name="companyCashBoxDao" ref="CompanyCashBoxDao"/>
+    </bean>
+    
+    <!--Wallet-->
+
+    <bean id="WalletManagerImpl" class="com.connectto.wallet.merchant.business.wallet.impl.WalletManagerImpl">
+        <property name="walletDao" ref="WalletDao"/>
+        <property name="companyCashBoxDao" ref="CompanyCashBoxDao"/>
+        <property name="companyDao" ref="CompanyDao"/>
+    </bean>
+
+</beans>

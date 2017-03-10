@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.CompanyFormRequestMap">
+
+
+    <resultMap id="rmCompanyFormRequest" type="CompanyFormRequest">
+        <id property="id" column="id"/>
+        <result property="tsmCompanyId" column="tsm_company_id"/>
+        <result property="companyName" column="company_name"/>
+        <result property="companyAddress" column="company_address"/>
+        <result property="companyEmail" column="company_email"/>
+        <result property="companyPhoneCode" column="company_phone_code"/>
+        <result property="companyPhone" column="company_phone"/>
+        <result property="countOfBranches" column="count_of_branches"/>
+        <result property="countOfWorkers" column="count_of_workers"/>
+        <result property="contactName" column="contact_name"/>
+        <result property="contactLastName" column="contact_last_name"/>
+        <result property="contactEmail" column="contact_email"/>
+        <result property="contactPhoneCode" column="contact_phone_code"/>
+        <result property="contactPhone" column="contact_phone"/>
+        <result property="message" column="message"/>
+        <result property="status" column="status"/>
+        <result property="requestedAt" column="requested_at"/>
+    </resultMap>
+
+
+
+    <!--
+    ###################################################################################################################
+    ################################################    Create     ####################################################
+    ###################################################################################################################
+    -->
+
+    <insert id="add" parameterType="CompanyFormRequest">
+
+        INSERT INTO c_company_form_request(
+            `tsm_company_id`,
+            `company_name`,
+            `company_address`,
+            `company_email`,
+            `company_phone_code`,
+            `company_phone` ,
+            `count_of_branches`,
+            `count_of_workers`,
+            `contact_name`,
+            `contact_last_name`,
+            `contact_email`,
+            `contact_phone_code`,
+            `contact_phone`,
+            `message`,
+            `status`,
+            `requested_at`
+       ) VALUES (
+             #{tsmCompanyId},
+             #{companyName},
+             #{companyAddress},
+             #{companyEmail},
+             #{companyPhoneCode},
+             #{companyPhone},
+             #{countOfBranches},
+             #{countOfWorkers},
+             #{contactName},
+             #{contactLastName},
+             #{contactEmail},
+             #{contactPhoneCode},
+             #{contactPhone},
+             #{message},
+             #{status},
+             #{requestedAt}
+        )
+
+        <selectKey keyProperty="id" resultType="_long">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>
+    
+    
+    <select id="getById"
+            resultMap="rmCompanyFormRequest"                       
+            parameterType="_long">
+
+        SELECT * FROM c_company_form_request WHERE id = #{id}
+
+    </select>
+
+    <select id="getByParams"
+            resultMap="rmCompanyFormRequest"
+            parameterType="map">
+
+        SELECT * FROM c_company_form_request
+
+    </select>
+
+    <update id="update" parameterType="CompanyFormRequest">
+        UPDATE c_company_form_request
+        SET status = #{status}
+        WHERE id = #{id}
+    </update>
+
+    <update id="changeStatus" parameterType="CompanyFormRequest">
+        UPDATE c_company_form_request
+        SET status = #{status}
+        WHERE id = #{id}
+    </update>
+
+    <update id="activateCompany" parameterType="CompanyFormRequest">
+        UPDATE c_company_form_request
+        SET status = #{status}
+        WHERE id = #{id}
+    </update>
+
+
+
+</mapper>

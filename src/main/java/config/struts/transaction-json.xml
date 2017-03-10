@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <package name="transaction-json" namespace="/" extends="json-default">
+
+        <interceptors>
+            <interceptor name="authenticateInterceptor" class="com.connectto.wallet.merchant.web.interceptor.JSONAuthenticationInterceptor"/>
+            <interceptor name="transactionInterceptor" class="com.connectto.wallet.merchant.web.interceptor.TransactionInterceptor"/>
+            <!--<interceptor name="json" class="org.apache.struts2.json.JSONInterceptor">
+                <param name="enableSMD">true</param>
+            </interceptor>-->
+            <interceptor-stack name="transactionStack">
+                <interceptor-ref name="jsonValidationWorkflowStack"/>
+                <interceptor-ref name="authenticateInterceptor"/>
+                <interceptor-ref name="transactionInterceptor"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="transactionStack"/>
+
+        <global-results>
+            <result name="login" type="redirect">entry-view.htm</result>
+            <result name="pending" type="redirect">transaction-pending.htm</result>
+            <result name="user-exception" type="chain">cashier-exception</result>
+        </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="user-exception"/>
+        </global-exception-mappings>
+
+        <!--withdraw-->
+
+        <action name="withdraw-start" class="TransactionWithdrawAction" method="withdrawStart">
+            <result name="success" type="json"/>
+        </action>
+
+        <action name="withdraw-check-tax" class="TransactionWithdrawAction" method="withdrawCheckTax">
+            <result name="success" type="json"/>
+        </action>
+
+        <action name="withdraw-make-payment" class="TransactionWithdrawAction" method="withdrawMakePayment">
+            <result name="success" type="json"/>
+        </action>
+
+        <action name="withdraw-time-out" class="TransactionWithdrawAction" method="withdrawTimeOut">
+            <result name="success" type="json"/>
+        </action>
+
+        <!--deposit-->
+
+        <action name="deposit-start" class="TransactionDepositAction" method="depositStart">
+            <result name="success" type="json"/>
+        </action>
+
+        <action name="deposit-check-tax" class="TransactionDepositAction" method="depositCheckTax">
+            <result name="success" type="json"/>
+        </action>
+
+        <action name="deposit-make-payment" class="TransactionDepositAction" method="depositMakePayment">
+            <result name="success" type="json"/>
+        </action>
+
+        <action name="deposit-time-out" class="TransactionDepositAction" method="depositTimeOut">
+            <result name="success" type="json"/>
+        </action>
+
+
+
+    </package>
+    <package name="transaction-json-wallet" namespace="/" extends="custom-json-default">
+
+        <interceptors>
+            <!--<interceptor name="json" class="org.apache.struts2.json.JSONInterceptor">
+                <param name="enableSMD">true</param>
+            </interceptor>-->
+            <interceptor-stack name="CustomtransactionStack">
+                <interceptor-ref name="CustomJsonValidationWorkflowStack"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="CustomtransactionStack"/>
+
+        <!--provide for wallet-->
+
+        <action name="withdraw-wallet-cancel" class="TransactionWithdrawAction" method="withdrawCanceledByWallet">
+            <result name="success" type="json">
+                <param name="enumAsBean">true</param>
+            </result>
+        </action>
+
+        <action name="withdraw-wallet-approve" class="TransactionWithdrawAction" method="withdrawApprovedByWallet">
+            <result name="success" type="json"/>
+        </action>
+
+        <action name="deposit-wallet-cancel" class="TransactionDepositAction" method="depositCanceledByWallet">
+            <result name="success" type="json">
+                <param name="enumAsBean">true</param>
+            </result>
+        </action>
+
+        <action name="deposit-wallet-approve" class="TransactionDepositAction" method="depositApprovedByWallet">
+            <result name="success" type="json"/>
+        </action>
+
+
+
+    </package>
+    <package name="transaction-json-wallet-simple" namespace="/" extends="json-default">
+
+        <default-interceptor-ref name="jsonValidationWorkflowStack"/>
+
+        <action name="transfer-from-merchant-to-user" class="TransferTransactionAction" method="transferFromMerchantToUser">
+            <result name="success" type="json"/>
+        </action>
+
+    </package>
+
+</struts>

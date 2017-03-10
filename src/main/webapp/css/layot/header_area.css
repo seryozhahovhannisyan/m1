@@ -1,0 +1,250 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+
+.clear_both{
+    clear: both;
+}
+@font-face {
+    font-family: 'GothaProMed.otf';
+    src: url(../fonts/GothaProMed.otf);
+}
+@font-face {
+    font-family: 'GothaProReg.otf';
+    src: url(../fonts/GothaProReg.otf);
+}
+@font-face {
+    font-family: 'GothaProIta.otf';
+    src: url(../fonts/GothaProIta.otf);
+}
+@font-face {
+    font-family: 'GothaProBol.otf';
+    src: url(../fonts/GothaProBol.otf);
+}
+@font-face {
+    font-family:'GothaProLig.otf';
+    src: url(../fonts/GothaProLig.otf);
+}
+input:focus,
+select:focus,
+textarea:focus {
+    outline-width: 0 !important;
+    border:none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+}
+input,
+select,
+textarea {
+    outline-width: 0 !important;
+    border:none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+}
+.full_page_fixed_div {
+    width: 100%;
+    height: 100%;
+    position: initial;
+    display: block;
+    top:0;
+    left:0;
+}
+.logged_in_name_surname {
+    height: 20px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-size: 20px;
+    color: #3daeae;
+    padding-top: 40px;
+    font-family: 'GothaProReg.otf';
+}
+.header_container {
+    margin-bottom:30px;
+}
+header{
+    padding: 15px
+}
+.merchant_main_header_background_img {
+    position: absolute;
+    z-index: -1;
+    background: url("../../img/main/merchant_main_header_background.png");
+    width: 100%;
+    background-size: cover;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+.text_hover{
+    width: 0;
+    background-color: #3daeae;
+    height: 5px;
+    margin: 0 auto;
+    -webkit-transition: width 0.5s ease-in-out;
+    -moz-transition: width 0.5s ease-in-out;
+    -o-transition: width 0.5s ease-in-out;
+    transition: width 0.5s ease-in-out;
+}
+
+.upp{
+    text-transform: uppercase;
+}
+
+.branch_area{
+    float: right;
+    margin-right: 20px;
+    text-transform: uppercase;
+    font-size: 150%;
+    color: #3daeae;
+    font-family: 'GothaProReg.otf';
+}
+.user_area{
+    float: right;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-size: 150%;
+    color: #3daeae;
+    font-family: 'GothaProReg.otf';
+}
+.form-control{
+    border:none;
+    text-align: center;
+    outline:none;
+    color: #eeefef;
+    background-color: transparent;
+    font-family: 'GothaProReg.otf';
+}
+
+.branch_area,.user_area:hover{
+    cursor: pointer;
+
+}
+
+.branch_area:active{
+    color: #3daeae;
+}
+
+.user_area:active{
+    color: #3daeae;
+}
+
+
+
+.main-login-form {
+    padding: 0 40px 30px 40px;
+    max-width: 600px;
+    display: none;
+    border: 2px solid #27ccc0;
+    margin: 10px 70px -10% 0;
+    background-color: #212430;
+}
+.main_header_right_block {
+    padding-right:40px;
+}
+.main_login_form_title {
+    color: #cdcdcd;
+    text-align: center;
+    padding: 20px 20px 30px;
+    font-size: 130%;
+    text-transform: uppercase;
+    font-family:'GothaProBol.otf';
+}
+.main_login_form_login, .main_login_form_password {
+    font-size:22px;
+    font-family: 'GothaProReg.otf';
+}
+.main_login_form_forgot_password {
+    font-size: 160%;
+    color: #cdcdcd;
+    text-align: center;
+    clear: both;
+    margin: 20px auto;
+    float: none;
+    font-family: 'GothaProReg.otf';
+}
+.main_login_form_forgot_password a {
+    text-decoration: none;
+    color: #cdcdcd;
+}
+.main_login_form_forgot_password a:hover {
+    text-decoration: none;
+    color: #ffffff;
+}
+.main_login_form_dont_have_account {
+    font-size: 100%;
+    color: #cdcdcd;
+    text-align: center;
+    font-family: 'GothaProLig.otf';
+
+}
+.main_login_form_dont_have_account a{
+    color: #27c4b9;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.main_login_form_dont_have_account a:hover{
+    color: #ffffff;
+}
+.merchant_header_right_icon {
+    cursor: pointer;
+    float: right;
+}
+.main_show_hide_password {
+    position: absolute;
+    right: 0;
+    bottom: 5px;
+    width: 37px;
+    cursor: pointer;
+}
+.main_login_button {
+    background-color: #27ccc0;
+    padding: 6px 12px;
+    font-size: 150%;
+    color: #eeefef;
+    border: none;
+    border-radius: 6px;
+    display: inherit;
+    margin: 20px auto;
+    float: none;
+    text-transform: uppercase;
+    font-family: 'GothaProBol.otf';
+}
+
+.main_login_button:hover {
+    color: #ffffff;
+    border:3px solid #27CCC0;
+    background-color: transparent;
+    padding: 3px 9px;
+}
+.main_right_menu_block {
+    display: inline-block;
+    padding-top: 15px;
+
+}
+.header_section {
+    position: absolute;
+    width:100%;
+    z-index:1;
+}
+.main-header-padding-top{
+    padding-top:20px;
+}
+.form-group-username {
+    background-image: url("../../img/main/merchant_main_username_icon.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    border-bottom: 2px solid #27ccc0;
+    margin-bottom: 25px;
+    padding-right:0;
+}
+.form-group-password {
+    background: url("../../img/main/merchant_main_password_icon.png") no-repeat left;
+    border-bottom: 2px solid #27ccc0;
+    margin-bottom: 20px;
+    padding-right:0;
+}
+

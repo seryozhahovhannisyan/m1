@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.WalletTransactionTaxMap">
+
+     <!--
+    ###################################################################################################################
+    ################################################    Create     ####################################################
+    ###################################################################################################################
+    -->
+
+    <insert id="addWithdraw" parameterType="WalletWithdrawTax">
+
+        INSERT INTO t_wallet_withdraw_tax(
+            `action_date`,
+            `wallet_id`,
+            `wallet_ct`,
+            `setup_id`,
+            `setup_ct`,
+            `paid_tax_to_wallet_setup`,
+            `paid_tax_to_wallet_setup_price`
+        ) VALUES (
+            #{actionDate},
+            #{walletId},
+            #{walletCurrencyType},
+            #{setupId},
+            #{setupCurrencyType},
+            #{paidTaxToWalletSetup},
+            #{paidTaxToWalletSetupPrice}
+        )
+
+        <selectKey keyProperty="id" resultType="_long">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>
+
+    <insert id="addDeposit" parameterType="WalletDepositTax">
+
+        INSERT INTO t_wallet_deposit_tax(
+            `action_date`,
+            `wallet_id`,
+            `wallet_ct`,
+            `setup_id`,
+            `setup_ct`,
+            `paid_tax_to_wallet_setup`,
+            `paid_tax_to_wallet_setup_price`
+        ) VALUES (
+            #{actionDate},
+            #{walletId},
+            #{walletCurrencyType},
+            #{setupId},
+            #{setupCurrencyType},
+            #{paidTaxToWalletSetup},
+            #{paidTaxToWalletSetupPrice}
+        )
+
+        <selectKey keyProperty="id" resultType="_long">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>
+
+    <update id="markTransactionWithdraw" parameterType="WalletWithdrawTax">
+        UPDATE t_wallet_withdraw_tax
+        SET   `transaction_id` = #{transactionId}
+        WHERE id = #{id}
+    </update>
+
+    <update id="markTransactionDeposit" parameterType="WalletDepositTax">
+        UPDATE t_wallet_deposit_tax
+        SET   `transaction_id` = #{transactionId}
+        WHERE id = #{id}
+    </update>
+
+
+
+</mapper>

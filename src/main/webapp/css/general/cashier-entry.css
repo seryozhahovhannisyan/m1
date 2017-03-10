@@ -1,0 +1,143 @@
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline-width: 0 !important;
+    border:none;
+}
+
+.clear_both {
+    clear: both;
+}
+.fixed {
+    position: fixed;
+    bottom: 0;
+}
+.login_forward {
+background-image: url("./../../img/main/merchant_main_header_background.png");
+
+}
+.login-forward-header-padding-top {
+    padding-top:20px;
+}
+.right_menu_block {
+    display: inline-block;
+}
+.merchant_background_img {
+    position: absolute;
+    z-index:-1;
+    min-height:1100px;
+}
+.login-form {
+    padding: 0 40px 30px 40px;
+    max-width: 500px;
+    border: 2px solid #27ccc0;
+    background-color: #212430;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom: 0;
+    margin: auto;
+    /*display: inline-table;*/
+    width: 100%;
+    min-height: 350px;
+    height: 1%;
+}
+.login_forward_right_block {
+    padding-right:40px;
+}
+.login_form_title {
+    color: #cdcdcd;
+    text-align: center;
+    padding: 10px;
+    font-size: 130%;
+    text-transform: uppercase;
+}
+.login_form_login, .login_form_password {
+    font-size:100%;
+}
+
+.login_form_forgot_password {
+    font-size: 160%;
+    color: #cdcdcd;
+    text-align: center;
+}
+.login_form_forgot_password a {
+    text-decoration: none;
+    color: #cdcdcd;
+}
+.login_form_forgot_password a:hover {
+    text-decoration: none;
+    color: #ffffff;
+}
+.login_form_dont_have_account {
+    font-size: 100%;
+    color: #cdcdcd;
+    text-align: center;
+}
+.login_form_dont_have_account a{
+    color: #27c4b9;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.login_form_dont_have_account a:hover{
+    color: #ffffff;
+}
+.merchant_right_icon {
+    cursor: pointer;
+}
+.show_hide_password {
+    position: absolute;
+    right: 0;
+    bottom: 5px;
+    width: 37px;
+    cursor: pointer;
+}
+.login_button {
+    background-color: #27ccc0;
+    /* height: 45px; */
+    padding: 2px 12px;
+    font-size: 150%;
+    border-radius: 6px;
+    color: #eeefef;
+     border: 1px solid #212430;
+    display: inherit;
+    margin: 20px auto;
+    float: none;
+    text-transform: uppercase;
+    font-family: 'GothaProBol.otf';
+}
+
+.login_button:hover {
+    color: #ffffff;
+    border:1px solid #27CCC0;
+    background-color: transparent;
+
+}
+.form-control{
+    border:none;
+    text-align: center;
+    outline:none;
+    color: #eeefef;
+    background-color: transparent;
+}
+.form-group-username {
+    background-image: url("../../img/main/merchant_main_username_icon.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    border-bottom: 2px solid #27ccc0;
+    margin-bottom: 25px;
+    padding-right:0;
+}
+.form-group-username-margin {
+    margin-bottom:60px;
+}
+.form-group-password {
+    background: url("../../img/main/merchant_main_password_icon.png") no-repeat left;
+    border-bottom: 2px solid #27ccc0;
+    margin-bottom: 20px;
+    padding-right:0;
+    position: relative;
+}

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+>
+
+    <bean id="BranchDao" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.BranchDao">
+        <property name="map" ref="BranchMap"/>
+    </bean>
+
+    <bean id="BranchCashBoxDao" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.BranchCashBoxDao">
+        <property name="map" ref="BranchCashBoxMap"/>
+    </bean>
+
+    <bean id="BranchCashBoxProviderDao" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.BranchCashBoxProviderDao">
+        <property name="map" ref="BranchCashBoxProviderMap"/>
+    </bean>
+
+    <bean id="BranchCashBoxTakerDao" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.BranchCashBoxTakerDao">
+        <property name="map" ref="BranchCashBoxTakerMap"/>
+    </bean>
+
+    <bean id="RoleDao" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.RoleDao">
+        <property name="map" ref="RoleMap"/>
+    </bean>
+
+    <bean id="CashierDao" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.CashierDao">
+        <property name="map" ref="CashierMap"/>
+    </bean>
+
+    <bean id="CashierCashBoxDao" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.CashierCashBoxDao">
+        <property name="map" ref="CashierCashBoxMap"/>
+    </bean>
+
+    <bean id="CashierCashBoxProviderDao" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.CashierCashBoxProviderDao">
+        <property name="map" ref="CashierCashBoxProviderMap"/>
+    </bean>
+
+    <bean id="CashierCashBoxTakerDao" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.CashierCashBoxTakerDao">
+        <property name="map" ref="CashierCashBoxTakerMap"/>
+    </bean>
+
+    <bean id="CompanyFormRequestDao" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.CompanyFormRequestDao">
+        <property name="map" ref="CompanyFormRequestMap"/>
+    </bean>
+
+    <bean id="CompanyFormResponseDao" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.CompanyFormResponseDao">
+        <property name="map" ref="CompanyFormResponseMap"/>
+    </bean>
+
+    <bean id="CompanyDao" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.CompanyDao">
+        <property name="map" ref="CompanyMap"/>
+    </bean>
+
+    <bean id="CompanyCashBoxDao" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.CompanyCashBoxDao">
+        <property name="map" ref="CompanyCashBoxMap"/>
+    </bean>
+
+    <bean id="CompanyCashBoxProviderDao" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.CompanyCashBoxProviderDao">
+        <property name="map" ref="CompanyCashBoxProviderMap"/>
+    </bean>
+
+    <bean id="CompanyCashBoxTakerDao" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.CompanyCashBoxTakerDao">
+        <property name="map" ref="CompanyCashBoxTakerMap"/>
+    </bean>
+
+    <bean id="FileDataDao" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.FileDataDao">
+        <property name="map" ref="FileDataMap"/>
+    </bean>
+
+    <bean id="MerchantLoggerDao" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.MerchantLoggerDao">
+        <property name="map" ref="MerchantLoggerMap"/>
+    </bean>
+
+    <!--
+        Transactional
+    -->
+    <bean id="TransactionDaoImpl" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.TransactionDaoImpl">
+        <property name="map" ref="TransactionMap"/>
+    </bean>
+
+    <bean id="TransactionExchangeDaoIml" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.TransactionExchangeDaoImpl">
+        <property name="map" ref="TransactionExchangeMap"/>
+    </bean>
+
+    <bean id="TransactionExchangeTaxDaoImpl" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.TransactionExchangeTaxDaoImpl">
+        <property name="map" ref="TransactionExchangeTaxMap"/>
+    </bean>
+
+    <bean id="TransactionProcessDaoImpl" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.TransactionProcessDaoImpl">
+        <property name="map" ref="TransactionProcessMap"/>
+    </bean>
+
+    <bean id="TransactionProcessTaxDaoImpl" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.TransactionProcessTaxDaoImpl">
+        <property name="map" ref="TransactionProcessTaxMap"/>
+    </bean>
+
+    <bean id="TransactionTaxDaoImpl" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.TransactionTaxDaoImpl">
+        <property name="map" ref="TransactionTaxMap"/>
+    </bean>
+
+    <bean id="WalletTransactionDaoImpl" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.WalletTransactionDaoImpl">
+        <property name="map" ref="WalletTransactionMap"/>
+    </bean>
+
+    <bean id="WalletTransactionTaxDaoImpl" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.WalletTransactionTaxDaoImpl">
+        <property name="map" ref="WalletTransactionTaxMap"/>
+    </bean>
+
+    <bean id="TransferTicketDaoImpl" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.TransferTicketDaoImpl">
+        <property name="map" ref="TransferTicketMap"/>
+    </bean>
+
+    <bean id="TransferTransactionDaoImpl" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.TransferTransactionDaoImpl">
+        <property name="map" ref="TransferTransactionMap"/>
+    </bean>
+
+    <bean id="TransferTransactionWalletResultDaoImpl" class="com.connectto.wallet.merchant.dataaccess.merchant.dao.impl.TransferTransactionWalletResultDaoImpl">
+        <property name="map" ref="TransferTransactionWalletResultMap"/>
+    </bean>
+
+    <!--
+    Wallet
+    -->
+
+    <bean id="WalletDao" class="com.connectto.wallet.merchant.dataaccess.wallet.dao.impl.WalletDao">
+        <property name="map" ref="WalletMap"/>
+    </bean>
+
+    <bean id="ExchangeRateDao" class="com.connectto.wallet.merchant.dataaccess.wallet.dao.impl.ExchangeRateDao">
+        <property name="map" ref="ExchangeRateMap"/>
+    </bean>
+
+
+</beans>

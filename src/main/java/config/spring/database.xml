@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+    <bean id="placeholderConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:config/db-configs.properties"/>
+    </bean>
+
+    <!-- Wallet connection datasource configuration -->
+    <bean id="dataSourceWallet" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="${database.driver}"/>
+        <property name="url" value="${wallet.database.url}"/>
+        <property name="username" value="${wallet.database.username}"/>
+        <property name="password" value="${wallet.database.password}"/>
+        <property name="maxActive" value="${database.max.active}"/>
+        <property name="maxWait" value="10000"/>
+        <property name="validationQuery" value="select 1" />
+    </bean>
+
+    <bean id="sqlSessionFactoryWallet" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceWallet" />
+        <property name="configLocation" value="classpath:com/connectto/wallet/merchant/dataaccess/wallet/ConfigurationWallet.xml"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" id="scanner1">
+        <property name="basePackage" value=" com.connectto.wallet.merchant.dataaccess.wallet.mapper.namespace" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryWallet"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSessionTemplateWallet" destroy-method="clearCache">
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryWallet"/>
+    </bean>
+
+    <!---->
+    <!-- Merchant connection datasource configuration -->
+    <bean id="dataSourceMerchant" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="${database.driver}"/>
+        <property name="url" value="${merchant.database.url}"/>
+        <property name="username" value="${merchant.database.username}"/>
+        <property name="password" value="${merchant.database.password}"/>
+        <property name="maxActive" value="${database.max.active}"/>
+        <property name="maxWait" value="10000"/>
+        <property name="validationQuery" value="select 1" />
+    </bean>
+
+    <bean id="sqlSessionFactoryMerchant" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceMerchant" />
+        <property name="configLocation" value="classpath:com/connectto/wallet/merchant/dataaccess/merchant/ConfigurationMerchant.xml"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" id="scanner2">
+        <property name="basePackage" value=" com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryMerchant"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSessionTemplateMerchant" destroy-method="clearCache">
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryMerchant"/>
+    </bean>
+
+    <!--<tx:annotation-driven />-->
+
+</beans>

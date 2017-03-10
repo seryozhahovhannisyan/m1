@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <package name="merchant-json" namespace="/" extends="json-default">
+
+        <interceptors>
+            <interceptor name="authenticateInterceptor" class="com.connectto.wallet.merchant.web.interceptor.JSONAuthenticationInterceptor"/>
+            <interceptor-stack name="userStack">
+                <interceptor-ref name="jsonValidationWorkflowStack"/>
+                <interceptor-ref name="authenticateInterceptor"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="userStack"/>
+
+        <global-results>
+            <result name="login" type="redirect">entry-view.htm</result>
+            <result name="pending" type="redirect">transaction-pending.htm</result>
+            <result name="user-exception" type="chain">cashier-exception</result>
+        </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="user-exception"/>
+        </global-exception-mappings>
+
+        <!--<action name="user-exception" class="ExceptionHandlerAction">
+            <result type="redirect">user-error.htm</result>
+        </action>
+
+        <action name="user-error">
+            <result>/WEB-INF/pages/error/500.jsp</result>
+        </action>-->
+
+        <action name="remove-uploaded" class="DataUploadAction" method="removeUploaded">
+            <result name="success" type="json"/>
+        </action>
+
+        <action name="remove-all-uploaded" class="DataUploadAction" method="removeAllUploaded">
+            <result name="success" type="json"/>
+        </action>
+
+        <!--Services-->
+
+
+        <action name="send-custom-sms" class="SmsAction" method="execute">
+            <result name="success" type="json"/>
+        </action>
+
+        <!--Branches-->
+
+        <action name="branch-list" class="BranchAction" method="list">
+            <result name="success" type="json"/>
+        </action>
+
+        <action name="branch-view" class="BranchAction" method="view">
+            <result name="success" type="json"/>
+        </action>
+
+        <action name="branch-edit-view" class="BranchAction" method="view">
+            <result name="success" type="json"/>
+        </action>
+
+        <!--Cashiers-->
+
+        <action name="cashier-list" class="CashierAction" method="list">
+            <result name="success" type="json"/>
+        </action>
+
+        <action name="cashier-view" class="CashierAction" method="view">
+            <result name="success" type="json"/>
+        </action>
+
+        <action name="cashier-edit-view" class="CashierAction" method="view">
+            <result name="success" type="json"/>
+        </action>
+
+        <!--Roles-->
+
+        <action name="role-list" class="RoleAction" method="list">
+            <result name="success" type="json"/>
+        </action>
+
+        <action name="role-view" class="RoleAction" method="view">
+            <result name="success" type="json"/>
+        </action>
+
+        <action name="role-edit-view" class="RoleAction" method="view">
+            <result name="success" type="json"/>
+        </action>
+
+        <!--wallet-->
+        <action name="search-wallet-list" class="SearchWalletAction" method="list">
+            <result name="success" type="json"/>
+        </action>
+
+        <!--transaction-->
+
+        <action name="transaction-pending-list" class="TransactionAction" method="list">
+            <result name="success" type="json"/>
+        </action>
+
+        <action name="transaction-view-notification" class="TransactionAction" method="checkNotification">
+            <result name="success" type="json"/>
+        </action>
+
+        <action name="transaction-notification" class="TransactionAction" method="notification">
+            <result name="success" type="json"/>
+        </action>
+
+        <!--provide-->
+
+        <action name="provide-branch-list" class="ProviderBranchAction" method="list">
+            <result name="success" type="json"/>
+        </action>
+
+        <action name="provide-branch" class="ProviderBranchAction" method="provide">
+            <result name="success" type="redirect">provide.htm</result>
+            <result name="error" type="redirect">provide.htm</result>
+        </action>
+
+        <action name="take-back-branch" class="ProviderTakerAction" method="takeBack">
+            <result name="success" type="redirect">provide.htm</result>
+            <result name="error" type="redirect">provide.htm</result>
+        </action>
+
+
+
+    </package>
+
+</struts>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+    <package name="merchant-general" namespace="/" extends="struts-default">
+
+        <result-types>
+            <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+        </result-types>
+
+        <interceptors>
+            <interceptor name="alreadyLoggedInInterceptor" class="com.connectto.wallet.merchant.web.interceptor.LoggedInInterceptor"/>
+            <interceptor name="languageGuest" class="com.connectto.wallet.merchant.web.interceptor.LanguageInterceptorGuest"/>
+            <interceptor-stack name="general">
+                <interceptor-ref name="languageGuest"/>
+                <interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="alreadyLoggedInInterceptor"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="general"/>
+
+        <global-results>
+            <!--<result name="error" type="redirect">error.action</result>-->
+            <result name="login" type="redirect">entry-view.htm</result>
+            <result name="cashier-home" type="redirect">cashier-home.htm</result>
+            <result name="cashier-exception" type="chain">cashier-exception</result>
+        </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="cashier-exception"/>
+        </global-exception-mappings>
+
+        <action name="entry-view" class="Login" method="view">
+            <result name="success" type="tiles">cashier-entry</result>
+        </action>
+
+        <action name="forgot-password" class="Login" method="view">
+            <result name="success" type="tiles">forgot-password</result>
+        </action>
+
+        <action name="cashier-entry" class="Login" method="authenticate">
+            <result name="input" type="tiles">start</result>
+            <result name="error" type="tiles">start</result>
+            <result name="success" type="redirect">cashier-home.htm</result>
+        </action>
+
+        <action name="company-signup" class="Registration" method="companyView">
+            <result name="success" type="tiles">signup</result>
+        </action>
+
+        <action name="branch-signup" class="Registration" method="branchView">
+            <result name="success" type="tiles">signup</result>
+        </action>
+
+        <action name="cashier-signup" class="Registration"  method="cashierView">
+            <result name="success" type="tiles">signup</result>
+        </action>
+
+        <action name="signup" class="Registration" method="cashierSimpleView">
+            <result name="success" type="tiles">signup</result>
+        </action>
+
+        <action name="do-signup" class="Registration" method="doRegistration">
+            <result name="success" type="redirect">unverified.htm</result>
+            <result name="input" type="tiles">signup</result>
+        </action>
+
+        <action name="unverified" >
+            <result name="success" type="tiles">unverified</result>
+        </action>
+
+
+    </package>
+
+</struts>

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.BranchMap">
+
+
+    <resultMap id="rmBranchSimple" type="Branch">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="address" column="address"/>
+        <result property="city" column="city"/>
+        <result property="street" column="street"/>
+        <result property="zip" column="zip"/>
+        <result property="email" column="email"/>
+        <result property="phoneCode" column="phone_code"/>
+        <result property="phone" column="phone"/>
+        <result property="policyPhoneCode" column="policy_phone_code"/>
+        <result property="policyPhone" column="policy_phone"/>
+        <result property="status" column="status"/>
+        <result property="companyId" column="company_id"/>
+        <result property="branchId" column="branch_id"/>
+        <result property="cashierId" column="cashier_id"/>
+        <result property="companyId" column="company_id"/>
+        <result property="countryRegion" column="region"/>
+    </resultMap>
+
+    <resultMap id="rmBranchFull" type="Branch">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="city" column="city"/>
+        <result property="address" column="address"/>
+        <result property="zip" column="zip"/>
+        <result property="email" column="email"/>
+        <result property="phoneCode" column="phone_code"/>
+        <result property="phone" column="phone"/>
+        <result property="policyPhoneCode" column="policy_phone_code"/>
+        <result property="policyPhone" column="policy_phone"/>
+
+        <association property="currentCashBox" column="id" select="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.BranchCashBoxMap.getBranchCurrentCashBox"/>
+    </resultMap>
+
+    <!--
+    ###################################################################################################################
+    ################################################    Create     ####################################################
+    ###################################################################################################################
+    -->
+
+    <insert id="add" parameterType="Branch">
+
+        INSERT INTO c_branch(
+            `name`,
+            `address`,
+            `city`,
+            `street`,
+            `zip`,
+            `email`,
+            `phone_code`,
+            `phone`,
+            `policy_phone_code`,
+            `policy_phone`,
+            `company_id`,
+            `region`,
+            `status`
+        ) VALUES (
+            #{name},
+            #{address},
+            #{city},
+            #{street},
+            #{zip},
+            #{email},
+            #{phoneCode},
+            #{phone},
+            #{policyPhoneCode},
+            #{policyPhone},
+            #{companyId},
+            #{countryRegion},
+            #{status}
+        )
+
+        <selectKey keyProperty="id" resultType="_long">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>
+
+    <!--
+   ###################################################################################################################
+   ################################################    Read     ####################################################
+   ###################################################################################################################
+   -->
+    <select id="getById"
+            resultMap="rmBranchSimple"
+            parameterType="_long">
+
+        SELECT * FROM c_branch
+        WHERE id = #{id}
+        -- AND status = 1
+
+    </select>
+
+    <select id="getByCompanyId"
+            resultMap="rmBranchSimple"
+            parameterType="_long">
+
+        SELECT * FROM c_branch
+        WHERE company_id = #{companyId}
+        -- AND status = 1
+
+    </select>
+
+    <select id="getByParams"
+            resultMap="rmBranchSimple"
+            parameterType="map">
+
+        SELECT * FROM c_branch  WHERE  `company_id` = #{companyId}
+        <if test="status != null">             AND `status` = #{status}         </if>
+        <if test="filter != null">             AND (
+            LOWER(`name`) LIKE LOWER(#{filter})
+            OR LOWER(`address`) LIKE LOWER(#{filter})
+            OR LOWER(`city`) LIKE LOWER(#{filter})
+            OR LOWER(`zip`) LIKE LOWER(#{filter})
+            OR LOWER(`email`) LIKE LOWER(#{filter})
+
+            OR `phone_code` LIKE #{filter}
+            OR `phone` LIKE #{filter}
+            OR `policy_phone_code` LIKE #{filter}
+            OR `policy_phone` LIKE #{filter}
+            )
+        </if>
+        <if test="orderBy != null">
+            ORDER BY ${orderBy} ${orderType}
+        </if>
+        <if test="count != null">
+          LIMIT ${count}  OFFSET ${page}
+        </if>
+    </select>
+
+    <select id="getByParamsFull"
+            resultMap="rmBranchFull"
+            parameterType="map">
+
+        SELECT * FROM c_branch  WHERE  `company_id` = #{companyId}
+        <if test="status != null">             AND `status` = #{status}         </if>
+        <if test="filter != null">             AND (
+            LOWER(`name`) LIKE LOWER(#{filter})
+            OR LOWER(`address`) LIKE LOWER(#{filter})
+            OR LOWER(`city`) LIKE LOWER(#{filter})
+            OR LOWER(`zip`) LIKE LOWER(#{filter})
+            OR LOWER(`email`) LIKE LOWER(#{filter})
+
+            OR `phone_code` LIKE #{filter}
+            OR `phone` LIKE #{filter}
+            OR `policy_phone_code` LIKE #{filter}
+            OR `policy_phone` LIKE #{filter}
+            )
+        </if>
+        <if test="orderBy != null">
+            ORDER BY ${orderBy} ${orderType}
+        </if>
+        <if test="count != null">
+          LIMIT ${count}  OFFSET ${page}
+        </if>
+        <if test="ides != null">
+            AND  id in
+            <foreach item="item" collection="ides" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+
+    </select>
+
+    <select id="getCountByParams"
+            resultType="_int"
+            parameterType="map">
+
+        SELECT count(`id`) FROM c_branch WHERE `company_id` = #{companyId}
+        <if test="status != null">             AND `status` = #{status}         </if>
+
+        <if test="filter != null">             AND (
+            LOWER(`name`) LIKE LOWER(#{filter})
+            OR LOWER(`address`) LIKE LOWER(#{filter})
+            OR LOWER(`city`) LIKE LOWER(#{filter})
+            OR LOWER(`zip`) LIKE LOWER(#{filter})
+            OR LOWER(`email`) LIKE LOWER(#{filter})
+
+            OR `phone_code` LIKE #{filter}
+            OR `phone` LIKE #{filter}
+            OR `policy_phone_code` LIKE #{filter}
+            OR `policy_phone` LIKE #{filter}
+            )
+        </if>
+
+
+    </select>
+
+
+    <!--
+   ###################################################################################################################
+   ################################################    Update     ####################################################
+   ###################################################################################################################
+   -->
+    <update id="update" parameterType="Branch">
+        UPDATE c_branch
+        SET id = #{id}
+        <if test="status != null">             , `status` = #{status}                     </if>
+        <if test="name != null">               , `name` = #{name}                         </if>
+        <if test="address != null">            , `address` = #{address}                   </if>
+        <if test="city != null">               , `city` = #{city}                         </if>
+        <if test="street != null">             , `street` = #{street}                     </if>
+        <if test="zip != null">                , `zip` = #{zip}                           </if>
+        <if test="email != null">              , `email` = #{email}                       </if>
+        <if test="phone_code != null">         , `phone_code` = #{phoneCode}              </if>
+        <if test="phone != null">              , `phone` = #{phone}                       </if>
+        <if test="policy_phone_code != null">  , `policy_phone_code` = #{policyPhoneCode} </if>
+        <if test="expired_date != null">       , `expired_date` = #{expiredDate}          </if>
+        <if test="country != null">            , `country_id` = #{country}                </if>
+        <if test="countryRegion != null">      , `region` = #{countryRegion}              </if>
+
+
+        WHERE id = #{id}
+    </update>
+
+    <update id="activate" parameterType="Branch">
+        UPDATE c_branch
+        SET   `status` = #{status}
+          , `name` = #{name}
+          , `address` = #{address}
+          , `city` = #{city}
+          , `street` = #{street}
+          , `zip` = #{zip}
+          , `email` = #{email}
+          , `phone_code` = #{phoneCode}
+          , `phone` = #{phone}
+          , `policy_phone_code` = #{policyPhoneCode}
+          , `region` = #{countryRegion}
+
+        WHERE id = #{id}
+    </update>
+
+    <update id="delete" parameterType="_long">
+        UPDATE c_branch
+        SET status = #{status}
+        WHERE id = #{id}
+    </update>
+    <!--
+   ###################################################################################################################
+   ################################################    Delete     ####################################################
+   ###################################################################################################################
+   -->
+
+    <delete id="forceDelete" parameterType="_long">
+        DELETE FROM c_branch WHERE id = #{id}
+    </delete>
+
+
+</mapper>

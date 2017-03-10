@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+           version="2.5">
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:spring-config.xml</param-value>
+    </context-param>
+
+    <!-- spring context listener -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
+    </listener>
+
+    <context-param>
+        <param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
+        <param-value>/WEB-INF/tiles.xml</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>com.connectto.wallet.merchant.web.util.Initializer</listener-class>
+    </listener>
+
+    <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>*.htm</url-pattern>
+    </filter-mapping>
+
+
+    <servlet>
+        <servlet-name>ViewMixedData</servlet-name>
+        <servlet-class>com.connectto.wallet.merchant.web.servlet.ViewMixedData</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ViewMixedData</servlet-name>
+        <url-pattern>/view-mixed-data</url-pattern>
+    </servlet-mapping>
+
+</web-app>

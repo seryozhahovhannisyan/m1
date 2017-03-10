@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+    <mapper namespace="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.CompanyCashBoxMap">
+
+    <resultMap id="rmCompanyCashBoxSimple" type="CompanyCashBox">
+
+        <result property="id" column="id"/>
+        <result property="companyId" column="company_id"/>
+
+        <result property="balanceProvidedByMerchant" column="balance_provided_by_merchant"/>
+        <result property="balanceCurrent" column="balance_current"/>
+        <result property="acceptedOverpayment" column="accepted_overpayment"/>
+        <result property="overpayment" column="overpayment"/>
+        <result property="balanceTotalProvidedForBranchCashBox"   column="balance_total_provided_for_branch_cb" />
+        <result property="balanceCurrentProvidedForBranchCashBox" column="balance_current_provided_for_branch_cb"/>
+        <result property="balanceReturnedFromBranchCashBox" column="balance_returned_from_branch_cb"/>
+        <result property="balanceGatheredTax" column="balance_gathered_tax"/>
+
+        <result property="currencyType" column="currency_type"/>
+
+        <result property="availableRateValues" column="available_rates"/>
+        <result property="depositFeePercent" column="deposit_fee_percent"/>
+        <result property="depositMinFee" column="deposit_min_fee"/>
+        <result property="depositMaxFee" column="deposit_max_fee"/>
+
+        <result property="withdrawFeePercent" column="withdraw_fee_percent"/>
+        <result property="withdrawMinFee" column="withdraw_min_fee"/>
+        <result property="withdrawMaxFee" column="withdraw_max_fee"/>
+
+        <result property="exchangeDepositFeePercent" column="exchange_deposit_fee_percent"/>
+        <result property="exchangeDepositMinFee" column="exchange_deposit_min_fee"/>
+        <result property="exchangeDepositMaxFee" column="exchange_deposit_max_fee"/>
+
+        <result property="exchangeWithdrawFeePercent" column="exchange_withdraw_fee_percent"/>
+        <result property="exchangeWithdrawMinFee" column="exchange_withdraw_min_fee"/>
+        <result property="exchangeWithdrawMaxFee" column="exchange_withdraw_max_fee"/>
+
+        
+    </resultMap>
+
+    <!--
+    ###################################################################################################################
+    ################################################    Create     ####################################################
+    ###################################################################################################################
+    -->
+
+    <insert id="add" parameterType="CompanyCashBox">
+        INSERT INTO `cb_company_cash_box` (
+        company_id,
+        `balance_provided_by_merchant`,
+        `balance_current`,
+        `accepted_overpayment`,
+        `overpayment`,
+        `balance_total_provided_for_branch_cb`,
+        `balance_current_provided_for_branch_cb`,
+        `balance_returned_from_branch_cb`,
+        `balance_gathered_tax`,
+        `opened_at`,
+        `closed_at`,
+        `status`,
+        currency_type,
+        available_rates,
+        deposit_fee_percent,
+        deposit_min_fee,
+        deposit_max_fee,
+        withdraw_fee_percent,
+        withdraw_min_fee,
+        withdraw_max_fee,
+        exchange_deposit_fee_percent,
+        exchange_deposit_min_fee,
+        exchange_deposit_max_fee,
+        exchange_withdraw_fee_percent,
+        exchange_withdraw_min_fee,
+        exchange_withdraw_max_fee
+        ) VALUES (
+        #{companyId},
+        #{balanceProvidedByMerchant},
+        #{balanceCurrent},
+        #{acceptedOverpayment},
+        #{overpayment},
+        #{balanceTotalProvidedForBranchCashBox},
+        #{balanceCurrentProvidedForBranchCashBox},
+        #{balanceReturnedFromBranchCashBox},
+        #{balanceGatheredTax},
+        #{openedAt},
+        #{closedAt},
+        #{status},
+        #{currencyType},
+        #{availableRateValues},
+        #{depositFeePercent},
+        #{depositMinFee},
+        #{depositMaxFee},
+        #{withdrawFeePercent},
+        #{withdrawMinFee},
+        #{withdrawMaxFee},
+        #{exchangeDepositFeePercent},
+        #{exchangeDepositMinFee},
+        #{exchangeDepositMaxFee},
+        #{exchangeWithdrawFeePercent},
+        #{exchangeWithdrawMinFee},
+        #{exchangeWithdrawMaxFee}
+        )
+
+        <selectKey keyProperty="id" resultType="_long">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>
+
+    <!--
+   ###################################################################################################################
+   ################################################    Read     ####################################################
+   ###################################################################################################################
+   -->
+    <select id="getById"
+            resultMap="rmCompanyCashBoxSimple"
+            parameterType="_long">
+
+        SELECT * FROM cb_company_cash_box
+        WHERE id = #{id}
+        AND status = 1
+
+    </select>
+
+    <select id="getByCompanyId"
+            resultMap="rmCompanyCashBoxSimple"
+            parameterType="_long">
+
+        SELECT * FROM cb_company_cash_box
+        WHERE company_id = #{companyId}
+        AND status = 1
+
+    </select>
+
+    <select id="getLastByCompanyId"
+            resultMap="rmCompanyCashBoxSimple"
+            parameterType="_long">
+
+        SELECT * FROM cb_company_cash_box
+        WHERE company_id = #{companyId}
+        ORDER BY `id` DESC limit 1
+
+    </select>
+
+    <select id="getByParams"
+            resultMap="rmCompanyCashBoxSimple"
+            parameterType="map">
+
+        SELECT * FROM cb_company_cash_box
+
+    </select>
+
+    <select id="getAvailableRateValues"
+            resultType="string"
+            parameterType="map">
+
+        SELECT available_rates FROM cb_company_cash_box WHERE company_id = #{companyId}
+
+    </select>
+    <!--
+   ###################################################################################################################
+   ################################################    Update     ####################################################
+   ###################################################################################################################
+   -->
+    <update id="update" parameterType="CompanyCashBox">
+        UPDATE cb_company_cash_box
+        SET id = #{id}
+        <if test="balanceProvidedByMerchant != null"> , `balance_provided_by_merchant` = #{balanceProvidedByMerchant} </if>
+        <if test="balanceCurrent != null"> , `balance_current` = #{balanceCurrent} </if>
+        <if test="balanceTotalProvidedForBranchCashBox != null"> , `balance_total_provided_for_branch_cb` = #{balanceTotalProvidedForBranchCashBox} </if>
+        <if test="balanceCurrentProvidedForBranchCashBox != null"> , `balance_current_provided_for_branch_cb` = #{balanceCurrentProvidedForBranchCashBox} </if>
+        <if test="balanceReturnedFromBranchCashBox != null"> , `balance_returned_from_branch_cb` = #{balanceReturnedFromBranchCashBox} </if>
+
+        WHERE id = #{id}
+    </update>
+
+    <update id="activate" parameterType="CompanyCashBox">
+        UPDATE cb_company_cash_box
+        SET
+        deposit_fee_percent = #{depositFeePercent},
+        deposit_min_fee = #{depositMinFee} ,
+        deposit_max_fee = #{depositMaxFee} ,
+        withdraw_fee_percent = #{withdrawFeePercent} ,
+        withdraw_min_fee = #{withdrawMinFee} ,
+        withdraw_max_fee = #{withdrawMaxFee} ,
+        exchange_deposit_fee_percent = #{exchangeDepositFeePercent} ,
+        exchange_deposit_min_fee = #{exchangeDepositMinFee} ,
+        exchange_deposit_max_fee = #{exchangeDepositMaxFee} ,
+        exchange_withdraw_fee_percent = #{exchangeWithdrawFeePercent} ,
+        exchange_withdraw_min_fee = #{exchangeWithdrawMinFee},
+        exchange_withdraw_max_fee = #{exchangeWithdrawMaxFee}
+        status = #{status}
+        WHERE id = #{id}
+    </update>
+
+
+
+    <update id="delete" parameterType="CompanyCashBox">
+        UPDATE cb_company_cash_box
+        SET id = #{id}
+        WHERE id = #{id}
+    </update>
+    <!--
+   ###################################################################################################################
+   ################################################    Delete     ####################################################
+   ###################################################################################################################
+   -->
+
+    <delete id="forceDelete" parameterType="_long">
+        DELETE FROM cb_company_cash_box WHERE id = #{id}
+    </delete>
+
+
+</mapper>

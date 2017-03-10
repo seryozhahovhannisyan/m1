@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="ResponseDto" class="com.connectto.wallet.merchant.web.action.dto.ResponseDto" scope="prototype"/>
+
+
+    <bean id="BaseAction" class="com.connectto.wallet.merchant.web.action.BaseAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+    </bean>
+
+    <bean id="ExceptionHandlerAction" class="com.connectto.wallet.merchant.web.action.ExceptionHandlerAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+    </bean>
+
+    <bean id="CompanyFormRequestAction" class="com.connectto.wallet.merchant.web.action.admin.CompanyFormRequestAction"
+          scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="companyFormRequestManager" ref="CompanyFormRequestManagerImpl"/>
+        <property name="dto" ref="ResponseDto"/>
+    </bean>
+
+    <bean id="CompanyAction" class="com.connectto.wallet.merchant.web.action.cashier.CompanyAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="companyFormRequestManager" ref="CompanyFormRequestManagerImpl"/>
+        <property name="companyManager" ref="CompanyManagerImpl"/>
+    </bean>
+
+    <bean id="CompanyActivationAction" class="com.connectto.wallet.merchant.web.action.general.CompanyActivationAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="cashierManager" ref="CashierManagerImpl"/>
+        <property name="companyFormRequestManager" ref="CompanyFormRequestManagerImpl"/>
+    </bean>
+
+    <bean id="BranchAction" class="com.connectto.wallet.merchant.web.action.cashier.BranchAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="branchManager" ref="BranchManagerImpl"/>
+        <property name="roleManager" ref="RoleManagerImpl"/>
+        <property name="companyManager" ref="CompanyManagerImpl"/>
+        <property name="dto" ref="ResponseDto"/>
+    </bean>
+
+    <bean id="CashierAction" class="com.connectto.wallet.merchant.web.action.cashier.CashierAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="cashierManager" ref="CashierManagerImpl"/>
+        <property name="branchManager" ref="BranchManagerImpl"/>
+        <property name="roleManager" ref="RoleManagerImpl"/>
+        <property name="dto" ref="ResponseDto"/>
+    </bean>
+
+    <bean id="ProfileAction" class="com.connectto.wallet.merchant.web.action.cashier.ProfileAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="cashierManager" ref="CashierManagerImpl"/>
+        <property name="dto" ref="ResponseDto"/>
+    </bean>
+
+    <bean id="ProviderAction" class="com.connectto.wallet.merchant.web.action.cashbox.ProviderAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="branchManager" ref="BranchManagerImpl"/>
+    </bean>
+
+    <bean id="ProviderBranchAction" class="com.connectto.wallet.merchant.web.action.cashbox.ProviderBranchAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="dto" ref="ResponseDto"/>
+        <property name="branchManager" ref="BranchManagerImpl"/>
+        <property name="cashBoxProviderManager" ref="BranchCashBoxProviderManagerImpl"/>
+    </bean>
+
+    <bean id="ProviderTakerAction" class="com.connectto.wallet.merchant.web.action.cashbox.TakerBranchAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="dto" ref="ResponseDto"/>
+        <property name="cashBoxTakerManager" ref="BranchCashBoxTakerManagerImpl"/>
+    </bean>
+
+    <bean id="RoleAction" class="com.connectto.wallet.merchant.web.action.cashier.RoleAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="roleManager" ref="RoleManagerImpl"/>
+        <property name="dto" ref="ResponseDto"/>
+    </bean>
+
+    <bean id="Login" class="com.connectto.wallet.merchant.web.action.general.Login" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="cashierManager" ref="CashierManagerImpl"/>
+        <property name="transactionManager" ref="TransactionManagerImpl"/>
+    </bean>
+
+    <bean id="Logout" class="com.connectto.wallet.merchant.web.action.general.Logout" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+    </bean>
+
+    <bean id="Registration" class="com.connectto.wallet.merchant.web.action.general.Registration" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="cashierManager" ref="CashierManagerImpl"/>
+        <property name="companyManager" ref="CompanyManagerImpl"/>
+    </bean>
+
+    <bean id="DataUploadAction" class="com.connectto.wallet.merchant.web.action.general.DataUploadAction"
+          scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="responseDto" ref="ResponseDto"/>
+    </bean>
+
+    <bean id="LocaleAction" class="com.connectto.wallet.merchant.web.action.general.LocaleAction"
+          scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+    </bean>
+
+    <bean id="DataDownloadAction" class="com.connectto.wallet.merchant.web.action.general.DataDownloadAction"
+          scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+    </bean>
+
+    <bean id="MailAction" class="com.connectto.wallet.merchant.web.action.general.MailAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="responseDto" ref="ResponseDto"/>
+    </bean>
+
+    <bean id="SmsAction" class="com.connectto.wallet.merchant.web.action.general.SmsAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="responseDto" ref="ResponseDto"/>
+    </bean>
+
+    <!--
+    Cashier
+    -->
+
+    <bean id="HomeAction" class="com.connectto.wallet.merchant.web.action.cashier.HomeAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+    </bean>
+
+    <bean id="SearchWalletAction" class="com.connectto.wallet.merchant.web.action.wallet.SearchWalletAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="walletManager" ref="WalletManagerImpl"/>
+        <property name="dto" ref="ResponseDto"/>
+    </bean>
+
+    <bean id="TransactionAction" class="com.connectto.wallet.merchant.web.action.wallet.TransactionAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="transactionManager" ref="TransactionManagerImpl"/>
+        <property name="dto" ref="ResponseDto"/>
+    </bean>
+
+    <bean id="TransactionWithdrawAction" class="com.connectto.wallet.merchant.web.action.wallet.TransactionWithdrawAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="walletManager" ref="WalletManagerImpl"/>
+        <property name="companyManager" ref="CompanyManagerImpl"/>
+        <property name="transactionManager" ref="TransactionManagerImpl"/>
+        <property name="dto" ref="ResponseDto"/>
+    </bean>
+
+    <bean id="TransactionDepositAction" class="com.connectto.wallet.merchant.web.action.wallet.TransactionDepositAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="walletManager" ref="WalletManagerImpl"/>
+        <property name="companyManager" ref="CompanyManagerImpl"/>
+        <property name="transactionManager" ref="TransactionManagerImpl"/>
+        <property name="dto" ref="ResponseDto"/>
+    </bean>
+
+
+    <bean id="TransferTransactionAction" class="com.connectto.wallet.merchant.web.action.wallet.TransferTransactionAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="transferTransactionManager" ref="TransferTransactionManagerImpl"/>
+        <property name="walletManager" ref="WalletManagerImpl"/>
+        <property name="dto" ref="ResponseDto"/>
+    </bean>
+
+
+
+
+</beans>

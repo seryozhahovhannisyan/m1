@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.2//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+<configuration>
+
+    <!-- <settings>
+         &lt;!&ndash;<setting name="proxyFactory" value="CGLIB"/>&ndash;&gt;
+         &lt;!&ndash;<setting name="cacheEnabled" value="true"/>&ndash;&gt;
+         &lt;!&ndash;<setting name="lazyLoadingEnabled" value="true"/>&ndash;&gt;
+         &lt;!&ndash;<setting name="multipleResultSetsEnabled" value="true"/>&ndash;&gt;
+         &lt;!&ndash;<setting name="useColumnLabel" value="true"/>&ndash;&gt;
+         &lt;!&ndash;<setting name="useGeneratedKeys" value="true"/>&ndash;&gt;
+         &lt;!&ndash;<setting name="mapUnderscoreToCamelCase" value="true"/>&ndash;&gt;
+         &lt;!&ndash;<setting name="localCacheScope" value="SESSION"/>&ndash;&gt;
+         &lt;!&ndash;<setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>&ndash;&gt;
+         &lt;!&ndash;<setting name="proxyFactory" value="CGLIB"/>&ndash;&gt;
+     </settings>-->
+
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+    <typeAliases>
+
+        <typeAlias type="java.util.List" alias="List"/>
+        <typeAlias type="java.util.Map" alias="Map"/>
+
+        <typeAlias type="com.connectto.wallet.merchant.common.data.merchant.Branch" alias="Branch"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.cashbox.BranchCashBox" alias="BranchCashBox"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.cashbox.BranchCashBoxProvider" alias="BranchCashBoxProvider"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.cashbox.BranchCashBoxTaker" alias="BranchCashBoxTaker"/>
+
+        <typeAlias type="com.connectto.wallet.merchant.common.data.merchant.Cashier" alias="Cashier"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.cashbox.CashierCashBox" alias="CashierCashBox"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.cashbox.CashierCashBoxProvider" alias="CashierCashBoxProvider"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.cashbox.CashierCashBoxTaker" alias="CashierCashBoxTaker"/>
+
+        <typeAlias type="com.connectto.wallet.merchant.common.data.merchant.Company" alias="Company"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.cashbox.CompanyCashBox" alias="CompanyCashBox"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.cashbox.CompanyCashBoxProvider" alias="CompanyCashBoxProvider"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.cashbox.CompanyCashBoxTaker" alias="CompanyCashBoxTaker"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.merchant.CompanyFormRequest" alias="CompanyFormRequest"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.merchant.CompanyFormResponse" alias="CompanyFormResponse"/>
+
+        <typeAlias type="com.connectto.wallet.merchant.common.data.merchant.FileData" alias="FileData"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.merchant.MerchantLogger" alias="MerchantLogger"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.merchant.Role" alias="Role"/>
+
+        <typeAlias type="com.connectto.wallet.merchant.common.data.wallet.ExchangeRate" alias="ExchangeRate"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.wallet.ExchangeSource" alias="ExchangeSource"/>
+
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.withdraw.TransactionWithdraw" alias="TransactionWithdraw"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.withdraw.TransactionWithdrawExchange" alias="TransactionWithdrawExchange"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.withdraw.TransactionWithdrawExchangeTax" alias="TransactionWithdrawExchangeTax"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.withdraw.TransactionWithdrawProcess" alias="TransactionWithdrawProcess"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.withdraw.TransactionWithdrawProcessTax" alias="TransactionWithdrawProcessTax"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.withdraw.TransactionWithdrawTax" alias="TransactionWithdrawTax"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.withdraw.WalletWithdraw" alias="WalletWithdraw"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.withdraw.WalletWithdrawTax" alias="WalletWithdrawTax"/>
+
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.deposit.TransactionDeposit" alias="TransactionDeposit"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.deposit.TransactionDepositExchange" alias="TransactionDepositExchange"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.deposit.TransactionDepositExchangeTax" alias="TransactionDepositExchangeTax"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.deposit.TransactionDepositProcess" alias="TransactionDepositProcess"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.deposit.TransactionDepositProcessTax" alias="TransactionDepositProcessTax"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.deposit.TransactionDepositTax" alias="TransactionDepositTax"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.deposit.WalletDeposit" alias="WalletDeposit"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.deposit.WalletDepositTax" alias="WalletDepositTax"/>
+
+
+
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.transfer.TransferTicket" alias="TransferTicket"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.transfer.TransferTransaction" alias="TransferTransaction"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.transaction.transfer.TransferTransactionWalletResult" alias="TransferTransactionWalletResult"/>
+
+    </typeAliases>
+
+    <typeHandlers>
+        <typeHandler handler="com.connectto.wallet.merchant.dataaccess.merchant.extension.CountryHandler" javaType="com.connectto.wallet.merchant.common.data.merchant.lcp.Country"/>
+        <typeHandler handler="com.connectto.wallet.merchant.dataaccess.merchant.extension.CountryRegionHandler" javaType="com.connectto.wallet.merchant.common.data.merchant.lcp.CountryRegion"/>
+        <typeHandler handler="com.connectto.wallet.merchant.dataaccess.merchant.extension.LanguageHandler" javaType="com.connectto.wallet.merchant.common.data.merchant.lcp.Language"/>
+        <typeHandler handler="com.connectto.wallet.merchant.dataaccess.merchant.extension.LogActionHandler" javaType="com.connectto.wallet.merchant.common.data.merchant.lcp.LogAction"/>
+        <typeHandler handler="com.connectto.wallet.merchant.dataaccess.merchant.extension.LogLevelHandler" javaType="com.connectto.wallet.merchant.common.data.merchant.lcp.LogLevel"/>
+        <typeHandler handler="com.connectto.wallet.merchant.dataaccess.merchant.extension.OnlineStatusHandler" javaType="com.connectto.wallet.merchant.common.data.merchant.lcp.OnlineStatus"/>
+        <typeHandler handler="com.connectto.wallet.merchant.dataaccess.merchant.extension.PrivilegeHandler" javaType="com.connectto.wallet.merchant.common.data.merchant.lcp.Privilege"/>
+        <typeHandler handler="com.connectto.wallet.merchant.dataaccess.merchant.extension.StatusHandler" javaType="com.connectto.wallet.merchant.common.data.merchant.lcp.Status"/>
+        <typeHandler handler="com.connectto.wallet.merchant.dataaccess.merchant.extension.CurrencyTypeHandler" javaType="com.connectto.wallet.merchant.common.data.merchant.lcp.CurrencyType"/>
+        <typeHandler handler="com.connectto.wallet.merchant.dataaccess.merchant.extension.TransactionStateHandler" javaType="com.connectto.wallet.merchant.common.data.transaction.lcp.TransactionState"/>
+        <typeHandler handler="com.connectto.wallet.merchant.dataaccess.merchant.extension.TransactionTaxTypeHandler" javaType="com.connectto.wallet.merchant.common.data.transaction.lcp.TransactionTaxType"/>
+        <typeHandler handler="com.connectto.wallet.merchant.dataaccess.merchant.extension.TransactionRationalDurationHandler" javaType="com.connectto.wallet.merchant.common.data.transaction.lcp.TransactionRationalDuration"/>
+        <typeHandler handler="com.connectto.wallet.merchant.dataaccess.merchant.extension.TransactionTypeHandler" javaType="com.connectto.wallet.merchant.common.data.transaction.lcp.TransactionType"/>
+    </typeHandlers>
+
+    <mappers>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/BranchMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/BranchCashBoxMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/BranchCashBoxProviderMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/BranchCashBoxTakerMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/CashierMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/CashierCashBoxMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/CashierCashBoxProviderMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/CashierCashBoxTakerMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/CompanyFormRequestMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/CompanyFormResponseMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/CompanyMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/CompanyCashBoxMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/CompanyCashBoxProviderMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/CompanyCashBoxTakerMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/FileDataMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/MerchantLoggerMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/RoleMap.xml"/>
+        <!--Transaction-->
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/TransactionExchangeMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/TransactionExchangeTaxMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/TransactionMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/TransactionProcessMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/TransactionProcessTaxMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/TransactionTaxMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/WalletTransactionMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/WalletTransactionTaxMap.xml"/>
+
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/TransferTicketMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/TransferTransactionMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/merchant/mapper/TransferTransactionWalletResultMap.xml"/>
+
+    </mappers>
+
+</configuration>

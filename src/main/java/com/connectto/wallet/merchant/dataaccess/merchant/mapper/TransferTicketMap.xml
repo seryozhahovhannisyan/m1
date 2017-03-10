@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.TransferTicketMap">
+
+    <insert id="add" parameterType="TransferTicket">
+        INSERT INTO `t_transfer_ticket` (
+            `item_id`,
+            `wallet_id`,
+            `name`,
+            `description`,
+            `tsm_company_id`
+        ) VALUES (
+            #{itemId},
+            #{walletId},
+            #{name},
+            #{description},
+            #{tsmCompanyId}
+        )
+
+        <selectKey keyProperty="id" resultType="_long">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>
+
+</mapper>

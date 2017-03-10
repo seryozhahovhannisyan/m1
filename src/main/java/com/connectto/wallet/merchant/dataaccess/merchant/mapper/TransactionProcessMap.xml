@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.TransactionProcessMap">
+
+    <!--
+    ###################################################################################################################
+    ################################################    Create     ####################################################
+    ###################################################################################################################
+    -->
+
+    <insert id="addWithdraw" parameterType="TransactionWithdrawProcess">
+
+        INSERT INTO t_withdraw_process(
+            `state`,
+            `action_date`,
+            `wallet_id`,
+            `cashier_cash_box_id`,
+            `withdraw_amount`,
+            `withdraw_amount_ct`,
+            `wallet_withdraw_price`,
+            `wallet_total_price`,
+            `wallet_total_price_cp`,
+            `cashier_withdraw_price`,
+            `cashier_total_price`,
+            `cashier_total_price_cp`,
+            `process_tax_id`,
+            `exchange_id`
+        ) VALUES (
+            #{state},
+            #{actionDate},
+            #{walletId},
+            #{cashierCashBoxId},
+            #{withdrawAmount},
+            #{withdrawAmountCurrencyType},
+            #{walletWithdrawPrice},
+            #{walletTotalPrice},
+            #{walletTotalPriceCurrencyType},
+            #{cashierWithdrawPrice},
+            #{cashierTotalPrice},
+            #{cashierTotalPriceCurrencyType},
+            #{processTaxId},
+            #{exchangeId}
+        )
+
+        <selectKey keyProperty="id" resultType="_long">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>
+
+    <insert id="addDeposit" parameterType="TransactionDepositProcess">
+
+        INSERT INTO t_deposit_process(
+            `state`,
+            `action_date`,
+            `wallet_id`,
+            `cashier_cash_box_id`,
+            `deposit_amount`,
+            `deposit_amount_ct`,
+            `wallet_deposit_price`,
+            `wallet_total_price`,
+            `wallet_total_price_cp`,
+            `cashier_deposit_price`,
+            `cashier_total_price`,
+            `cashier_total_price_cp`,
+            `process_tax_id`,
+            `exchange_id`
+        ) VALUES (
+            #{state},
+            #{actionDate},
+            #{walletId},
+            #{cashierCashBoxId},
+            #{depositAmount},
+            #{depositAmountCurrencyType},
+            #{walletdepositPrice},
+            #{walletTotalPrice},
+            #{walletTotalPriceCurrencyType},
+            #{cashierdepositPrice},
+            #{cashierTotalPrice},
+            #{cashierTotalPriceCurrencyType},
+            #{processTaxId},
+            #{exchangeId}
+        )
+
+        <selectKey keyProperty="id" resultType="_long">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>
+
+
+</mapper>

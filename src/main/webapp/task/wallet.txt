@@ -1,0 +1,40 @@
+3) webapp\WEB-INF\pages\wallet\list.jsp
+        1.1 WITHDRAW/DEPOSIT column-nern sargel button-nery imagenern Narekn tvel e , kareli e buttonnery image-ov anel
+        arvac e
+
+        1.2 hnaravor bollor jasper-neri (<%=PartitionLCP.CONNECT_TO_TV.getId()%>) poxaren ogtagorcel hamapatasxan generacvac static js-nern(PartitionLCP.js)
+
+        PartitionLCP - mej unenq langage.English, vor@ grunt js-ic heto erb darnum e javascript  muum e popoxakan, ev  bnakanabar arjeq@ chi haskanum, partitionLCP enum -i mej karanq arjeq stananq?
+          kam  uxaki ayd mas@ arandznacnenq?
+
+        1.3 Aghavni het hstakecnel bollor locale-nern bolor lezunerov
+        Aghavnun asel em, @ntacqi mej a
+
+
+2) object-list.js
+        2.1 path-y poxel sa general e bolor texerum vortex vor ng-table enq ogtagorcum mez petq e, hima cashier folderi mej e
+        2.2 arandznacnel isteven_branches -es-y sa specific e genereal 4e, kareli e istevenneri hamar nuynsik arandzin js sargel vonc vor object-list.js-n e
+            asenq object-select.js ev nuynsisk scope-eri het xndir 4unenalu het kapvac pahel dranq $rootScope-um
+
+
+
+1) wallet-transaction.js
+        3.1 file-y rename anel aveli shat sa wallet-wallet-transaction.js e
+        3.2 $rootScope.IMAGE_BASE_URL-y ev imageExists()-y arandznacnel UI.js-um
+            imageExists -y dardznel getUserImg(user_id); ete exists e cuyc tal ($scope.IMAGE_BASE_URL + user_id)- in, ete 4ka img/general/avatars/avatar.png-in
+
+        3.0
+        John Doe - cashier nameSurname
+        795 Freedom Ave, Suite 600  - company Address
+        New York, CA 94107  - company Address
+        Phone: 1 (804) 123-9876  - company / cashier Phone
+        Email: jon@ironadmin.com  - company / cashier Email
+
+4) optimizacnel bolor coder-ery hatkapes wallet block-um
+        4.1 heracnel bolor alertner-y, anhrajestutyan depqum poxarinel console.log-erov
+        4.2 heracnel 4ogtagorcvox bolor console.log-ery
+        4.3 heracnel bolor commented methodenery
+
+5) https://merchant.connectto.com/start.htm
+    ERROR for site owner: Invalid domain for site key
+

@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+    <mapper namespace="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.CompanyMap">
+
+    <resultMap id="rmCompanySimple" type="Company">
+        <id property="id" column="id"/>
+        <result property="tsmCompanyId" column="tsm_company_id"/>
+        <result property="name" column="name"/>
+        <result property="address" column="address"/>
+        <result property="city" column="city"/>
+        <result property="street" column="street"/>
+        <result property="zip" column="zip"/>
+        <result property="email" column="email"/>
+        <result property="phoneCode" column="phone-code"/>
+        <result property="phone" column="phone"/>
+        <result property="policyPhoneCode" column="policy_phone_code"/>
+        <result property="policyPhone" column="policy_phone"/>
+        <result property="createdDate" column="created_date"/>
+        <result property="expiredDate" column="expired_date"/>
+        <result property="requestId" column="request_id"/>
+        <result property="country" column="country"/>
+        <result property="countryRegion" column="region"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <resultMap id="rmCompanyFull" type="Company">
+        <id property="id" column="id"/>
+        <result property="tsmCompanyId" column="tsm_company_id"/>
+        <result property="name" column="name"/>
+        <result property="address" column="address"/>
+        <result property="city" column="city"/>
+        <result property="street" column="street"/>
+        <result property="zip" column="zip"/>
+        <result property="email" column="email"/>
+        <result property="phoneCode" column="phone_code"/>
+        <result property="phone" column="phone"/>
+        <result property="policyPhoneCode" column="policy_phone_code"/>
+        <result property="policyPhone" column="policy_phone"/>
+        <result property="createdDate" column="created_date"/>
+        <result property="expiredDate" column="expired_date"/>
+        <result property="requestId" column="request_id"/>
+        <result property="country" column="country"/>
+        <result property="countryRegion" column="region"/>
+
+        <result property="allowedRemoteAddressValues" column="allowed_remote_addresses"/>
+        <result property="allowedPartitionValues" column="allowed_partition_values"/>
+
+        <result property="status" column="status"/>
+        <association property="branches" column="id" select="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.BranchMap.getByCompanyId"/>
+        <association property="response" column="response_id" select="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.CompanyFormResponseMap.getById"/>
+        <association property="currentCashBox" column="id" select="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.CompanyCashBoxMap.getLastByCompanyId"/>
+    </resultMap>
+
+
+
+    <!--
+    ###################################################################################################################
+    ################################################    Create     ####################################################
+    ###################################################################################################################
+    -->
+
+    <insert id="add" parameterType="Company">
+
+        INSERT INTO c_company(            
+            `tsm_company_id`,
+            `name`,
+            `address`,            
+            `city`,
+            `street`,
+            `zip`,
+            `email`,
+            `phone_code`,
+            `phone`,
+            `policy_phone_code`,
+            `policy_phone`,
+            `created_date`,
+            `expired_date`,        
+            `request_id`,
+            `country`,
+            `region`,
+            `status`
+        ) VALUES (
+            #{tsmCompanyId},
+            #{name},
+            #{address},
+            #{city},
+            #{street},
+            #{zip},
+            #{email},
+            #{phoneCode},
+            #{phone},
+            #{policyPhoneCode},
+            #{policyPhone},
+            #{createdDate},
+            #{expiredDate},
+            #{requestId},
+            #{country},
+            #{countryRegion},
+            #{status}
+        )
+
+        <selectKey keyProperty="id" resultType="_long">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>
+
+    <insert id="addAdminTest" parameterType="Company">
+
+        INSERT INTO c_company(
+        `tsm_company_id`,
+        `name`,
+        `address`,
+        `city`,
+        `street`,
+        `zip`,
+        `email`,
+        `phone_code`,
+        `phone`,
+        `policy_phone_code`,
+        `policy_phone`,
+        `created_date`,
+        `expired_date`,
+        `request_id`,
+        `response_id`,
+        `status`,
+        `secret_key`,
+        `client_key`,
+        `allowed_remote_addresses`,
+        `allowed_partition_values`
+
+        ) VALUES (
+        #{tsmCompanyId},
+        #{name},
+        #{address},
+        #{city},
+        #{street},
+        #{zip},
+        #{email},
+        #{phoneCode},
+        #{phone},
+        #{policyPhoneCode},
+        #{policyPhone},
+        #{createdDate},
+        #{expiredDate},
+        #{requestId},
+        #{responseId},
+        #{status},
+        #{secretKey},
+        #{clientKey},
+        #{allowedRemoteAddressValues},
+        #{allowedPartitionValues}
+        )
+
+        <selectKey keyProperty="id" resultType="_long">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>
+    <!--
+   ###################################################################################################################
+   ################################################    Read     ####################################################
+   ###################################################################################################################
+   -->
+    <select id="getByName"
+            resultMap="rmCompanySimple"
+            parameterType="String">
+
+        SELECT * FROM c_company
+        WHERE `name` = #{name}
+        -- AND status = 1
+
+    </select>
+
+    <select id="signIn"
+            resultMap="rmCompanyFull"
+            parameterType="map">
+
+        SELECT * FROM c_company
+        WHERE `secret_key` = #{secretKey} AND `client_key` = #{clientKey}
+        AND status = 1
+
+    </select>
+
+    <select id="getById"
+            resultMap="rmCompanyFull"
+            parameterType="_long">
+
+        SELECT * FROM c_company
+        WHERE id = #{id}
+        -- AND status = 1
+
+    </select>
+
+    <select id="getByParamsFull"
+            resultMap="rmCompanyFull"
+            parameterType="map">
+
+        SELECT * FROM c_company
+
+    </select>
+
+    <select id="getByParams"
+            resultMap="rmCompanySimple"
+            parameterType="map">
+
+        SELECT * FROM c_company
+
+    </select>
+
+    <select id="getAllowedPartitionValues"
+            resultType="string"
+            parameterType="map">
+
+        SELECT allowed_partition_values FROM c_company WHERE id = #{companyId}
+
+    </select>
+
+
+
+    <!--
+   ###################################################################################################################
+   ################################################    Update     ####################################################
+   ###################################################################################################################
+   -->
+    <update id="update" parameterType="Company">
+        UPDATE c_company
+        SET id = #{id}
+        <if test="status != null">             , `status` = #{status}                     </if>
+        <if test="name != null">               , `name` = #{name}                         </if>
+        <if test="address != null">            , `address` = #{address}                   </if>
+        <if test="city != null">               , `city` = #{city}                         </if>
+        <if test="street != null">             , `street` = #{street}                     </if>
+        <if test="zip != null">                , `zip` = #{zip}                           </if>
+        <if test="email != null">              , `email` = #{email}                       </if>
+        <if test="phone_code != null">         , `phone_code` = #{phoneCode}              </if>
+        <if test="phone != null">              , `phone` = #{phone}                       </if>
+        <if test="policy_phone_code != null">  , `policy_phone_code` = #{policyPhoneCode} </if>
+        <if test="policy_phone != null">       , `policy_phone` = #{policyPhone}          </if>
+        <if test="expired_date != null">       , `expired_date` = #{expiredDate}          </if>
+        <if test="country != null">            , `country` = #{country}                   </if>
+        <if test="countryRegion != null">      , `region` = #{countryRegion}               </if>
+
+
+        WHERE id = #{id}
+    </update>
+
+    <update id="activate" parameterType="Company">
+        UPDATE c_company
+        SET   `status` = #{status}
+        , `city` = #{city}
+        , `street` = #{street}
+        , `zip` = #{zip}
+        , `policy_phone_code` = #{policyPhoneCode}
+        , `policy_phone` = #{policyPhone}
+        , `country` = #{country}
+        , `region` = #{countryRegion}
+        WHERE id = #{id}
+    </update>
+
+    <update id="delete" parameterType="Company">
+        UPDATE c_company
+        SET status = #{status}
+        WHERE id = #{id}
+    </update>
+    <!--
+   ###################################################################################################################
+   ################################################    Delete     ####################################################
+   ###################################################################################################################
+   -->
+
+    <delete id="forceDelete" parameterType="_long">
+        DELETE FROM c_company WHERE id = #{id}
+    </delete>
+
+
+</mapper>

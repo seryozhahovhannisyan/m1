@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body style="margin: 50px;">
+<table style="min-height: 600px;max-width: 600px; margin: 0 auto;color: #ffffff; background: #ff3f54; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#ff3f54, #f3811f, #0088e9); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#ff3f54, #f3811f, #0088e9); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#ff3f54, #f3811f, #0088e9); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#ff3f54, #f3811f, #0088e9); /* Standard syntax */">
+    <thead style="background-color: #ffffff;">
+    <tr>
+        <td>
+            <img  src="cid:logo" alt="Logo">
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 22px;text-align: center;padding: 20px;background-color: #27ccc0;color: #ffffff;">
+           ${subject}
+        </td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td style=" padding: 20px; height: 50px;">
+            ${title}
+        </td>
+    </tr>
+    #if(${message})
+        <tr>
+            <td>
+                <table style="padding: 20px; font-size: 18px; line-height: 2;">
+                    <thead >
+                    <tr>
+                        <td>${message}</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    #end
+    <tr style="height: 20px;">
+        <td style="padding-left: 20px;">${thanks}</td>
+    </tr>
+    <tr style="height: 20px;">
+        <td style="padding-left: 20px;">${team}</td>
+    </tr>
+    <tr style="height: 50px;">
+        <td style="font-size: 12px;padding: 20px; color: #ffffff;">
+            ${footer}
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,5 @@
+https://console.developers.google.com/apis/library?project=connecttotv-1054
+https://console.developers.google.com/apis/credentials?project=connecttotv-1054
+https://www.google.com/recaptcha/admin#list
+email	: hollor.connecttotv.api@gmail.com
+psv	: hi1915a24

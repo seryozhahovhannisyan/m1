@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.connectto.wallet.merchant.dataaccess.wallet.mapper.namespace.ExchangeRateMap">
+
+
+    <resultMap id="rmExchangeRate" type="ExchangeRate">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="description" column="description"/>
+        <result property="transactionMin" column="transaction_min"/>
+        <result property="transactionMax" column="transaction_max"/>
+        <result property="isExchangeAllowed" column="is_exchange_allowed"/>
+        <result property="availableRateValues" column="available_rate_values"/>
+    </resultMap>
+
+    <select id="getById"
+            resultMap="rmExchangeRate"
+            parameterType="_long">
+
+        SELECT * FROM c_role
+        WHERE id = #{id}
+
+    </select>
+
+    <select id="getByParams"
+            resultMap="rmExchangeRate"
+            parameterType="map">
+
+        SELECT * FROM c_role
+
+    </select>
+
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.2//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+<configuration>
+
+    <typeAliases>
+
+        <typeAlias type="com.connectto.wallet.merchant.common.data.wallet.ExchangeRate" alias="ExchangeRate"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.wallet.ExchangeSource" alias="ExchangeSource"/>
+        <typeAlias type="com.connectto.wallet.merchant.common.data.wallet.Wallet" alias="Wallet"/>
+
+    </typeAliases>
+
+    <typeHandlers>
+        <typeHandler handler="com.connectto.wallet.merchant.dataaccess.merchant.extension.CurrencyTypeHandler" javaType="com.connectto.wallet.merchant.common.data.merchant.lcp.CurrencyType"/>
+    </typeHandlers>
+
+    <mappers>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/wallet/mapper/ExchangeRateMap.xml"/>
+        <mapper resource="com/connectto/wallet/merchant/dataaccess/wallet/mapper/WalletMap.xml"/>
+    </mappers>
+
+</configuration>

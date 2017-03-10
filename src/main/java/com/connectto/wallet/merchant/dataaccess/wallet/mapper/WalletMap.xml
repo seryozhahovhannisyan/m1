@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.connectto.wallet.merchant.dataaccess.wallet.mapper.namespace.WalletMap">
+
+    <!--<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>-->
+    <!--<cache type="org.mybatis.caches.ehcache.EhcacheCache">
+        <property name="timeToIdleSeconds" value="3600"/>&lt;!&ndash;1 hour&ndash;&gt;
+        <property name="timeToLiveSeconds" value="3600"/>&lt;!&ndash;1 hour&ndash;&gt;
+        <property name="maxEntriesLocalHeap" value="1000"/>
+        <property name="maxEntriesLocalDisk" value="10000000"/>
+        <property name="memoryStoreEvictionPolicy" value="LRU"/>
+    </cache>-->
+
+    <resultMap id="rmWallet" type="Wallet">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="partitionId" column="partition_id"/>
+        <result property="name" column="user_name"/>
+        <result property="surname" column="user_surname"/>
+        <result property="email" column="user_email"/>
+
+        <result property="money" column="money"/>
+        <result property="frozenAmount" column="frozen_amount"/>
+        <result property="receivingAmount" column="receiving_amount"/>
+        <result property="currencyType" column="currency_type"/>
+        <result property="isLocked" column="is_locked"/>
+    </resultMap>
+
+    <!--
+   ###################################################################################################################
+   ################################################    Read     ####################################################
+   ###################################################################################################################
+   -->
+    <select id="getById"
+            resultMap="rmWallet"
+            parameterType="_long">
+
+        SELECT *
+        FROM w_wallet
+        WHERE id = #{id}
+
+    </select>
+
+    <select id="getByParams"
+            resultMap="rmWallet"
+            parameterType="map">
+
+        SELECT * FROM w_wallet WHERE 1
+
+        <if test="availableRateValues != null">
+            AND currency_type IN (${availableRateValues})
+        </if>
+
+        <if test="allowedPartitionValues != null">
+            AND partition_id IN (${allowedPartitionValues})
+        </if>
+
+        <if test="filter != null">
+            AND (
+                LOWER(`user_name`) LIKE concat('%' , #{filter,jdbcType=NVARCHAR} ,'%')
+                OR LOWER(`user_surname`) LIKE  concat('%' , #{filter,jdbcType=NVARCHAR} ,'%')
+                OR LOWER(`user_email`) LIKE  concat('%' , #{filter,jdbcType=NVARCHAR} ,'%')
+            )
+        </if>
+        <if test="rangeAmountGreat != null">
+            AND (
+                money &gt;=  #{rangeAmountGreat}
+                OR frozen_amount &gt;=  #{rangeAmountGreat}
+                OR receiving_amount &gt;=  #{rangeAmountGreat}
+            )
+        </if>
+        <if test="rangeAmountLess != null">
+            AND (
+                money &lt;=  #{rangeAmountLess}
+                OR frozen_amount &lt;=  #{rangeAmountLess}
+                OR receiving_amount &lt;=  #{rangeAmountLess}
+            )
+        </if>
+
+        <if test="orderBy != null">
+            ORDER BY ${orderBy} ${orderType}
+        </if>
+        <if test="count != null">
+            LIMIT ${count}  OFFSET ${page}
+        </if>
+
+    </select>
+
+    <select id="getCountByParams"
+            resultType="_int"
+            parameterType="map">
+
+        SELECT count(`id`) FROM w_wallet WHERE 1
+
+        <if test="availableRateValues != null">
+            AND currency_type IN (${availableRateValues})
+        </if>
+
+        <if test="allowedPartitionValues != null">
+            AND partition_id IN (${allowedPartitionValues})
+        </if>
+
+        <if test="filter != null">
+            AND (
+                LOWER(`user_name`) LIKE LOWER(#{filter})
+                OR LOWER(`user_surname`) LIKE LOWER(#{filter})
+                OR LOWER(`user_email`) LIKE LOWER(#{filter})
+            )
+        </if>
+        <if test="rangeAmountGreat != null">
+            AND (
+                money &gt;=  #{rangeAmountGreat}
+                frozen_amount &gt;=  #{rangeAmountGreat}
+                receiving_amount &gt;=  #r{angeAmountGreat}
+            )
+        </if>
+        <if test="rangeAmountLess != null">
+            AND (
+                money &lt;=  #{rangeAmountLess}
+                frozen_amount &lt;=  #{rangeAmountLess}
+                receiving_amount &lt;=  #{rangeAmountLess}
+            )
+        </if>
+
+    </select>
+
+</mapper>

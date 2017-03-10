@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.BranchCashBoxMap">
+
+
+    <resultMap id="rmBranchCashBoxSimple" type="BranchCashBox">
+        <id property="id" column="id"/>
+        <result property="branchId" column="branch_id"/>
+        <result property="balanceProvidedByCompany" column="balance_provided_by_company"/>
+        <result property="balanceCurrent" column="balance_current"/>
+        <result property="balanceTotalProvidedForCashierCashBox" column="balance_total_provided_for_cashier_cb"/>
+        <result property="balanceCurrentProvidedForCashierCashBox" column="balance_current_provided_for_cashier_cb"/>
+        <result property="balanceReturnedFromCashierCashBox" column="balance_returned_from_cashier_cb"/>
+        <result property="balanceGatheredTax" column="balance_gathered_tax"/>
+        <result property="currencyType" column="currency_type"/>
+
+        <result property="openedAt" column="opened_at"/>
+        <result property="openedAt" column="closed_at"/>
+        <result property="status" column="status"/>
+
+    </resultMap>
+
+    <resultMap id="rmBranchCashBoxFull" type="BranchCashBox">
+        <id property="id" column="id"/>
+        <result property="branchId" column="branch_id"/>
+        <result property="balanceProvidedByCompany" column="balance_provided_by_company"/>
+        <result property="balanceCurrent" column="balance_current"/>
+        <result property="balanceTotalProvidedForCashierCashBox" column="balance_total_provided_for_cashier_cb"/>
+        <result property="balanceCurrentProvidedForCashierCashBox" column="balance_current_provided_for_cashier_cb"/>
+        <result property="balanceReturnedFromCashierCashBox" column="balance_returned_from_cashier_cb"/>
+        <result property="balanceGatheredTax" column="balance_gathered_tax"/>
+        <result property="currencyType" column="currency_type"/>
+
+        <result property="openedAt" column="opened_at"/>
+        <result property="openedAt" column="closed_at"/>
+        <result property="status" column="status"/>
+
+        <association property="currentBranchCashBoxProvider" column="id" select="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.BranchCashBoxProviderMap.getCurrentByBranchCashBoxId"/>
+
+    </resultMap>
+
+    <!--
+    ###################################################################################################################
+    ################################################    Create     ####################################################
+    ###################################################################################################################
+    -->
+
+    <insert id="add" parameterType="BranchCashBox">
+
+        INSERT INTO cb_branch_cash_box(
+            `branch_id`,
+            `balance_provided_by_company`,
+            `balance_current`,
+            `balance_total_provided_for_cashier_cb`,
+            `balance_current_provided_for_cashier_cb`,
+            `balance_returned_from_cashier_cb`,
+            `balance_gathered_tax`,
+            `currency_type`,
+            `opened_at`,
+            `closed_at`,
+            `status`
+        ) VALUES (
+            #{branchId},
+            #{balanceProvidedByCompany},
+            #{balanceCurrent},
+            #{balanceTotalProvidedForCashierCashBox},
+            #{balanceCurrentProvidedForCashierCashBox},
+            #{balanceReturnedFromCashierCashBox},
+            #{balanceGatheredTax},
+            #{currencyType},
+            #{openedAt},
+            #{closedAt},
+            #{status}
+        )
+
+        <selectKey keyProperty="id" resultType="_long">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>
+
+    <!--
+   ###################################################################################################################
+   ################################################    Read     ####################################################
+   ###################################################################################################################
+   -->
+    <select id="getById"
+            resultMap="rmBranchCashBoxSimple"
+            parameterType="_long">
+
+        SELECT * FROM cb_branch_cash_box
+        WHERE id = #{id}
+        -- AND status = 1
+
+    </select>
+
+    <select id="getBranchCurrentCashBox"
+            resultMap="rmBranchCashBoxFull"
+            parameterType="_long">
+
+        SELECT * FROM cb_branch_cash_box
+        WHERE branch_id = #{branchId}
+        AND status = 1
+
+    </select>
+
+    <select id="getByParams"
+            resultMap="rmBranchCashBoxSimple"
+            parameterType="map">
+
+        SELECT * FROM cb_branch_cash_box  WHERE  `branch_id` = #{branchId}
+        <if test="status != null">             AND `status` = #{status}         </if>
+    </select>
+
+    <select id="getCountByParams"
+            resultType="_int"
+            parameterType="map">
+
+        SELECT count(`id`) FROM cb_branch_cash_box WHERE `branch_id` = #{branchId}
+        <if test="status != null">             AND `status` = #{status}         </if>
+
+    </select>
+
+
+    <!--
+   ###################################################################################################################
+   ################################################    Update     ####################################################
+   ###################################################################################################################
+   -->
+    <update id="update" parameterType="BranchCashBox">
+        UPDATE cb_branch_cash_box
+        SET id = #{id}
+        <if test="status != null">                    , `status` = #{status}                                        </if>
+        <if test="balanceProvidedByCompany != null">  , `balance_provided_by_company` = #{balanceProvidedByCompany} </if>
+        <if test="balanceCurrent != null">            , `balance_current` = #{balanceCurrent}                       </if>
+        WHERE id = #{id}
+    </update>
+
+    <update id="provideAmount"  parameterType="map">
+        UPDATE cb_branch_cash_box
+        SET balance_provided_by_company = #{provideAmount}, balance_current = #{provideAmount}
+        WHERE id in
+        <foreach item="item" collection="branchCashBoxIdes" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+
+
+    <update id="delete" parameterType="_long">
+        UPDATE cb_branch_cash_box
+        SET status = #{status}
+        WHERE id = #{id}
+    </update>
+
+
+</mapper>

@@ -1,0 +1,65 @@
+.gallery {
+    padding: 0;
+    margin-top: 50px;
+    text-align: center;
+}
+.lightbox-modal {
+    z-index: 1060 !important;
+}
+.gallery li {
+    display: inline-block;
+    margin: 0 1em 1em 0;
+    list-style-type: none;
+    text-align: center;
+}
+
+@media (max-width: 767px) {
+    .gallery li {
+        margin: 0;
+    }
+}
+
+.gallery1 img {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+.gallery1 img:hover {
+    opacity:0.7;
+}
+
+.gallery2 img {
+    width: 6em;
+}
+
+.gallery5 img {
+    width: 120px;
+}
+.light_box_next {
+    margin-left:5px !important;
+}
+.light_box_previous  {
+    margin-right:5px !important;
+}
+.lightbox-image-container img {
+    width:400px !important;
+    height:400px !important;
+}
+.lightbox-modal .modal-dialog .modal-content {
+    height:0 !important;
+    border:0 !important;
+}
+.lightbox-modal .modal-dialog .modal-content .modal-body{
+    width: 516px;
+    margin: 0 auto;
+}
+.light_box_close  {
+    color: #fff;
+    background-color: #000;
+    margin: 0;
+    position: absolute;
+    right: 16px;
+}
+.view .mask, .view .content {
+    top: -41px;
+}

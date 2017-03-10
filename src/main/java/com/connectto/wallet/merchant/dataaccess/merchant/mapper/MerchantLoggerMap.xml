@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.MerchantLoggerMap">
+
+    <!--
+    ###################################################################################################################
+    ################################################    Create     ####################################################
+    ###################################################################################################################
+    -->
+
+    <insert id="add" parameterType="MerchantLogger">
+
+        INSERT INTO m_logger(
+            `level`,
+            `class_name`,
+            `method_name`,
+            `log_action`,
+            `message`,
+            `date`
+        ) VALUES (
+            #{logLevel},
+            #{className},
+            #{methodName},
+            #{logAction},
+            #{message},
+            #{date}
+        )
+
+        <selectKey keyProperty="id" resultType="_long">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>
+
+
+</mapper>

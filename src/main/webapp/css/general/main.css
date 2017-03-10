@@ -1,0 +1,409 @@
+.clear_both {
+    clear: both;
+}
+.go_to_top {
+    position: fixed;
+    right: 2%;
+    bottom: 10%;
+    cursor: pointer;
+    z-index:2;
+    display: none;
+    width: 50px;
+
+}
+.go_to_top  img {
+    width: 100%;
+}
+.main_header {
+    position: relative;
+    overflow: hidden;
+    min-height:1000px;
+}
+
+.form-control{
+    border:none;
+    text-align: center;
+    outline:none;
+    color: #eeefef;
+    background-color: transparent;
+}
+.main-heading-text {
+    width:100%;
+    text-align: center;
+    clear: both;
+    color: #eeefef;
+    font-family: 'GothaProMed.otf';
+    margin-top:200px;
+    text-transform: uppercase;
+}
+
+.main-under-heading-text{
+    font-size:150%;
+    text-align: center;
+    color: #555965;
+    font-family: 'GothaProReg.otf';
+    float: none;
+    margin: 50px auto;
+}
+.main_header_send_request_form {
+    width:100%;
+}
+.main_header_send_request_form a{
+    text-decoration: none;
+    text-align: center;
+    margin: 80px auto;
+    background-color: #27ccc0;
+    padding: 10px 7px;
+    font-size: 120%;
+    color: #f0f0f0;
+    display: block;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 6px;
+    border: none;
+    width: 290px;
+    text-transform: uppercase;
+    font-family: 'GothaProReg.otf';
+}
+
+.main_header_send_request_form a:hover {
+    padding: 7px 7px;
+    color: #ffffff;
+    border:3px solid #27CCC0;
+    background-color: transparent;
+
+}
+.main_header_arrows_bottom {
+    width: 90px;
+    margin: 100px auto 0;
+}
+.main_header_arrows_bottom img{
+    display: block;
+    margin:0 auto;
+}
+.main_first_block {
+    background-image: url("../../img/main/merchant_main_first_block_background.png");
+    background-position: right;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+.main_first_block_background_img {
+    position: absolute;
+}
+.first_block_title {
+    font-size:220%;
+    font-weight: 600;
+    margin-bottom:30px;
+    font-family: 'GothaProMed.otf';
+}
+.first_block_text {
+    font-size:200%;
+    font-family: 'GothaProReg.otf';
+}
+.first_block_content_margin {
+    margin: 8% 0;
+}
+.main_second_block {
+    padding: 160px 40px 10px 40px;
+    overflow: hidden;
+    background-color: #212430;
+    color: #e9e8e8;
+    position: relative;
+}
+.merchant_main_second_block_background_img {
+    position: absolute;
+}
+.second_block_title {
+    font-size:220%;
+    font-weight: 600;
+    margin-bottom:30px;
+    color: #f4f4f4;
+    font-family: 'GothaProMed.otf';
+    text-align: center;
+}
+.second_block_text {
+    font-size:200%;
+    color: #e9e8e8;
+    font-family: 'GothaProReg.otf';
+}
+.main_third_block {
+    padding:80px 40px 200px 40px;
+    overflow: hidden;
+    position: relative;
+}
+.merchant_main_third_block_background_img {
+    position: absolute;
+    z-index: -2;
+}
+.main_request_form_block {
+    margin:0 auto;
+    float: none;
+    min-width: 400px;
+}
+.main_request_form_block_heading_text {
+    font-family: 'GothaProReg.otf';
+    text-align: center;
+    float: none;
+    margin: 0 auto;
+}
+.main-request-form {
+    margin:60px 0 0 0;
+    font-family: 'GothaProReg.otf';
+}
+.request_form_error_div {
+    text-align: center;
+    width: 70%;
+    margin: 0 auto;
+    color: #ff4154;
+    font-family: 'GothaProIta.otf';
+
+}
+
+.request-form-control {
+    border: none;
+    text-align: center;
+    outline: none;
+    background-color: transparent;
+    color: #333435;
+    width: 100%;
+    height: 60px;
+    padding: 0 30px;
+}
+.request_form_send_request_form button{
+    text-transform: uppercase;
+    float: none;
+    margin: 30px  auto;
+    background-color: #27ccc0;
+    height: 54px;
+    padding: 10px ;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #f0f0f0;
+    display: block;
+    -webkit-border-radius:5px;
+    -ms-border-radius:5px;
+    -o-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    border:none;
+    -moz-box-shadow: 0 5px 2px -2px #bcbcbd;
+    -o-box-shadow: 0 5px 2px -2px #bcbcbd;
+    -ms-box-shadow: 0 5px 2px -2px #bcbcbd;
+    -webkit-box-shadow: 0 5px 2px -2px #bcbcbd;
+
+}
+.request-form-group {
+    border-bottom: 1px solid #555965;
+    text-align: center;
+    color: #333435;
+    position: relative;
+}
+.ist_mult{
+    position: absolute;
+    top:10px;
+
+}
+.request-form-control::-webkit-input-placeholder       {color: rgba(51, 52, 53, 0.58);}
+.request-form-control::-moz-placeholder                {color: rgba(51, 52, 53, 0.58);}
+.request-form-control:-moz-placeholder                 {color: rgba(51, 52, 53, 0.58);}
+.request-form-control:-ms-input-placeholder            {color: rgba(51, 52, 53, 0.58);}
+
+.request_form_send_request_form button:hover {
+    color: #333435;
+    border:3px solid #27CCC0;
+    background-color: transparent;
+    padding: 7px;
+}
+.g-recaptcha {
+    width: 304px;
+    margin: 0 auto;
+}
+.resend_act_code{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.resend_act_code p {
+    cursor: pointer;
+}
+
+.phone_code_inpute {
+    background-color: transparent;
+    margin-left: -15px! important;
+    height: 5vh;
+    width: 0;
+    border: none;
+    border-radius: 10px;
+    min-height: 60px;
+    margin-top: 15px;
+}
+.intl-tel-input {
+    margin-top:-25px;
+    position: absolute!important;
+    margin-left:-50px;
+}
+.main_text_editor {
+    overflow: auto;
+    min-height: 400px;
+    margin: 50px 0px;
+    width: 432px;
+}
+.note-editable{
+    min-height:100px;
+}
+.toggle_for_phone_code {
+    width: 30px;
+    cursor: pointer;
+    float: left;
+    padding: 6px;
+    border-radius: 6px;
+    background-color: #eef1f4;
+    box-shadow: 0 0 5px #888888;
+    margin-top: 5px;
+}
+.toggle_for_phone_code:hover {
+    background-color: #dbdbdb;
+}
+.toggle_for_phone_code img{
+    width: 100%;
+}
+.request_form_code_flag {
+    float: left;
+    padding-left: 6px;
+}
+.request_form_phone_code {
+    outline: none;
+    border: none;
+    color: #939393;
+    font-size: 100%;
+    display: inline-block;
+    float: left;
+    width: 50px;
+    background-color: transparent;
+    padding-top: 5px;
+}
+
+.toggle_block_for_phone_code {
+    width: 45%;
+    background-color: #eef1f4;
+    border-radius: 0 10px 10px;
+    position: absolute;
+    margin-top: -10px;
+    display: none;
+    box-shadow: 1px 2px 10px 2px #888888;
+    z-index: 1;
+}
+.request_form_number_picker_block {
+    position: absolute;
+    background-color: #f8f8f8;
+    right: 6px;
+    bottom: 5px;
+    box-shadow: 1px 2px 10px 2px #888888;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 6px;
+    z-index: 1;
+    width: 20px;
+    padding: 0 2px;
+}
+.request_form_number_input {
+    padding: 0 56px;
+}
+.number_picker_increment,  .number_picker_decrement {
+    width: 100%;
+    height: auto;
+    margin: 3px 0;
+    cursor: pointer;
+}
+
+.number_picker_decrement:hover {
+    background-color: #eef1f4;
+}
+.number_picker_increment:hover {
+    background-color: #eef1f4;
+}
+.toggle_block_items {
+    cursor: pointer;
+    margin: 20px 0;
+}
+.toggle_block_items:hover {
+    background-color: #dbdbdb;
+}
+.toggle_block_item_code {
+    color: #6f7071;
+    font-size: 23.5px;
+    padding-left: 5px;
+    padding-top: 15px;
+    display: inline-block;
+    min-width: 60px;
+}
+.toggle_block_item_flag {
+    width: 40px;
+    margin: 20px;
+    margin-top: 12px;
+}
+.toggle_block_item_country {
+    font-size: 23.5px;
+}
+.errorMessage {
+    padding:10px;
+}
+.errorMessage li{
+    list-style: none;
+}
+@media (min-width: 480px){
+    .main_first_block {
+        background-image: url("../../img/main/merchant_main_first_block_background_800.png");
+    }
+}
+@media (min-width: 768px){
+    .main_first_block {
+        background-image: url("../../img/main/merchant_main_first_block_background_1000.png");
+    }
+    .first_block_content_margin {
+        padding: 3% 0;
+        margin:0;
+    }
+}
+
+@media (min-width: 992px) {
+    .main_first_block {
+        background-image: url("../../img/main/merchant_main_first_block_background_1200.png");
+    }
+
+}
+@media (min-width: 1200px) {
+    .main_first_block {
+        background-image: url("../../img/main/merchant_main_first_block_background.png");
+    }
+    .first_block_content_margin {
+        padding: 0;
+        margin:8% 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .main_request_form_block{
+        min-width: 0;
+    }
+    .main_first_block {
+        background-image: url("../../img/main/merchant_main_first_block_background_500.png");
+    }
+    .main_header_send_request_form a{
+        width:300px;
+    }
+    .intl-tel-input {
+        margin-top:-25px;
+        position: absolute!important;
+        margin-left:0;
+    }
+    .request-form-control {
+        width:100%;
+    }
+    .request-form-phone-number{
+        padding-left:50px;
+    }
+    .main-request-form {
+        margin: 60px 0 30px;
+    }
+}

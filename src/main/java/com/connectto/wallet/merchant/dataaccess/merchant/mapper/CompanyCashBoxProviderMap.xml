@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.CompanyCashBoxProviderMap">
+
+
+    <resultMap id="rmCompanyCashBoxProviderSimple" type="CompanyCashBoxProvider">
+        <id property="id" column="id"/>
+        <result property="companyCashBoxId" column="company_cash_box_id"/>
+        <result property="companyFormResponseId" column="company_form_response_id"/>
+        <result property="balanceProvided" column="balance_provided"/>
+        <result property="currencyType" column="currency_type"/>
+        <result property="providedAt" column="provided_at"/>
+    </resultMap>
+
+    <!--
+    ###################################################################################################################
+    ################################################    Create     ####################################################
+    ###################################################################################################################
+    -->
+
+    <insert id="add" parameterType="CompanyCashBoxProvider">
+
+        INSERT INTO cb_company_provider(
+            `company_cash_box_id`,
+            `company_form_response_id`,
+            `balance_provided`,
+            `currency_type`,
+            `provided_at`
+        ) VALUES (
+            #{companyCashBoxId},
+            #{companyFormResponseId},
+            #{balanceProvided},
+            #{currencyType},
+            #{providedAt}
+        )
+
+        <selectKey keyProperty="id" resultType="_long">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>
+
+    <!--
+   ###################################################################################################################
+   ################################################    Read     ####################################################
+   ###################################################################################################################
+   -->
+    <select id="getById"
+            resultMap="rmCompanyCashBoxProviderSimple"
+            parameterType="_long">
+
+        SELECT * FROM cb_company_provider
+        WHERE id = #{id}
+        -- AND status = 1
+
+    </select>
+
+    <select id="getByParams"
+            resultMap="rmCompanyCashBoxProviderSimple"
+            parameterType="map">
+
+        SELECT * FROM cb_company_provider
+    </select>
+
+    <select id="getCountByParams"
+            resultType="_int"
+            parameterType="map">
+
+        SELECT count(`id`) FROM cb_company_provider
+
+    </select>
+
+
+    <!--
+   ###################################################################################################################
+   ################################################    Update     ####################################################
+   ###################################################################################################################
+   -->
+    <update id="update" parameterType="CompanyCashBoxProvider">
+        UPDATE cb_company_provider
+        SET id = #{id}
+        WHERE id = #{id}
+    </update>
+
+    <update id="delete" parameterType="_long">
+        UPDATE cb_company_provider
+        SET id = #{id}
+        WHERE id = #{id}
+    </update>
+
+
+</mapper>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.RoleMap">
+
+
+    <resultMap id="rmRole" type="Role">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="description" column="description"/>
+        <result property="transactionMin" column="transaction_min"/>
+        <result property="transactionMax" column="transaction_max"/>
+        <result property="isExchangeAllowed" column="is_exchange_allowed"/>
+        <result property="availableRateValues" column="available_rate_values"/>
+    </resultMap>
+
+    <!--
+    ###################################################################################################################
+    ################################################    Create     ####################################################
+    ###################################################################################################################
+    -->
+
+    <insert id="add" parameterType="Role">
+
+        INSERT INTO c_role(
+        `company_id`,
+        `name`,
+        `description`,
+        `transaction_min`,
+        `transaction_max`,
+        `is_exchange_allowed`,
+        `available_rate_values`
+        ) VALUES (
+        #{companyId},
+        #{name},
+        #{description},
+        #{transactionMin},
+        #{transactionMax},
+        #{isExchangeAllowed},
+        #{availableRateValues}
+        )
+
+        <selectKey keyProperty="id" resultType="_long">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>
+
+    <!--
+   ###################################################################################################################
+   ################################################    Read     ####################################################
+   ###################################################################################################################
+   -->
+
+    <select id="getById"
+            resultMap="rmRole"
+            parameterType="_long">
+
+        SELECT * FROM c_role
+        WHERE id = #{id}
+
+    </select>
+
+
+    <select id="getLastRole"
+            resultMap="rmRole"
+            parameterType="_long">
+
+        SELECT * FROM c_role
+        WHERE company_id = #{companyId}
+        ORDER BY id DESC LIMIT 1
+
+    </select>
+
+
+    <select id="getAll"
+            resultMap="rmRole">
+
+        SELECT * FROM c_role
+
+    </select>
+
+    <select id="getByParams"
+            resultMap="rmRole"
+            parameterType="map">
+
+        SELECT * FROM c_role WHERE `company_id` = #{companyId}
+        <if test="name != null">                       AND `name` = #{name}                              </if>
+        <if test="description != null">                AND `description` = #{description}                </if>
+        <if test="transactionMin != null">             AND `transaction_min` = #{transactionMin}         </if>
+        <if test="transactionMax != null">             AND `transaction_max` = #{transactionMax}         </if>
+        <if test="isExchangeAllowed != null">          AND `is_exchange_allowed` = #{isExchangeAllowed}  </if>
+
+        <if test="filter != null">             AND (
+            LOWER(`name`) LIKE LOWER(#{filter})
+            OR LOWER(`description`) LIKE LOWER(#{filter})
+            OR LOWER(`transaction_min`) LIKE LOWER(#{filter})
+            OR LOWER(`transaction_max`) LIKE LOWER(#{filter})
+            )
+        </if>
+        <if test="orderBy != null">
+            ORDER BY ${orderBy} ${orderType}
+        </if>
+        <if test="count != null">
+            LIMIT ${count}  OFFSET ${page}
+        </if>
+
+
+    </select>
+
+    <select id="getCountByParams"
+            resultType="_int"
+            parameterType="map">
+
+        SELECT count(`id`) FROM c_role WHERE `company_id` = #{companyId}
+        <if test="name != null">                       AND `name` = #{name}                              </if>
+        <if test="description != null">                AND `description` = #{description}                </if>
+        <if test="transactionMin != null">             AND `transaction_min` = #{transactionMin}         </if>
+        <if test="transactionMax != null">             AND `transaction_max` = #{transactionMax}         </if>
+        <if test="isExchangeAllowed != null">          AND `is_exchange_allowed` = #{isExchangeAllowed}  </if>
+
+        <if test="filter != null">             AND (
+            LOWER(`name`) LIKE LOWER(#{filter})
+            OR LOWER(`description`) LIKE LOWER(#{filter})
+            OR LOWER(`transaction_min`) LIKE LOWER(#{filter})
+            OR LOWER(`transaction_max`) LIKE LOWER(#{filter})
+            )
+        </if>
+
+    </select>
+
+    <!--
+   ###################################################################################################################
+   ################################################    Update     ####################################################
+   ###################################################################################################################
+   -->
+    <update id="update" parameterType="Role">
+        UPDATE c_role
+        SET id = #{id}
+        <if test="name != null">                , `name` = #{name}                               </if>
+        <if test="description != null">         , `description` = #{description}                 </if>
+        <if test="transactionMin != null">      , `transactionMin` = #{transactionMin}           </if>
+        <if test="transactionMax != null">      , `transactionMin` = #{transactionMax}           </if>
+        <if test="isExchangeAllowed != null">   , `isExchangeAllowed` = #{isExchangeAllowed}     </if>
+        <if test="availableRateValues != null"> , `availableRateValues` = #{availableRateValues} </if>
+        WHERE id = #{id}
+    </update>
+    <!--
+   ###################################################################################################################
+   ################################################    Delete     ####################################################
+   ###################################################################################################################
+   -->
+
+    <delete id="delete" parameterType="_long">
+        DELETE FROM c_role WHERE id = #{id}
+    </delete>
+
+
+</mapper>

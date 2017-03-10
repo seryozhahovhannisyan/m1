@@ -1,0 +1,92 @@
+
+asdasdasd
+Main page
+Heading text-ConnectТоMerchant
+Welcome to ConnectToMerchant. With the help of this site you can easily turn cash into online money and online money into cash.
+Բարի գալուստ ConnectToMerchant. Այս էջի օգնությամբ Դուք հեշտությամբ կարող եք կանխիկ գումարը վերածել առցանց գումարի և կանխիկացնել առցանց գումարը:
+Добро пожаловать в ConnectToMerchant. С помощью этого сайта Вы можете легко превратить наличные деньги в онлайн деньги и онлайн-деньги в наличные.
+
+In order to become a ConnectToMerchant service provider and benefit from the services that it offers, please fill the following list and press the button send the request form.
+Որպեսզի դառնաք ConnectToMerchant-ի ծառայության մատակարար և օգտվեք այն ծառայություններից, որոնք ConnectToMerchant-ն առաջարկում է, խնդրում ենք լրացնել հետևյալ ցուցակը և սեղմել ուղարկել հայտը կոճակը:
+Для того, чтобы стать поставщиком услуг ConnectToMerchantа и воспользоваться услугами, которые  ConnectToMerchant предлагает, заполните, пожалуйста, следующий список и нажмите кнопку отправить форма запроса.
+
+Hello
+Ողջույն
+Привет
+
+Welcome to ConnectToMerchant. With the help of this site you can easily turn cash into online money and online money into cash.  Here you can create Company Administratior account or Branch Company Location account. You may have different roles in the stuff of the company. As a leader of ConnectToMerchant you may receive request forms from other companies and send requests to them for the sake of collaboration.  You can send money, also ask for it and receive it by selecting any member of ConnectToMerchant.  You may, as well, look through transactions you have completed.
+Բարի գալուստ ConnectToMerchant. Այս էջի օգնությամբ Դուք հեշտությամբ կարող եք կանխիկ գումարը վերածել առցանց գումարի և կանխիկացնել առցանց գումարը: Այստեղ դուք կարող եք բացել Կազմկերպության Ադմինիստրատոր հաշիվ կամ Կազմակերպության Տեղական Մասնաճյուղ հաշիվ: Կազմակերպության շրջանակներում Դուք կարող եք զբաղեցնել տարբեր պաշտոններ: Որպես ConnectToMerchant-ի որևէ կազմակերպության ղեկավար Դուք կարող եք հայտեր ստանալ այլ կազմակերպություններից և ինքներդ հայտեր ուղարկել՝ համագործակցության նպատակով: Դուք կարող եք ուղարկել, ինչպես նաև խնդրել և ստանալ գումարներ ConnectToMerchant-ի այլ օգտատերերից: Դուք նաև կարող եք աչքի անցկացնել Ձեր արդեն իսկ ավարտած գործարքները:
+Добро пожаловать в ConnectToMerchant. С помощью этого сайта Вы можете легко превратить наличные деньги в онлайн деньги и онлайн-деньги в наличные. Здесь вы можете создать аккаунт “Адмунустратор Компании” или создать аккаунт  “Местный Филиал Компании”. Вы можете иметь различные роли в компании. Как руководитель любой компании ConnectToMerchantа вы можете  получить запросы от других компаний и отправлять запросы к ним для сотрудничества. Вы можете послать деньги, а также просить и получать, выбрав любой член ConnectToMerchant_а. У вас также есть возможность смотреть через сделок, которые вы уже завершили.
+
+Company request form
+Կազմակերպությանն ուղարկվող հայտի ձև
+Форма запроса компании
+
+Once you fill in "A company request form” by completing a short information form, ConnectToMerchant administration will review your request. We will contact you, if we have any additional questions. If not, we will create your company and add to ConnectToMerchant system.
+Երբ Դուք լրացնեք «Ընկերությանն ուղարկվող հայտի ձևը`լրացնելով կարճ ինֆորմացիոն հայտը, ConnectToMerchant-ի ղեկավարությունը կվերանայի Ձեր հայտը: Մենք կկապվենք Ձեզ հետ հավելյալ հարցերի առաջացման դեպքում:Ապա թե ոչ, Ձեր կազմակերպությունը կստեղծվի ու կավելացվի ConnectToMerchant -ի համակարգում:
+После того как вы заполните "Форма запроса компании" заполнив  короткую форму информации администрация ConnectToMerchant-а  рассмотрит Вашу заявку. Мы свяжемся с вами, если у нас возникнут дополнительные вопросы. Если нет, Ваша компания откроется и будет добавлена к системе ConnectToMerchant.
+
+Create a Partner Company Administrator Account
+Գրանցվել որպես գործընկեր կազմակերպության ադմինիստրատոր:
+Создать аккаунт адмунустратора партнерской компании
+
+Once your company is created, you need to create your account.  Within a short period of time ConnectToMerchant administration will approve your new account and you will be able to log in.
+Երբ Ձեր կազմակերպությունը ստեղծվի, Դուք պետք է գրանցվեք:Կարճ ժամանակի ընթացքում  ConnectToMerchant-ի ղեկավարությունը կվերանայի Ձեր նոր գրանցումը և Դուք կկարողանաք մուտք գործել:
+После того, как Ваша компания бугет создана, Вы должны создать аккаунт.  В течении короткого периода администрация ConnectToMerchant-a утвердит новый аккаунт, и Вы сможете войти в систему.
+
+Create a Partner Location Administrator Account
+Գրանցվել որպես ընկերության տեղամասի կառավարիչ:
+Создать аккаунт адмунустратора компании участка
+
+Once ConnectToMerchant has activated your account, and you are able to log in, you will be able to create your company location.  Every company has to have at least one and can have as many locations as it is necessary for you to manage your business.  Each company location has its cashier who is in charge of the monetary transactions within the company location.
+ConnectToMerchant-ի Ձեր գրանցումն ակտիվացնելուց և Ձեր՝ կայք մուտք գործելու հնարավորություն ունենալուց հետո, Դուք կկարողանաք ստեղծել Ձեր կազմակերպության տեղակայման վայրը:Յուրաքանչյուր կազմակերպություն պետք է նվազագույնը ունենա մեկ տեղակայման վայր և կարող է հավելյալ ունենալ այնքան վայրեր, որքան անհրաժեշտ է Ձեր գործունեության ծավալման համար:Յուրաքանչյուր կազմակերպության տեղակայման վայր ունի իր գանձապահը, որը պատասխանատու է դրամական գործարքների համար ընկերության տեղակայման վայրի շրջանակներում:
+
+После того, как ConnectToMerchant активирует Ваш аккаунт и Вы сможете войти, Вы сможете создать место Вашей компании. Каждая компания должна иметь по крайней мере одно, и может иметь столько мест, сколько необходумо для Вас, чтобы управлять своим бизнесом.
+Каждой компании есть свой кассир, который отвечает за денежные операции в расположении компании.
+
+If you do not have Partner Company Location Administrator Account
+Եթե Դուք գրանցված չեք որպես գործընկեր կազմակերպության տեղամասի կառավարիչ
+Если у Вас нет аккаунта администратора участки
+
+
+You can create one by choosing from the drop down list the company your location belongs to, then from the listed locations you can choose your location and create an account to access your location portal.  Once you have created the location account, it has to be approved by the company management for you to have access.
+Դուք կարող եք գրանցվել՝ ընտրելով ներքոհիշյալ ցանկից այն կազմակերպությունը, որին պատկանում է Ձեր տեղակայման վայրը, այնուհետև ցանկում ներառված տեղակայման վայրերից Դուք կարող եք ընտրել Ձեր ըևգրանցվել՝Ձեր տեղակայման վայրի բաժին մուտք գործելու համար: Գրանցումն ավարտելուց հետո այն պետքէ վավերացվի կազմակերպության ղեկավարության կողմից՝ մուտք գործելու թույլատրություն ստանալու համար:
+Вы сможете создать аккаунт, выбрав из выпадающего списка компанию, которому пренадлежит место Вашей компании. Из перечисленных мест Вы можете выбрать место и создать аккаунт. После этого администрация должна одобрить Ваш запрос, чтобы Вы имели доступ.
+
+
+New to ConnectToMerchant? Please Read the Instruction
+Նորեկ եք ConnectToMerchant-ում: Խնդրում ենք կարդալ հրահանգները
+Недавно присоединились к ConnectToMerchant? Пожалуйста, прочитайте инструкцию
+ If you have user account with ConnectTo Merchant please, log in.
+Եթե գրանցված եք ConnectToMerchant-ում, խնդրում ենք մուտք գործել:
+Если у вас есть аккаунт на ConnectToMerchant, пожалуйста, войдите в систему.
+LOG IN
+Մուտք գործել
+Вход
+
+Don't have a user account?
+Գրանցված չեք?
+У вас нет аккаунтa?
+
+If you don't have a User account
+Եթե գրանցված չեք
+Если у вас нет аккаунтa
+You can create an account by choosing the company you are working for and its specific location than create your account. Company location management needs to approve your account and activate it for you to be able to login to your account.
+Դուք կարող եք գրանցվել՝ ընտրելով այն կազմակերպությունը, որտեղ աշխատում եք և դրա տեղակայման վայրը:Կազմակերպության տեղամասի կառավարիչը պետք է վավերացնի Ձեր գրանցումը և ակտիվացնի այն, որպեսզի Դուք կարողանաք մուտք գործել կայք:
+Вы можете зарегистрироваться, выбрав компанию где Вы работаете, его точное расположение и создать аккаунт. Администрация компании должен одобрить Ваш аккаунт и активировать его, чтобы Вы имели возможность войти в свой аккаунт.
+CREATE AN ACCOUNT
+Գրանցվել
+Регистрация
+
+GET IN TOUCH
+ԵՂԵ՛Ք ԿԱՊԻ ՄԵՋ
+Связаться
+
+If you have any questions, please contact us.
+Հարցերի դեպքում կապվեք մեզ հետ:
+Если у вас есть какие-либо вопросы, пожалуйста, свяжитесь с нами.
+
+Enter Your E-mail
+Մուտքագրեք Ձեր էլեկտրոնային հասցեն
+Введите Ваш адрес электронной почты
+

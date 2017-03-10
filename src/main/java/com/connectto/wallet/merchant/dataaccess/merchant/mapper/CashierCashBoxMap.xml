@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.CashierCashBoxMap">
+
+
+    <resultMap id="rmCashierCashBoxSimple" type="CashierCashBox">
+        <id property="id" column="id"/>
+        <result property="cashierId" column="cashier_id"/>
+        <result property="balanceProvidedByBranch" column="balance_provided_by_branch"/>
+        <result property="balanceCurrent" column="balance_current"/>
+        <result property="balanceGatheredTax" column="balance_gathered_tax"/>
+        <result property="currencyType" column="currency_type"/>
+
+        <result property="pendingBalanceDeposit" column="pending_balance_deposit"/>
+        <result property="pendingBalanceWithdraw" column="pending_balance_withdraw"/>
+        <result property="pendingTaxAmount" column="pending_tax_amount"/>
+
+        <result property="openedAt" column="opened_at"/>
+        <result property="openedAt" column="closed_at"/>
+        <result property="status" column="status"/>
+
+    </resultMap>
+
+    <!--
+    ###################################################################################################################
+    ################################################    Create     ####################################################
+    ###################################################################################################################
+    -->
+
+    <insert id="add" parameterType="CashierCashBox">
+
+        INSERT INTO cb_cashier_cash_box(
+        `cashier_id`,
+        `balance_provided_by_branch`,
+        `balance_current`,
+        `balance_gathered_tax`,
+        `currency_type`,
+        `pending_balance_deposit`,
+        `pending_balance_withdraw`,
+        `pending_tax_amount`,
+        `opened_at`,
+        `closed_at`,
+        `status`
+        ) VALUES (
+        #{cashierId},
+        #{balanceProvidedByBranch},
+        #{balanceCurrent},
+        #{balanceGatheredTax},
+        #{currencyType},
+        #{pendingBalanceDeposit},
+        #{pendingBalanceWithdraw},
+        #{pendingTaxAmount},
+        #{openedAt},
+        #{closedAt},
+        #{status}
+        )
+
+        <selectKey keyProperty="id" resultType="_long">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>
+
+    <!--
+   ###################################################################################################################
+   ################################################    Read     ####################################################
+   ###################################################################################################################
+   -->
+    <select id="getById"
+            resultMap="rmCashierCashBoxSimple"
+            parameterType="_long">
+
+        SELECT * FROM cb_cashier_cash_box
+        WHERE id = #{id}
+        -- AND status = 1
+
+    </select>
+
+    <select id="getLastByCashierId"
+            resultMap="rmCashierCashBoxSimple"
+            parameterType="_long">
+
+        SELECT * FROM cb_cashier_cash_box
+        WHERE cashier_id = #{cashierId}
+        AND status = 1
+
+    </select>
+
+    <select id="getByParams"
+            resultMap="rmCashierCashBoxSimple"
+            parameterType="map">
+
+        SELECT * FROM cb_cashier_cash_box  WHERE  `branch_id` = #{branchId}
+        <if test="status != null">             AND `status` = #{status}         </if>
+    </select>
+
+    <select id="getCountByParams"
+            resultType="_int"
+            parameterType="map">
+
+        SELECT count(`id`) FROM cb_cashier_cash_box WHERE `branch_id` = #{branchId}
+        <if test="status != null">             AND `status` = #{status}         </if>
+
+    </select>
+
+
+    <!--
+   ###################################################################################################################
+   ################################################    Update     ####################################################
+   ###################################################################################################################
+   -->
+    <update id="update" parameterType="CashierCashBox">
+        UPDATE cb_cashier_cash_box
+        SET id = #{id}
+        <if test="status != null">             , `status` = #{status}                     </if>
+
+
+        WHERE id = #{id}
+    </update>
+
+    <update id="delete" parameterType="_long">
+        UPDATE cb_cashier_cash_box
+        SET status = #{status}
+        WHERE id = #{id}
+    </update>
+
+
+</mapper>

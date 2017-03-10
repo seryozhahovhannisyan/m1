@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:tx="http://www.springframework.org/schema/tx" xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+    <!--
+    #####################################################################################################
+    Merchant
+    #####################################################################################################
+    -->
+
+    <tx:annotation-driven transaction-manager="MerchantTM"/>
+    <tx:annotation-driven transaction-manager="WalletTM"/>
+
+    <bean id="MerchantTM" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSourceMerchant"/>
+        <qualifier value="MerchantTMQ"/>
+    </bean>
+
+    <bean id="BranchMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.BranchMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+    <bean id="BranchCashBoxMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.BranchCashBoxMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+    <bean id="BranchCashBoxProviderMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.BranchCashBoxProviderMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+    <bean id="BranchCashBoxTakerMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.BranchCashBoxTakerMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+
+    <bean id="CashierMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.CashierMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+    <bean id="CashierCashBoxMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.CashierCashBoxMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+    <bean id="CashierCashBoxProviderMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.CashierCashBoxProviderMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+    <bean id="CashierCashBoxTakerMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.CashierCashBoxTakerMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+    <bean id="CompanyMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.CompanyMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+    <bean id="CompanyCashBoxMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.CompanyCashBoxMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+    <bean id="CompanyCashBoxProviderMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.CompanyCashBoxProviderMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+    <bean id="CompanyCashBoxTakerMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.CompanyCashBoxTakerMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+    <bean id="CompanyFormRequestMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.CompanyFormRequestMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+    <bean id="CompanyFormResponseMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.CompanyFormResponseMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+    <bean id="FileDataMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.FileDataMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+    <bean id="MerchantLoggerMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.MerchantLoggerMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+    <bean id="RoleMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.RoleMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+
+    <!--
+      #####################################################################################################
+      Transaction
+      #####################################################################################################
+      -->
+    <bean id="TransactionExchangeMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.TransactionExchangeMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+    <bean id="TransactionExchangeTaxMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.TransactionExchangeTaxMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+    <bean id="TransactionMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.TransactionMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+    <bean id="TransactionProcessMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.TransactionProcessMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+    <bean id="TransactionProcessTaxMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.TransactionProcessTaxMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+    <bean id="TransactionTaxMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.TransactionTaxMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+    <bean id="WalletTransactionMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.WalletTransactionMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+    <bean id="WalletTransactionTaxMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.WalletTransactionTaxMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+
+    <bean id="TransferTransactionMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.TransferTransactionMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+    <bean id="TransferTicketMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.TransferTicketMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+    <bean id="TransferTransactionWalletResultMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateMerchant"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.TransferTransactionWalletResultMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryMerchant"/>
+
+
+    <!--
+    #####################################################################################################
+    Wallet
+    #####################################################################################################
+    -->
+
+    <bean id="WalletTM" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSourceWallet"/>
+        <qualifier value="WalletTMQ"/>
+    </bean>
+
+    <bean id="WalletMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateWallet"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.wallet.mapper.namespace.WalletMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryWallet"/>
+
+    <bean id="ExchangeRateMap"
+          class="org.mybatis.spring.mapper.MapperFactoryBean"
+          p:sqlSessionTemplate-ref="sqlSessionTemplateWallet"
+          p:mapperInterface="com.connectto.wallet.merchant.dataaccess.wallet.mapper.namespace.ExchangeRateMap"
+          p:sqlSessionFactory-ref="sqlSessionFactoryWallet"/>
+
+</beans>

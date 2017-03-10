@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.CashierCashBoxTakerMap">
+
+
+    <resultMap id="rmCashierCashBoxTakerSimple" type="CashierCashBoxTaker">
+        <id property="id" column="id"/>
+        <result property="cashierCashBoxId" column="cashier_cash_box_id"/>
+        <result property="branchCashBoxId" column="branch_cash_box_id"/>
+        <result property="balanceTaken" column="balance_taken"/>
+        <result property="currencyType" column="currency_type"/>
+        <result property="tookAt" column="took_at"/>
+    </resultMap>
+
+    <!--
+    ###################################################################################################################
+    ################################################    Create     ####################################################
+    ###################################################################################################################
+    -->
+
+    <insert id="add" parameterType="CashierCashBoxTaker">
+
+        INSERT INTO cb_cashier_taker(
+        `cashier_cash_box_id`,
+        `branch_cash_box_id`,
+        `balance_taken`,
+        `currency_type`,
+        `took_at`
+        ) VALUES (
+        #{cashierCashBoxId},
+        #{branchCashBoxId},
+        #{balanceTaken},
+        #{currencyType},
+        #{tookAt}
+        )
+
+        <selectKey keyProperty="id" resultType="_long">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>
+
+    <!--
+   ###################################################################################################################
+   ################################################    Read     ####################################################
+   ###################################################################################################################
+   -->
+    <select id="getById"
+            resultMap="rmCashierCashBoxTakerSimple"
+            parameterType="_long">
+
+        SELECT * FROM cb_cashier_taker
+        WHERE id = #{id}
+        -- AND status = 1
+
+    </select>
+
+    <select id="getByParams"
+            resultMap="rmCashierCashBoxTakerSimple"
+            parameterType="map">
+
+        SELECT * FROM cb_cashier_taker
+    </select>
+
+    <select id="getCountByParams"
+            resultType="_int"
+            parameterType="map">
+
+        SELECT count(`id`) FROM cb_cashier_taker
+
+    </select>
+
+
+    <!--
+   ###################################################################################################################
+   ################################################    Update     ####################################################
+   ###################################################################################################################
+   -->
+    <update id="update" parameterType="CashierCashBoxTaker">
+        UPDATE cb_cashier_taker
+        SET id = #{id}
+        WHERE id = #{id}
+    </update>
+
+    <update id="delete" parameterType="_long">
+        UPDATE cb_cashier_taker
+        SET id = #{id}
+        WHERE id = #{id}
+    </update>
+
+
+</mapper>

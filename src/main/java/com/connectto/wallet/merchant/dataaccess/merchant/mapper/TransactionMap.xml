@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.TransactionMap">
+
+    <resultMap id="rmTransactionWithdraw" type="TransactionWithdraw">
+        <id property="id" column="id"/>
+        <result property="" column="name"/>
+        <result property="finalState" column="final_state"/>
+        <result property="walletId" column="wallet_id"/>
+        <result property="cashierCashBoxId" column="cashier_cash_box_id"/>
+        <result property="openedAt" column="opened_at"/>
+        <result property="closedAt" column="closed_at"/>
+        <result property="withdrawAmount" column="withdraw_amount"/>
+        <result property="withdrawAmountCurrencyType" column="withdraw_amount_ct"/>
+        <result property="walletTotalPrice" column="wallet_total_price"/>
+        <result property="walletTotalPriceCurrencyType" column="wallet_total_price_ct"/>
+        <result property="withdrawCashierCashBoxTotalTax" column="withdraw_cashier_cash_box_total_tax"/>
+        <result property="withdrawCashierCashBoxTotalTaxCurrencyType" column="withdraw_cashier_cash_box_total_tax_ct"/>
+        <result property="cashierTotalAmount" column="cashier_total_amount"/>
+        <result property="cashierTotalAmountCurrencyType" column="cashier_total_amount_ct"/>
+        <result property="walletWithdrawId" column="wallet_withdraw_id"/>
+        <result property="processStartId" column="process_start_id"/>
+        <result property="processEndId" column="process_end_id"/>
+        <result property="taxId" column="tax_id"/>
+        <result property="isEncoded" column="is_encoded"/>
+        <result property="orderCode" column="order_code"/>
+        <result property="rationalDuration" column="rational_duration"/>
+    </resultMap>
+
+    <resultMap id="rmTransactionDeposit" type="TransactionDeposit">
+        <id property="id" column="id"/>
+        <result property="" column="name"/>
+        <result property="finalState" column="final_state"/>
+        <result property="walletId" column="wallet_id"/>
+        <result property="cashierCashBoxId" column="cashier_cash_box_id"/>
+        <result property="openedAt" column="opened_at"/>
+        <result property="closedAt" column="closed_at"/>
+        <result property="depositAmount" column="deposit_amount"/>
+        <result property="depositAmountCurrencyType" column="deposit_amount_ct"/>
+        <result property="walletTotalPrice" column="wallet_total_price"/>
+        <result property="walletTotalPriceCurrencyType" column="wallet_total_price_ct"/>
+        <result property="depositCashierCashBoxTotalTax" column="deposit_cashier_cash_box_total_tax"/>
+        <result property="depositCashierCashBoxTotalTaxCurrencyType" column="deposit_cashier_cash_box_total_tax_ct"/>
+        <result property="cashierTotalAmount" column="cashier_total_amount"/>
+        <result property="cashierTotalAmountCurrencyType" column="cashier_total_amount_ct"/>
+        <result property="walletdepositId" column="wallet_deposit_id"/>
+        <result property="processStartId" column="process_start_id"/>
+        <result property="processEndId" column="process_end_id"/>
+        <result property="taxId" column="tax_id"/>
+        <result property="isEncoded" column="is_encoded"/>
+        <result property="orderCode" column="order_code"/>
+        <result property="rationalDuration" column="rational_duration"/>
+    </resultMap>
+
+    <!--
+    ###################################################################################################################
+    ################################################    Create     ####################################################
+    ###################################################################################################################
+    -->
+
+    <insert id="addWithdraw" parameterType="TransactionWithdraw">
+
+        INSERT INTO t_withdraw(
+            `final_state`,
+            `wallet_id`,
+            `cashier_cash_box_id`,
+            `opened_at`,
+            `closed_at`,
+            `withdraw_amount`,
+            `withdraw_amount_ct`,
+            `wallet_total_price`,
+            `wallet_total_price_ct`,
+            `withdraw_cashier_cash_box_total_tax`,
+            `withdraw_cashier_cash_box_total_tax_ct`,
+            `cashier_total_amount`,
+            `cashier_total_amount_ct`,
+            `wallet_withdraw_id`,
+            `process_start_id`,
+            `process_end_id`,
+            `tax_id`,
+            `is_encoded`,
+            `order_code`,
+            `rational_duration`
+        ) VALUES (
+            #{finalState},
+            #{walletId},
+            #{cashierCashBoxId},
+            #{openedAt},
+            #{closedAt},
+            #{withdrawAmount},
+            #{withdrawAmountCurrencyType},
+            #{walletTotalPrice},
+            #{walletTotalPriceCurrencyType},
+            #{withdrawCashierCashBoxTotalTax},
+            #{withdrawCashierCashBoxTotalTaxCurrencyType},
+            #{cashierTotalAmount},
+            #{cashierTotalAmountCurrencyType},
+            #{walletWithdrawId},
+            #{processStartId},
+            #{processEndId},
+            #{taxId},
+            #{isEncoded},
+            #{orderCode},
+            #{rationalDuration}
+        )
+
+        <selectKey keyProperty="id" resultType="_long">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>
+
+    <insert id="addDeposit" parameterType="TransactionDeposit">
+
+        INSERT INTO t_deposit(
+            `final_state`,
+            `wallet_id`,
+            `cashier_cash_box_id`,
+            `opened_at`,
+            `closed_at`,
+            `deposit_amount`,
+            `deposit_amount_ct`,
+            `wallet_total_price`,
+            `wallet_total_price_ct`,
+            `deposit_cashier_cash_box_total_tax`,
+            `deposit_cashier_cash_box_total_tax_ct`,
+            `cashier_total_amount`,
+            `cashier_total_amount_ct`,
+            `wallet_deposit_id`,
+            `process_start_id`,
+            `process_end_id`,
+            `tax_id`,
+            `is_encoded`,
+            `order_code`,
+            `rational_duration`
+        ) VALUES (
+            #{finalState},
+            #{walletId},
+            #{cashierCashBoxId},
+            #{openedAt},
+            #{closedAt},
+            #{depositAmount},
+            #{depositAmountCurrencyType},
+            #{walletTotalPrice},
+            #{walletTotalPriceCurrencyType},
+            #{depositCashierCashBoxTotalTax},
+            #{depositCashierCashBoxTotalTaxCurrencyType},
+            #{cashierTotalAmount},
+            #{cashierTotalAmountCurrencyType},
+            #{walletdepositId},
+            #{processStartId},
+            #{processEndId},
+            #{taxId},
+            #{isEncoded},
+            #{orderCode},
+            #{rationalDuration}
+        )
+
+        <selectKey keyProperty="id" resultType="_long">
+            SELECT LAST_INSERT_ID() AS `id`
+        </selectKey>
+
+    </insert>
+
+    <select id="getWithdrawsByParams"
+            resultMap="rmTransactionWithdraw"
+            parameterType="map">
+
+        SELECT * FROM t_withdraw WHERE 1
+        <if test="cashBoxId != null"> AND `cashier_cash_box_id` = #{cashBoxId}</if>
+        <if test="states != null"> AND `final_state` IN (#{states})</if>
+        <if test="withdrawId != null"> AND `id` = #{withdrawId}</if>
+        <if test="upToDate != null"> AND (`opened_at` &gt; #{upToDate} OR `closed_at` &gt; #{upToDate})</if>
+        <if test="count != null">
+            LIMIT ${count}  OFFSET ${page}
+        </if>
+
+    </select>
+
+    <select id="getDepositsByParams"
+            resultMap="rmTransactionDeposit"
+            parameterType="map">
+
+        SELECT * FROM t_deposit WHERE 1
+        <if test="cashBoxId != null"> AND `cashier_cash_box_id` = #{cashBoxId}</if>
+        <if test="states != null"> AND `final_state` IN (#{states})</if>
+        <if test="depositId != null"> AND `id` = #{depositId}</if>
+        <if test="upToDate != null"> AND (`opened_at` &gt; #{upToDate} OR `closed_at` &gt; #{upToDate})</if>
+        <if test="count != null">
+            LIMIT ${count}  OFFSET ${page}
+        </if>
+
+    </select>
+
+    <select id="getWithdrawsCountByParams"
+            resultType="_int"
+            parameterType="map">
+
+        SELECT count(`id`) FROM t_withdraw WHERE `cashier_cash_box_id` = #{cashBoxId}  AND `final_state` IN (#{states})
+        <if test="upToDate != null"> AND (`opened_at` &gt; #{upToDate} OR `closed_at` &gt; #{upToDate})</if>
+    </select>
+
+    <select id="getDepositsCountByParams"
+            resultType="_int"
+            parameterType="map">
+
+        SELECT count(`id`) FROM t_deposit WHERE `cashier_cash_box_id` = #{cashBoxId}  AND `final_state` IN (#{states})
+        <if test="upToDate != null"> AND (`opened_at` &gt; #{upToDate} OR `closed_at` &gt; #{upToDate})</if>
+    </select>
+
+    <!--
+   ###################################################################################################################
+   ################################################    Update     ####################################################
+   ###################################################################################################################
+   -->
+    <update id="closeWithdraw" parameterType="TransactionWithdraw">
+        UPDATE t_withdraw
+        SET  `process_end_id` = #{processEndId}   , `closed_at` = #{closedAt}  , `final_state` = #{finalState}
+        WHERE id = #{id}
+    </update>
+
+    <update id="closeDeposit" parameterType="TransactionDeposit">
+        UPDATE t_deposit
+        SET  `process_end_id` = #{processEndId}   , `closed_at` = #{closedAt}  , `final_state` = #{finalState}
+        WHERE id = #{id}
+    </update>
+
+
+</mapper>
