@@ -349,8 +349,6 @@ generalControllers.requestCtrl = ['$scope', '$timeout', '$state', '$rootScope', 
 
     $scope.inputs = {};
     $scope.company = {
-
-
         cityCompany: '',
         streetCompany: '',
         zipCompany: '',
@@ -358,21 +356,8 @@ generalControllers.requestCtrl = ['$scope', '$timeout', '$state', '$rootScope', 
         countryCompany: '',
         countryRegionCompany: ''
     };
-    $scope.setup = {
-        depositFeePercentMerchantSetup: '',
-        depositMinFeeMerchantSetup: '',
-        depositMaxFeeMerchantSetup: '',
-        withdrawFeePercentMerchantSetup: '',
-        withdrawMinFeeMerchantSetup: '',
-        withdrawMaxFeeMerchantSetup: '',
-        exchangeDepositFeePercentMerchantSetup: '',
-        exchangeDepositMinFeeMerchantSetup: '',
-        exchangeDepositMaxFeeMerchantSetup: '',
-        exchangeWithdrawFeePercentMerchantSetup: '',
-        exchangeWithdrawMinFeeMerchantSetup: '',
-        exchangeWithdrawMaxFeeMerchantSetup: ''
 
-    };
+
     $scope.branch = {
         nameBranch: '',
         addressBranch: '',
@@ -391,13 +376,7 @@ generalControllers.requestCtrl = ['$scope', '$timeout', '$state', '$rootScope', 
         emailCashier: '',
         phoneCashier: ''
     };
-    $scope.role = {
-        nameRole: '',
-        descriptionRole: '',
-        transactionMinRole: '',
-        transactionMaxRole: '',
-        availableRateValuesRole : ''
-    };
+
     $scope.verification = {
         passwordCashier: undefined,
         passwordCashierRepeat: undefined,
@@ -458,7 +437,7 @@ generalControllers.requestCtrl = ['$scope', '$timeout', '$state', '$rootScope', 
             }
 
         }
-        $scope.serverSendFields();
+        // $scope.serverSendFields();
         angular.element(document).ready(function () {
             $timeout(function () {
                 $scope.footerplace();
@@ -469,156 +448,23 @@ generalControllers.requestCtrl = ['$scope', '$timeout', '$state', '$rootScope', 
 
     };
 
-
     $scope.percent = function (percent_count,percent_error) {
 
-
                 if(parseInt(percent_count) > 100 || parseInt(percent_count) < 0){
-            $scope[percent_error] = true
+            $scope[percent_error] = true;
             console.log(percent_error,$scope[percent_error])
         }
         else{
-            console.log(percent_error,$scope[percent_error])
+            console.log(percent_error,$scope[percent_error]);
             $scope[percent_error] = false;
         }
 
     }
 
     $scope.uiSerfSetup = function () {
-
-        //$scope.setup.currencyTypeMerchantSetup = angular.element(".list_mult_currency").attr("data-currency");
-        /*$scope.setup.availableRateValuesMerchantSetup = angular.element(".ist_mult_avile_curency").attr("data-availCurrency");
-         console.log("$scope.setup.availCurType.length", $scope.setup.availableRateValuesMerchantSetup.length);
-         if ($scope.setup.availableRateValuesMerchantSetup.length > 0) {
-         $scope.setup.availableRateValuesMerchantSetup = angular.fromJson($scope.setup.availableRateValuesMerchantSetup);
-         console.log("$scope.setup.availableRateValuesMerchantSetup.length", $scope.setup.availableRateValuesMerchantSetup.length);
-
-         }*/
-        if ($scope.setup.depositFeePercentMerchantSetup != '' && $scope.setup.depositMinFeeMerchantSetup != '' && $scope.setup.depositMaxFeeMerchantSetup != '' && $scope.setup.withdrawFeePercentMerchantSetup != '' && $scope.setup.withdrawMinFeeMerchantSetup != '' && $scope.setup.withdrawMaxFeeMerchantSetup != '' && $scope.setup.exchangeDepositFeePercentMerchantSetup != '' && $scope.setup.exchangeDepositMinFeeMerchantSetup != '' && $scope.setup.exchangeDepositMaxFeeMerchantSetup != '' && $scope.setup.exchangeWithdrawFeePercentMerchantSetup != '' && $scope.setup.exchangeWithdrawMinFeeMerchantSetup != '' && $scope.setup.exchangeWithdrawMaxFeeMerchantSetup != '' ) {
-
-            if ($scope.setup.depositMinFeeMerchantSetup >= $scope.setup.depositMaxFeeMerchantSetup) {
-                $scope.depMaxError == true
-            }
-
-            if ($scope.setup.withdrawMinFeeMerchantSetup >= $scope.setup.withdrawMaxFeeMerchantSetup) {
-                $scope.withMaxError == true
-            }
-
-            if ($scope.setup.exchangeDepositMinFeeMerchantSetup >= $scope.setup.exchangeDepositMaxFeeMerchantSetup) {
-                $scope.exchDepMaxError == true
-            }
-            if ($scope.setup.exchangeWithdrawMinFeeMerchantSetup >= $scope.setup.exchangeWithdrawMaxFeeMerchantSetup) {
-                $scope.exchWithMaxError == true
-            }
-
-            else {
-                if(!$scope.setup_depFeePercent_size && !$scope.setup_withFeePercent_size && !$scope.setup_exchDepFeePercent_size && !$scope.setup_exchWithFeePercent_size ) {
-                    $scope.depMaxError == false
-                    $scope.withpMaxError == false
-                    $scope.exchMaxError == false
-                    $scope.exchWithMaxError == false
-                    $state.go('form.branch');
-                }
-            }
+        $state.go('form.branch');
 
 
-        }
-        else {
-            /*if ($scope.setup.currencyTypeMerchantSetup == '' || $scope.setup.currencyTypeMerchantSetup === undefined) {
-             $scope.setup_currencyType = true
-             }
-             else {
-             $scope.setup_currencyType = false
-             }*/
-
-
-            if ($scope.setup.depositFeePercentMerchantSetup == '' || $scope.setup.depositFeePercentMerchantSetup === undefined) {
-
-                $scope.setup_depFeePercent = true
-            }
-            else {
-
-                $scope.setup_depFeePercent = false;
-            }
-            if ($scope.setup.depositMinFeeMerchantSetup == '' || $scope.setup.depositMinFeeMerchantSetup === undefined) {
-                $scope.setup_depMinFee = true
-            }
-            else {
-                $scope.setup_depMinFee = false
-            }
-            if ($scope.setup.depositMaxFeeMerchantSetup == '' || $scope.setup.depositMaxFeeMerchantSetup === undefined) {
-                $scope.setup_depMaxFee = true
-            }
-            else {
-                $scope.setup_depMaxFee = false
-            }
-            if ($scope.setup.withdrawFeePercentMerchantSetup == '' || $scope.setup.withdrawFeePercentMerchantSetup === undefined) {
-                $scope.setup_withFeePercent = true
-            }
-            else {
-                $scope.setup_withFeePercent = false
-            }
-            if ($scope.setup.withdrawMinFeeMerchantSetup == '' || $scope.setup.withdrawMinFeeMerchantSetup === undefined) {
-                $scope.setup_withMinFee = true
-            }
-            else {
-                $scope.setup_withMinFee = false
-            }
-            if ($scope.setup.withdrawMaxFeeMerchantSetup == '' || $scope.setup.withdrawMaxFeeMerchantSetup === undefined) {
-                $scope.setup_withMaxFee = true
-
-            }
-            else {
-                $scope.setup_withMaxFee = false
-
-            }
-            if ($scope.setup.exchangeDepositFeePercentMerchantSetup == '' || $scope.setup.exchangeDepositFeePercentMerchantSetup === undefined) {
-                $scope.setup_exchDepFeePercent = true
-            }
-            else {
-                $scope.setup_exchDepFeePercent = false
-            }
-            if ($scope.setup.exchangeDepositMinFeeMerchantSetup == '' || $scope.setup.exchangeDepositMinFeeMerchantSetup === undefined) {
-                $scope.setup_exchDepMinFee = true
-            }
-            else {
-                $scope.setup_exchDepMinFee = false
-            }
-            if ($scope.setup.exchangeDepositMaxFeeMerchantSetup == '' || $scope.setup.exchangeDepositMaxFeeMerchantSetup === undefined) {
-                $scope.setup_exchDepMaxFee = true
-            }
-            else {
-                $scope.setup_exchDepMaxFee = false
-            }
-            if ($scope.setup.exchangeWithdrawFeePercentMerchantSetup == '' || $scope.setup.exchangeWithdrawFeePercentMerchantSetup === undefined) {
-                $scope.setup_exchWithFeePercent = true
-            }
-            else {
-                $scope.setup_exchWithFeePercent = false
-            }
-            if ($scope.setup.exchangeWithdrawMinFeeMerchantSetup == '' || $scope.setup.exchangeWithdrawMinFeeMerchantSetup === undefined) {
-                $scope.setup_exchWithMinFee = true
-            }
-            else {
-                $scope.setup_exchWithMinFee = false
-            }
-            if ($scope.setup.exchangeWithdrawMaxFeeMerchantSetup == '' || $scope.setup.exchangeWithdrawMaxFeeMerchantSetup === undefined) {
-
-                $scope.setup_exchWithMaxFee = true
-
-            }
-            else {
-                $scope.setup_exchWithMaxFee = false
-
-            }
-            /*if ($scope.setup.availableRateValuesMerchantSetup == '' || $scope.setup.availableRateValuesMerchantSetup === undefined || $scope.setup.availableRateValuesMerchantSetup.length < 0) {
-             $scope.setup_availCurType = true
-             }
-             else {
-             $scope.setup_availCurType = false
-             }*/
-        }
-        $scope.serverSendFields();
         angular.element(document).ready(function () {
             $timeout(function () {
                 $scope.footerplace();
@@ -691,7 +537,7 @@ generalControllers.requestCtrl = ['$scope', '$timeout', '$state', '$rootScope', 
             }
         }
 
-        $scope.serverSendFields();
+        // $scope.serverSendFields();
 
         angular.element(document).ready(function () {
             $timeout(function () {
@@ -733,7 +579,7 @@ generalControllers.requestCtrl = ['$scope', '$timeout', '$state', '$rootScope', 
             }
 
         }
-        $scope.serverSendFields();
+        // $scope.serverSendFields();
         angular.element(document).ready(function () {
             $timeout(function () {
                 $scope.footerplace();
@@ -743,47 +589,10 @@ generalControllers.requestCtrl = ['$scope', '$timeout', '$state', '$rootScope', 
         });
     };
     $scope.uiSerfRole = function () {
-        $scope.role.availableRateValuesRole = angular.element(".list_mult_currency").attr("data-currency");
-        console.log("$scope.role.availableRateValuesRole ",$scope.role.availableRateValuesRole )
-        if ($scope.role.nameRole != '' && $scope.role.transactionMinRole != '' && $scope.role.transactionMaxRole != '') {
-            if ($scope.role.transactionMinRole > $scope.role.transactionMaxRole) {
-                $scope.transMaxError == true
-            }
-            else {
-                $scope.transMaxError == false
-                $state.go('form.verification');
-                $.getScript("https://www.google.com/recaptcha/api.js")
-            }
 
-        }
-        else {
-            if ($scope.role.nameRole == '' || $scope.role.nameRole === undefined) {
-                $scope.role_name_show = true
-            }
-            else {
-                $scope.role_name_show = false
-            }
-            if ($scope.role.descriptionRole == '' || $scope.role.descriptionRole === undefined) {
-                $scope.role_description_show = true
-            }
-            else {
-                $scope.role_description_show = false
-            }
-            if ($scope.role.transactionMinRole == '' || $scope.role.transactionMinRole === undefined) {
-                $scope.role_transactionMinRole_show = true
-            }
-            else {
-                $scope.role_transactionMinRole_show = false
-            }
-            if ($scope.role.transactionMaxRole == '' || $scope.role.transactionMaxRole === undefined) {
-                $scope.role_transactionMaxRole_show = true
-            }
-            else {
-                $scope.role_transactionMaxRole_show = false
-            }
-        }
+        $state.go('form.verification');
 
-        $scope.serverSendFields();
+        // $scope.serverSendFields();
         angular.element(document).ready(function () {
             $timeout(function () {
                 $scope.footerplace();
@@ -796,12 +605,14 @@ generalControllers.requestCtrl = ['$scope', '$timeout', '$state', '$rootScope', 
 
     $scope.verificat_fields = function () {
         var regexp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#\$%\^\&*\)\(+=._-]{6,}$/;
+        console.log("ankap")
         if (regexp.test($scope.verification.passwordCashier)) {
             if ($scope.verification.passwordCashier !== undefined && $scope.verification.passwordCashierRepeat !== undefined && $scope.verification.verificationCode !== undefined) {
 
                 if ($scope.verification.passwordCashier === $scope.verification.passwordCashierRepeat) {
                     $scope.password_match = false;
                     $scope.show_form = true;
+                    console.log("mtav show form")
                 }
                 else {
                     $scope.password_match = true
@@ -812,7 +623,7 @@ generalControllers.requestCtrl = ['$scope', '$timeout', '$state', '$rootScope', 
         else {
             $scope.show_form = false;
         }
-        $scope.serverSendFields();
+        // $scope.serverSendFields();
     }
 
     $scope.submit = function (form) {
@@ -831,27 +642,22 @@ generalControllers.requestCtrl = ['$scope', '$timeout', '$state', '$rootScope', 
     // we will store all of our form data in this object
     $scope.companyInfoFormData = {
         company: $scope.company,
-        setup: $scope.setup,
         branch: $scope.branch,
         cashier: $scope.cashier,
-        role: $scope.role,
         verification: $scope.verification
-
     };
 
 
     $scope.serverSendFields = function () {
         angular.forEach($scope.companyInfoFormData, function (val, key) {
             angular.forEach(val, function (value, key) {
+                console.log("val",val,"key",key)
                 $scope.inputs[key] = value
             })
 
         });
+
         console.log("$scope.inputs", $scope.inputs)
-
-
-
-
     };
 
 
@@ -916,7 +722,6 @@ merchantApp.directive('fileModel', ['$parse', '$http','$timeout', function ($par
                 var uploadUrl = "upload-mixed.htm";
                 var formDatas = new FormData();
                 console.log("formDatas", formDatas);
-                console.log("file file", file);
                 console.log("file file.name", file.name);
                 formDatas.append('datas', file, file.name);
                 formDatas.append('resource', attrs.file);
