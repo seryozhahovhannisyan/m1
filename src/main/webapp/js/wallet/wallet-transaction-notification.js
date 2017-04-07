@@ -103,7 +103,7 @@ $scope.title_ = "Merchant";
                 if (response) {
 
                     var result = response.data.dto;
-
+console.log("response wallet tansaction notification",response)
                     if (result.responseStatus == 'SUCCESS') {
 
                         var notification_array_data = result.response.data;

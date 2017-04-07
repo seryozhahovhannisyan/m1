@@ -10,6 +10,7 @@
     <resultMap id="rmBranchSimple" type="Branch">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
+        <result property="logo" column="logo"/>
         <result property="address" column="address"/>
         <result property="city" column="city"/>
         <result property="street" column="street"/>
@@ -30,6 +31,7 @@
     <resultMap id="rmBranchFull" type="Branch">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
+        <result property="logo" column="logo"/>
         <result property="city" column="city"/>
         <result property="address" column="address"/>
         <result property="zip" column="zip"/>
@@ -52,6 +54,7 @@
 
         INSERT INTO c_branch(
             `name`,
+            `logo`,
             `address`,
             `city`,
             `street`,
@@ -66,6 +69,7 @@
             `status`
         ) VALUES (
             #{name},
+            #{logo},
             #{address},
             #{city},
             #{street},
@@ -98,6 +102,15 @@
         SELECT * FROM c_branch
         WHERE id = #{id}
         -- AND status = 1
+
+    </select>
+
+    <select id="getByIdFull"
+            resultMap="rmBranchFull"
+            parameterType="_long">
+
+        SELECT * FROM c_branch
+        WHERE id = #{id}
 
     </select>
 
@@ -220,6 +233,12 @@
         <if test="countryRegion != null">      , `region` = #{countryRegion}              </if>
 
 
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateLogo" parameterType="Branch">
+        UPDATE c_branch
+        SET logo = #{logo}
         WHERE id = #{id}
     </update>
 

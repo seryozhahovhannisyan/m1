@@ -16,7 +16,9 @@ public class CashierCashBoxTaker {
     private Double balanceTaken;
     private CurrencyType currencyType;
 
+    private Long tookBy;
     private Date tookAt;
+    private Long providerId;
 
     /*##################################################################################################################
      *                                  GETTERS & SETTERS
@@ -69,5 +71,21 @@ public class CashierCashBoxTaker {
 
     public void setTookAt(Date tookAt) {
         this.tookAt = tookAt;
+    }
+
+    public Long getTookBy() {
+        return tookBy;
+    }
+
+    public void setTookBy(Long tookBy) {
+        this.tookBy = tookBy;
+    }
+
+    public Long getProviderId() {
+        return providerId;
+    }
+
+    public void setProviderId(Long providerId) {
+        this.providerId = providerId;
     }
 }

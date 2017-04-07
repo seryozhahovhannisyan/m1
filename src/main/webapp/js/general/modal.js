@@ -11,7 +11,7 @@ angular.module('modal').controller('ModalInstanceCtrl', function ($uibModalInsta
 
 
     var $ctrl = this;
-    // $ctrl.items = items;
+    $ctrl.dd = "sdasdsad";
     $rootScope.open_close_popup = false;
     $ctrl.win_height = $window.innerHeight;
     $ctrl.modal_hieght =  $ctrl.win_height - 100;
@@ -27,10 +27,12 @@ angular.module('modal').controller('ModalInstanceCtrl', function ($uibModalInsta
     $ctrl.cancel = function () {
         $uibModalInstance.dismiss('cancel');
         $rootScope.modal_open = false
+
     };
 
     $ctrl.open_popup = function () {
         $rootScope.open_close_popup = true;
+
     };
 
     $ctrl.no_cancel = function () {

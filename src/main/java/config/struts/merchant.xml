@@ -187,9 +187,14 @@
 
         <action name="provide" class="ProviderAction" method="toPage">
             <result name="company" type="tiles">provider-admin-company</result>
-            <result name="branch" type="tiles">provider-admin-branch</result>
+            <result name="branch" type="tiles">provider-admin-branch-cashier</result>
             <result name="cashier" type="tiles">provider-cashier</result>
         </action>
+
+        <action name="provide-cashiers" class="ProviderAction" method="provideCashiers">
+            <result name="success" type="tiles">provider-admin-branch</result>
+        </action>
+
 
 
     </package>

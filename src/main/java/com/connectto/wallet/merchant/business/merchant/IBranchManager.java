@@ -13,6 +13,8 @@ public interface IBranchManager {
 
     public Branch getById(Long id) throws InternalErrorException, EntityNotFoundException;
 
+    public Branch getByIdFull(Long id) throws InternalErrorException, EntityNotFoundException;
+
     public List<Branch> getByParams(Map<String, Object> params) throws InternalErrorException;
 
     public List<Branch> getByParamsFull(Map<String, Object> params) throws InternalErrorException;

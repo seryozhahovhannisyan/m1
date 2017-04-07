@@ -14,8 +14,7 @@ public class SetupInfo implements Serializable {
     public String setup = "dev";
     public String version = "1.0";
     public String staticDir = ".";
-//    public String staticDirProd = "/var/lib/tomcat7/webapps";//".";
-    public String staticDirProd = "/opt/tomcat/webapps";//".";
+    public String staticDirProd = "/opt/tomcat/merchantapps";
 
     public String socialFb = "ConnectTo-Communications-176878392348752";
     public String socialGmail = "u/1/103581122530817965828/posts";

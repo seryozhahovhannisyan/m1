@@ -32,7 +32,7 @@ public class MailSender {
             props.put("mail.smtp.port", "465");//"465";//SMTP server- mail.connecttomail.com 587
             //Properties properties = System.getProperties();
             Session session = Session.getInstance(props,
-                    new javax.mail.Authenticator() {
+                    new Authenticator() {
                         protected PasswordAuthentication getPasswordAuthentication() {
                             return new PasswordAuthentication(fromEmail, password);
                         }

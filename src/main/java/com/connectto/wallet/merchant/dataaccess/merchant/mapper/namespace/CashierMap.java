@@ -21,6 +21,8 @@ public interface CashierMap {
 
     public void update(Cashier data);
 
+    public void updateLogo(Cashier data);
+
     public void activate(Cashier data);
 
     public void delete(Long id);

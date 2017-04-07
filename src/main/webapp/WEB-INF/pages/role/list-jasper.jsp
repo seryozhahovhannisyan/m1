@@ -15,7 +15,7 @@
 <script src="<%=request.getContextPath()%>/libs/js/angular/ng-tags-input.min.js" ></script>
 <script src="<%=request.getContextPath()%>/libs/js/angular/ng-table.min.js" type="text/javascript" ></script>
 <script src="<%=request.getContextPath()%>/libs/js/angular/isteven-multi-select.js" type="text/javascript" ></script>
-<script src="<%=request.getContextPath()%>/js/cashier/main.js" type="text/javascript" ></script>
+<script src="<%=request.getContextPath()%>/js/general/main.js" type="text/javascript" ></script>
 
 <%
     List<Role> roles = (List<Role>)request.getAttribute("roles");

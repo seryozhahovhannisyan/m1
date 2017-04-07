@@ -8,9 +8,11 @@ import java.util.Map;
 
 public interface CashierCashBoxProviderMap {
 
-    public void add(CashierCashBoxProvider data);
+    public void add(List<CashierCashBoxProvider> data);
 
     public CashierCashBoxProvider getById(Long id);
+
+    public CashierCashBoxProvider getCurrentByCashierCashBoxId(Long cashierCashBoxId);
 
     public List<CashierCashBoxProvider> getByParams(Map<String, Object> params);
 

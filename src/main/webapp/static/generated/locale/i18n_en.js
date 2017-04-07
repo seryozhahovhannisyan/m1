@@ -1,11 +1,40 @@
 /* Compiled with love by Gruntfile.js */
 var I18N_LOCALE_MESSAGES_en = {
-   "take.less.money.branch": "Branchn edqan pox 4uni",  // Used in: 
-   "provider.branch.not.provided": "Branchin pox 4en tvel bayc het en vercnum",  // Used in: 
-   "provider.branch.provide.not.taken": "Branchin pox tvel eq bayc der het 4i veradadzrel",  // Used in: 
-   "provider.less.money.company": "Companyn edqan pox 4uni",  // Used in: 
-   "provider.empty.branchIdes": "Please choose any branch",  // Used in: 
    "": null,  // Used in: 
+   "page.branches.role": " Role",  // Used in: 
+   "page.branches.cashier": " Cashier",  // Used in: 
+   "page.branches.branch": "Branch",  // Used in: 
+   "button.submit ": " Submit",  // Used in: 
+   "page.home.company.request.upload.cashier.photo ": "Upload Cashier Photo",  // Used in: 
+   "page.profile.branch.add.new ": " Add new branch",  // Used in: 
+   "page.profile.branch.details.info ": " Branch details",  // Used in: 
+   "take.less.money.cashier": "cashier does not have enough money",  // Used in: 
+   "provider.cashier.not.provided": "Cashier has not been given money, but it is taken back",  // Used in: 
+   "provider.cashier.provide.not.taken": "Cashier was given money, but have not returned it yet",  // Used in: 
+   "provider.less.money.branch": "Branch does not have enough money",  // Used in: 
+   "provider.empty.cashierIdes": "Please choose any cashier",  // Used in: 
+   "error.permission.denied.exception": "You cannot fulfill the action",  // Used in: 
+   "page.profile.placeholder.role.transaction.Max.Role ": " Roll max transaction",  // Used in: 
+   "page.profile.placeholder.role.transaction.Min.Role ": " Roll min transaction",  // Used in: 
+   "page.profile.placeholder.role.description ": " Role description",  // Used in: 
+   "page.profile.placeholder.role.name ": " Role name",  // Used in: 
+   "page.profile.placeholder.exchange.withdraw.Fee.Percent.Merchan.max ": " Merchant exchange withdraw  max fee",  // Used in: 
+   "page.profile.placeholder.exchange.withdraw.Fee.Percent.Merchan.min ": " Merchant exchange withdraw  min fee",  // Used in: 
+   "page.profile.placeholder.exchange.withdraw.Fee.Percent.Merchan.setup ": " Merchant exchange withdraw fee",  // Used in: 
+   "page.profile.placeholder.exchange.deposit.Fee.Percent.Merchan.max ": " Merchant exchange deposit max fee",  // Used in: 
+   "page.profile.placeholder.exchange.deposit.Fee.Percent.Merchan.min ": " Merchant exchange deposit min fee",  // Used in: 
+   "page.profile.placeholder.exchange.deposit.Fee.Percent.Merchan.setup ": " Merchant exchange deposit fee",  // Used in: 
+   "page.profile.placeholder.withdraw.Fee.Percent.Merchan.max ": " Merchant withdraw max fee",  // Used in: 
+   "page.profile.placeholder.withdraw.Fee.Percent.Merchan.min ": " Merchant withdraw min fee",  // Used in: 
+   "page.profile.placeholder.withdraw.Fee.Percent.Merchan.Setup ": " Merchant withdraw fee",  // Used in: 
+   "page.profile.placeholder.deposit.Fee.Percent.Merchan.max ": " Merchant deposit max fee",  // Used in: 
+   "page.profile.placeholder.deposit.Fee.Percent.Merchan.min ": " Merchant deposit min fee",  // Used in: 
+   "page.profile.placeholder.deposit.Fee.Percent.Merchan.Setup ": " Merchant deposit fee",  // Used in: 
+   "take.less.money.branch": "Branch does not have enough money",  // Used in: 
+   "provider.branch.not.provided": "Branch has not been given money, but it is taken back",  // Used in: 
+   "provider.branch.provide.not.taken": "Branch was given money, but have not returned it yet",  // Used in: 
+   "provider.less.money.company": "Company does not have enough money",  // Used in: 
+   "provider.empty.branchIdes": "Please choose any branch",  // Used in: 
    "page.cachier.deposit.transaction ": " Deposit Transaction",  // Used in: 
    "cashier.transaction.surcharge ": " Transaction Surcharge",  // Used in: 
    "cashier.transaction.transaction.timeout ": " Transaction timeout",  // Used in: 
@@ -28,7 +57,7 @@ var I18N_LOCALE_MESSAGES_en = {
    "wallet.back.end.message.empty.incorrect.currencyType": null,  // Used in: 
    "wallet.back.end.message.empty.amount": null,  // Used in: 
    "wallet.back.end.message.unsupported.currency": null,  // Used in: 
-   "wallet.back.end.message.empty.currencyType": null,  // Used in: 
+   "wallet.back.end.message.empty.currencyType": "Empty currency Type",  // Used in: 
    "cashier.transaction.wallet.transaction ": " Wallet Total Price:",  // Used in: 
    "cashier.transaction.cancel.transaction ": " Cancel transaction",  // Used in: 
    "cashier.transaction.approve.transaction ": "Approve transaction",  // Used in: 
@@ -66,7 +95,7 @@ var I18N_LOCALE_MESSAGES_en = {
    "page.main.third.block.heading.text": "Fill the following list and press the button \"Send the request form\". After considering the information you provided, we will inform you about our decision.",  // Used in: 
    "page.main.second.block.text": "You can upload this application on your computers, IPads and cell phones. The application is reachable anywhere and for everyone, thus you may make use of it whenever you want.",  // Used in: 
    "page.main.first.block.text": "The processes of Merchant are closely connected with those of ConnectToWallet. Thus with help of Merchant you may accomplish some actions in ConnectToWallet as well.",  // Used in: 
-   "page.home.placeholder.company.request.form.setup.exchange.receiver.max.fee": "Echange receiver max fee",  // Used in: 
+   "page.home.placeholder.company.request.form.setup.exchange.receiver.max.fee": "Exchange receiver max fee",  // Used in: 
    "page.home.placeholder.company.request.form.setup.exchange.receiver.min.fee": "Exchange receiver min fee",  // Used in: 
    "page.home.placeholder.company.request.form.setup.exchange.receiver.fee.percent": "Exhange receiver fee percent",  // Used in: 
    "page.home.placeholder.company.request.form.setup.exchange.transfer.max.fee": "Exchange transfer max fee",  // Used in: 
@@ -76,8 +105,8 @@ var I18N_LOCALE_MESSAGES_en = {
    "page.home.placeholder.company.request.form.setup.receiver.min.fee": "Receiver min fee",  // Used in: 
    "page.home.placeholder.company.request.form.setup.receiver.fee.percent": "Receiver fee percent",  // Used in: 
    "page.home.placeholder.company.request.form.setup.transfer.max.fee": "Transfer max fee",  // Used in: 
-   "page.home.placeholder.company.request.form.setup.transfer.min.fee": null,  // Used in: 
-   "page.home.placeholder.company.request.form.setup.transfer.fee.percent": null,  // Used in: 
+   "page.home.placeholder.company.request.form.setup.transfer.min.fee": "Transfer min fee",  // Used in: 
+   "page.home.placeholder.company.request.form.setup.transfer.fee.percent": "Transfer fee percent",  // Used in: 
    "page.home.placeholder.company.request.form.Company.Email": "Company Email",  // Used in: 
    "page.home.placeholder.company.request.form.Company.Address": "Company Address",  // Used in: 
    "page.home.placeholder.company.request.form.Company.Name": "Company Name",  // Used in: 
@@ -100,7 +129,7 @@ var I18N_LOCALE_MESSAGES_en = {
    "page.home.placeholder.company.request.form.setup.exchange.withdraw.fee.percent ": " Exchange Withdraw Fee Percent",  // Used in: 
    "page.home.placeholder.company.request.form.setup.exchange.deposit.max.fee ": " Exchange Deposit Max Fee",  // Used in: 
    "page.home.placeholder.company.request.form.setup.exchange.deposit.min.fee ": " Exchange Deposit Min Fee",  // Used in: 
-   "page.home.placeholder.company.request.form.setup.exchange.deposit.fee.percent ": " Exchange Deposit Fee Percent",  // Used in: 
+   "page.home.placeholder.company.request.form.setup.exchange.deposit.fee.percent ": "Exchange Deposit Fee Percent",  // Used in: 
    "page.home.placeholder.company.request.form.setup.withdraw.max.fee ": " Withdraw Max Fee",  // Used in: 
    "page.home.placeholder.company.request.form.setup.withdraw.min.fee ": " Withdraw Min Fee",  // Used in: 
    "page.home.placeholder.company.request.form.setup.withdraw.fee.percent ": " Withdraw Fee percent",  // Used in: 
@@ -333,6 +362,28 @@ var I18N_LOCALE_MESSAGES_en = {
    "errors.required": "The field {0} required",  // Used in: 
    "error.internal": "Internal error occurred. Please try later",  // Used in: 
    "page.activation.expired.url": "The activation time expired",  // Used in: 
+   "page.home.company.request.upload.cashier.photo": "Upload Cashier Photo",  // Used in: 
+   "button.submit": " Submit",  // Used in: 
+   "page.home.company.request.upload.cashier.logo": null,  // Used in: 
+   "page.profile.branch.add.new": " Add new branch",  // Used in: 
+   "page.profile.branch.details.info": " Branch details",  // Used in: 
+   "page.cachier.deposit.transaction": " Deposit Transaction",  // Used in: 
+   "page.profile.placeholder.role.transaction.Max.Role": " Roll max transaction",  // Used in: 
+   "page.profile.placeholder.role.transaction.Min.Role": " Roll min transaction",  // Used in: 
+   "page.profile.placeholder.role.name": " Role name",  // Used in: 
+   "page.profile.placeholder.role.description": " Role description",  // Used in: 
+   "page.profile.placeholder.exchange.withdraw.Fee.Percent.Merchan.max": " Merchant exchange withdraw  max fee",  // Used in: 
+   "page.profile.placeholder.exchange.withdraw.Fee.Percent.Merchan.min": " Merchant exchange withdraw  min fee",  // Used in: 
+   "page.profile.placeholder.exchange.withdraw.Fee.Percent.Merchan.setup": " Merchant exchange withdraw fee",  // Used in: 
+   "page.profile.placeholder.exchange.deposit.Fee.Percent.Merchan.max": " Merchant exchange deposit max fee",  // Used in: 
+   "page.profile.placeholder.exchange.deposit.Fee.Percent.Merchan.min": " Merchant exchange deposit min fee",  // Used in: 
+   "page.profile.placeholder.exchange.deposit.Fee.Percent.Merchan.setup": " Merchant exchange deposit fee",  // Used in: 
+   "page.profile.placeholder.withdraw.Fee.Percent.Merchan.max": " Merchant withdraw max fee",  // Used in: 
+   "page.profile.placeholder.withdraw.Fee.Percent.Merchan.min": " Merchant withdraw min fee",  // Used in: 
+   "page.profile.placeholder.withdraw.Fee.Percent.Merchan.Setup": " Merchant withdraw fee",  // Used in: 
+   "page.profile.placeholder.deposit.Fee.Percent.Merchan.max": " Merchant deposit max fee",  // Used in: 
+   "page.profile.placeholder.deposit.Fee.Percent.Merchan.min": " Merchant deposit min fee",  // Used in: 
+   "page.profile.placeholder.deposit.Fee.Percent.Merchan.Setup": " Merchant deposit fee",  // Used in: 
    "cashier.transaction.surcharge": " Transaction Surcharge",  // Used in: 
    "cashier.transaction.transaction.timeout": " Transaction timeout",  // Used in: 
    "cashier.transaction.wallet.from": " From",  // Used in: 
@@ -371,7 +422,7 @@ var I18N_LOCALE_MESSAGES_en = {
    "page.home.placeholder.company.request.form.setup.exchange.withdraw.fee.percent": " Exchange Withdraw Fee Percent",  // Used in: 
    "page.home.placeholder.company.request.form.setup.exchange.deposit.max.fee": " Exchange Deposit Max Fee",  // Used in: 
    "page.home.placeholder.company.request.form.setup.exchange.deposit.min.fee": " Exchange Deposit Min Fee",  // Used in: 
-   "page.home.placeholder.company.request.form.setup.exchange.deposit.fee.percent": " Exchange Deposit Fee Percent",  // Used in: 
+   "page.home.placeholder.company.request.form.setup.exchange.deposit.fee.percent": "Exchange Deposit Fee Percent",  // Used in: 
    "page.home.placeholder.company.request.form.setup.withdraw.max.fee": " Withdraw Max Fee",  // Used in: 
    "page.home.placeholder.company.request.form.setup.withdraw.min.fee": " Withdraw Min Fee",  // Used in: 
    "page.home.placeholder.company.request.form.setup.withdraw.fee.percent": " Withdraw Fee percent",  // Used in: 

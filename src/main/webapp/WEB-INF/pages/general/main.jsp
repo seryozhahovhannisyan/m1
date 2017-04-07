@@ -27,8 +27,10 @@
     <!-- Custom Theme Style -->
     <link href="<%=request.getContextPath()%>/css/template/custom.css" rel="stylesheet">
     <!-- Custom Style -->
-    <link href="<%=request.getContextPath()%>/css/template/branches.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/css/branch/branches.css" rel="stylesheet">
 
+    <%--google reGaptcha--%>
+    <script src='https://www.google.com/recaptcha/api.js?hl=<s:property value="getToLang().getKey()"/>' async defer></script>
 
     <!-- jQuery -->
     <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/jquery/jquery-2.2.4.js" ></script>
@@ -37,7 +39,7 @@
     <%--angular  js--%>
     <script   type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/angular.js"></script>
     <%--angular animate min js--%>
-    <%--<script src="<%=request.getContextPath()%>/libs/js/angular/angular-animate.js" type="text/javascript" ></script>--%>
+    <script src="<%=request.getContextPath()%>/libs/js/angular/angular-animate.js" type="text/javascript" ></script>
     <%--isteven-multi-select--%>
     <script src="<%=request.getContextPath()%>/libs/js/angular/isteven-multi-select.js" type="text/javascript" ></script>
     <!-- Bootstrap -->
@@ -47,7 +49,7 @@
     <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/uploader/ng-droplet.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/js/general/modal.js"></script>
     
-    <script src="<%=request.getContextPath()%>/js/cashier/main.js" type="text/javascript" ></script>
+    <script src="<%=request.getContextPath()%>/js/general/main.js" type="text/javascript" ></script>
 
 
 
@@ -56,7 +58,7 @@
         .loader{
             width: 150px;
             height: 150px;
-            background-image: url("./img/general/loader.gif");
+            background-image: url("<%=request.getContextPath()%>/img/general/loader.gif");
             background-size: contain;
             background-repeat: no-repeat;
             position: absolute;
@@ -71,19 +73,20 @@
     </style>
 
     <script type="text/javascript">
-        context = '<%=request.getContextPath()%>';
-        localeFilter = {//default-label is deprecated and replaced with this.
-            selectAll       : '<s:text name="label.selectAll">Select All</s:text>',
-            selectNone      : '<s:text name="label.selectNone">Select None</s:text>',
-            reset           : '<s:text name="label.reset">Reset</s:text>',
-            search          : '<s:text name="label.search">Search</s:text>',
-            nothingSelected : '<s:text name="label.nothingSelected">Nothing Selected</s:text>'
-        }
+        contextPath = '<%=request.getContextPath()%>';
+
+        <%--localeFilter = {//default-label is deprecated and replaced with this.--%>
+            <%--selectAll       : '<s:text name="label.selectAll">Select All</s:text>',--%>
+            <%--selectNone      : '<s:text name="label.selectNone">Select None</s:text>',--%>
+            <%--reset           : '<s:text name="label.reset">Reset</s:text>',--%>
+            <%--search          : '<s:text name="label.search">Search</s:text>',--%>
+            <%--nothingSelected : '<s:text name="label.nothingSelected">Nothing Selected</s:text>'--%>
+        <%--}--%>
     </script>
 
 </head>
 
-<body class="nav-md footer_fixed" >
+<body class="nav-md footer_fixed ng-cloak" >
 <div class="container body">
     <div class="main_container" ng-controller ="mainLoginCtrl as ctrl">
 
@@ -112,7 +115,7 @@
 <script  type="text/javascript" src="<%=request.getContextPath()%>/js/template/jquery-mousewell.js"></script>
 
 <!-- Custom Theme Scripts -->
-<script  src="<%=request.getContextPath()%>/js/template/custom.js"  type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/js/template/custom.js" type="text/javascript"></script>
 
 </body>
 </html>

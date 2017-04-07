@@ -12,6 +12,8 @@
 <script src="<%=request.getContextPath()%>/libs/js/angular/ng-table.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/js/general/object-list.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/js/branches/branch.js" type="text/javascript" ></script>
+<script src="<%=request.getContextPath()%>/js/provider/provider.js"></script>
+
 
 
 <script type="text/javascript">
@@ -26,20 +28,23 @@
 
     var columns = [
         {title: 'name', field: 'name', visible: true},
-        {title: 'address', field: 'address', visible: true},
+        {title: 'surname', field: 'surname', visible: true},
         {title: 'email', field: 'email', visible: true},
-        {title: 'city', field: 'city', visible: true},
-        {title: 'street', field: 'street', visible: true},
-        {title: 'zip', field: 'zip', visible: true},
         {title: 'phoneCode', field: 'phoneCode', visible: true},
         {title: 'phone', field: 'phone', visible: true},
-        {title: 'policyPhoneCode', field: 'policyPhoneCode', visible: true},
-        {title: 'policyPhone', field: 'policyPhone', visible: true},
-        {title: 'status', field: 'status', visible: true}
+        /*currentCashBox*/
+        {title: 'balanceProvidedByBranch', field: '-', visible: true},
+        {title: 'balanceCurrent', field: '-', visible: false},
+        {title: '(Info) balanceGatheredTax', field: '-', visible: false},
+        {title: 'currencyType', field: '-', visible: true},
+        {title: 'pendingBalanceDeposit', field: '-', visible: false},
+        {title: 'pendingBalanceWithdraw', field: '-', visible: false},
+        {title: 'pendingTaxAmount', field: '-', visible: false},
+        {title: 'openedAt', field: '-', visible: false},
+        {title: 'closedAt', field: '-', visible: false},
+        {title: 'status', field: '-', visible: false}
     ];
-
 </script>
-
 <div class="right_col" role="main" style="min-height: 2519px;">
 
     <div class="clearfix"></div>
@@ -49,7 +54,18 @@
 
                 <div class="x_title">
                     <h2>
-                        Branch
+                        Provide to branch
+                        <s:if test="#session.info != null">
+                            INFO ::
+                            <s:property value="#session.info"/>
+                            <s:set var="info" value="" scope="session"/>
+                        </s:if>
+                        <s:if test="#session.error != null">
+                            ERROR ::
+                            <s:property value="#session.error"/>
+                            <s:set var="#session.error" value=""/>
+                            <s:set var="error" value="" scope="session"/>
+                        </s:if>
                     </h2>
 
                     <div class="clearfix"></div>
@@ -60,14 +76,14 @@
                     <div id="datatable-responsive_wrapper"
                          class="dataTables_wrapper form-inline dt-bootstrap no-footer">
 
-                        <div class="row">
-                            <div class="add_div_brch_parent">
-                                <div class="add_div_brch"  data-target="#add" data-toggle="modal"></div>
-                                <div><s:text name="page.branches.main.add.record">Add new record</s:text></div>
+                        <div class="row" ng-controller="providerController">
+                            <div class="add_div_brch_parent" ng-click="provideCashierStart($event)">
+                                <div class="add_div_brch" ></div>
+                                <div>Provide</div>
                             </div>
-                            <div class="add_div_brch_parent">
-                                <div class="delete_div_brch" data-target="#add" data-toggle="modal"></div>
-                                <div><s:text name="page.branches.main.delete.marked">Delete marked</s:text></div>
+                            <div class="add_div_brch_parent" ng-click="takeBackCashier($event)">
+                                <div class="delete_div_brch" ></div>
+                                <div>Take Back</div>
                             </div>
                         </div>
                         <div class="row">
@@ -108,14 +124,13 @@
                                                         ng-click="tableParams.sorting(column.field, tableParams.isSortBy(column.field, 'asc') ? 'desc' : 'asc')">
                                                         {{column.title}}
                                                     </th>
-                                                    <th>Editing</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr ng-repeat="item in $data  "
                                                     ng-class="{'tbl_row_even': $even, 'tbl_row_odd': $odd }" >
                                                     <td>
-                                                        <input type="checkbox" name="id" ng-checked="checked_all"/>
+                                                        <input data-id = "{{item.id}}"  type="checkbox" name="cashierId" ng-checked="checked_all"/>
                                                     </td>
                                                     <td>
                                                         <img ng-src="<%=request.getContextPath()%>/img/general/avatars/avatar.png" alt = "avatar"/>
@@ -124,57 +139,49 @@
                                                         {{item.name ? item.name : 'N/A'}}
                                                     </td>
                                                     <td ng-show="columns[1].visible" sortable="columns[1].field">
-                                                        {{item.address ? item.address : 'N/A'}}
-                                                    </td>
-                                                    <td ng-show="columns[6].visible" sortable="columns[6].field">
-                                                        {{item.phoneCode ? item.phoneCode : 'N/A'}}
+                                                        {{item.surname ? item.surname : 'N/A'}}
                                                     </td>
                                                     <td ng-show="columns[2].visible" sortable="columns[2].field">
-                                                        {{item.city ? item.city : 'N/A'}}
+                                                        {{item.email ? item.email : 'N/A'}}
                                                     </td>
                                                     <td ng-show="columns[3].visible" sortable="columns[3].field">
-                                                        {{item.street ? item.street : 'N/A'}}
-                                                    </td>
-                                                    <td ng-show="columns[4].visible" sortable="columns[4].field">
-                                                        {{item.zip ? item.zip : 'N/A'}}
-                                                    </td>
-
-                                                    <td ng-show="columns[6].visible" sortable="columns[6].field">
                                                         {{item.phoneCode ? item.phoneCode : 'N/A'}}
                                                     </td>
-                                                    <td ng-show="columns[7].visible" sortable="columns[7].field">
+                                                    <td ng-show="columns[4].visible" sortable="columns[4].field">
                                                         {{item.phone ? item.phone : 'N/A'}}
                                                     </td>
+
+                                                    <%--CurrentCashBox--%>
+
+                                                    <td ng-show="columns[5].visible" sortable="columns[5].field">
+                                                        {{item.currentCashBox ? item.currentCashBox.balanceProvidedByBranch : 'N/A'}}
+                                                    </td>
+                                                    <td ng-show="columns[6].visible" sortable="columns[6].field">
+                                                        {{item.currentCashBox ? item.currentCashBox.balanceCurrent : 'N/A'}}
+                                                    </td>
+                                                    <td ng-show="columns[7].visible" sortable="columns[7].field">
+                                                        {{item.currentCashBox ? item.currentCashBox.balanceGatheredTax : 'N/A'}}
+                                                    </td>
                                                     <td ng-show="columns[8].visible" sortable="columns[8].field">
-                                                        {{item.policyPhoneCode ? item.policyPhoneCode : 'N/A'}}
+                                                        {{item.currentCashBox ? item.currentCashBox.currencyType : 'N/A'}}
                                                     </td>
                                                     <td ng-show="columns[9].visible" sortable="columns[9].field">
-                                                        {{item.policyPhone ? item.policyPhone : 'N/A'}}
+                                                        {{item.currentCashBox ? item.currentCashBox.pendingBalanceDeposit : 'N/A'}}
                                                     </td>
                                                     <td ng-show="columns[10].visible" sortable="columns[10].field">
-                                                        {{item.status ? item.status : 'N/A'}}
+                                                        {{item.currentCashBox ? item.currentCashBox.pendingBalanceWithdraw : 'N/A'}}
                                                     </td>
-
-                                                    <td class="edit_td" ng-click="dropdown_tds($event)" data-edit_id = {{item.id}}>
-                                                        <span>EDIT <i class="fa fa-sort-desc" aria-hidden="true"></i></span>
-                                                        <ul class="branches_crud_ul">
-                                                            <li data-target="#edit"  data-id = "{{item.id}}" data-toggle="modal" ng-click = "viewDetail($event)">
-                                                                <i  class="fa fa_edit fa-pencil-square-o" aria-hidden="true"></i>
-                                                               <s:text name="page.branches.main.list.table.edit">Edit</s:text>
-                                                            </li>
-                                                            <li data-target="#detail" data-id = "{{item.id}}" data-toggle="modal" ng-click = "viewDetail($event)">
-                                                                <i  class="fa fa_detail fa-info-circle" aria-hidden="true"></i>
-                                                                <s:text name="page.branches.main.list.table.details">Details</s:text>
-                                                            </li>
-                                                            <li data-target="#upload" data-id = "{{item.id}}" data-toggle="modal" ng-click = "viewDetail($event)">
-                                                                <i class="fa fa_upload fa-upload" aria-hidden="true"></i>
-                                                                <s:text name="page.branches.main.list.table.datas">Data</s:text>
-                                                            </li>
-                                                            <li data-target="#delete" data-id = "{{item.id}}" data-toggle="modal" ng-click = "viewDetail($event)">
-                                                                <i class="fa  fa_delete fa-trash-o" aria-hidden="true"></i>
-                                                                <s:text name="page.branches.main.list.table.delete">Delete</s:text>
-                                                            </li>
-                                                        </ul>
+                                                    <td ng-show="columns[11].visible" sortable="columns[11].field">
+                                                        {{item.currentCashBox ? item.currentCashBox.pendingTaxAmount : 'N/A'}}
+                                                    </td>
+                                                    <td ng-show="columns[12].visible" sortable="columns[12].field">
+                                                        {{item.currentCashBox ? item.currentCashBox.openedAt : 'N/A'}}
+                                                    </td>
+                                                    <td ng-show="columns[13].visible" sortable="columns[13].field">
+                                                        {{item.currentCashBox ? item.currentCashBox.closedAt : 'N/A'}}
+                                                    </td>
+                                                    <td ng-show="columns[14].visible" sortable="columns[14].field">
+                                                        {{item.currentCashBox ? item.currentCashBox.status : 'N/A'}}
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -182,13 +189,12 @@
                                     </div>
 
                                     <input type="hidden" ng-model="itemsCount" ng-init='itemsCount=${dataCount}'/>
-                                    <input type="hidden" ng-model="actionPath" ng-init="actionPath='branch-list.htm'"/>
-                                    <input type="hidden" ng-model="actionPathLoad" ng-init="actionPathLoad='branch-view.htm'"/>
+                                    <input type="hidden" ng-model="actionPath" ng-init="actionPath='provide-cashier-list.htm'"/>
 
                                     </s:if>
-                                    <s:else>
-                                        <s:text name="page.branches.info.list.data.found">Data not found</s:text>
-                                    </s:else>
+                                <s:else>
+                                    <s:text name="page.branches.info.list.data.found">Data not found</s:text>
+                                </s:else>
                                 </div>
                             </div>
 

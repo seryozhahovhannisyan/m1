@@ -7,16 +7,15 @@ import com.connectto.wallet.merchant.common.data.merchant.Cashier;
 import com.connectto.wallet.merchant.common.data.merchant.lcp.CurrencyType;
 import com.connectto.wallet.merchant.common.data.merchant.lcp.LogAction;
 import com.connectto.wallet.merchant.common.data.merchant.lcp.LogLevel;
+import com.connectto.wallet.merchant.common.data.merchant.lcp.Privilege;
 import com.connectto.wallet.merchant.common.exception.DataParseException;
 import com.connectto.wallet.merchant.common.exception.InternalErrorException;
 import com.connectto.wallet.merchant.common.exception.PermissionDeniedException;
 import com.connectto.wallet.merchant.common.util.DataConverter;
 import com.connectto.wallet.merchant.common.util.Utils;
 import com.connectto.wallet.merchant.web.action.BaseAction;
-import com.connectto.wallet.merchant.web.action.cashier.BranchAction;
 import com.connectto.wallet.merchant.web.action.dto.ResponseDto;
 import com.connectto.wallet.merchant.web.action.dto.ResponseStatus;
-import org.apache.log4j.Logger;
 
 import java.util.HashSet;
 import java.util.List;
@@ -28,7 +27,6 @@ import java.util.Set;
  */
 public class ProviderBranchAction extends BaseAction {
 
-    private static final Logger logger = Logger.getLogger(ProviderBranchAction.class.getSimpleName());
     private IBranchManager branchManager;
     private IBranchCashBoxProviderManager cashBoxProviderManager;
 
@@ -47,9 +45,17 @@ public class ProviderBranchAction extends BaseAction {
 
 
     public String list() {
+
         System.out.println(requestJson);
         Cashier cashier = (Cashier) session.get(SESSION_CASHIER);
+        Privilege privilege = cashier.getPrivilege();
         Long companyId = cashier.getCompanyId();
+
+        if (privilege.getId() != Privilege.ALL.getId() &&  privilege.getId() != Privilege.CRUD_COMPANY.getId()) {
+            dto.setResponseStatus(ResponseStatus.PERMISSION_DENIED);
+            return SUCCESS;
+        }
+
 
         try {
 
@@ -67,10 +73,10 @@ public class ProviderBranchAction extends BaseAction {
             dto.addResponse("dataCount", dataCount);
             dto.setResponseStatus(ResponseStatus.SUCCESS);
         } catch (InternalErrorException e) {
-            writeLog(BranchAction.class.getSimpleName(), e, LogLevel.ERROR, LogAction.READ, null);
+            writeLog(ProviderBranchAction.class.getSimpleName(), e, LogLevel.ERROR, LogAction.READ, null);
             dto.setResponseStatus(ResponseStatus.INTERNAL_ERROR);
         } catch (DataParseException e) {
-            writeLog(BranchAction.class.getSimpleName(), e, LogLevel.ERROR, LogAction.READ, null);
+            writeLog(ProviderBranchAction.class.getSimpleName(), e, LogLevel.ERROR, LogAction.READ, null);
             dto.setResponseStatus(ResponseStatus.INVALID_PARAMETER);
         }
         return SUCCESS;
@@ -79,6 +85,13 @@ public class ProviderBranchAction extends BaseAction {
     public String provide() {
 
         Cashier cashier = (Cashier) session.get(SESSION_CASHIER);
+        Privilege privilege = cashier.getPrivilege();
+
+        if (privilege.getId() != Privilege.ALL.getId() &&  privilege.getId() != Privilege.CRUD_COMPANY.getId()) {
+            dto.setResponseStatus(ResponseStatus.PERMISSION_DENIED);
+            return SUCCESS;
+        }
+
         Long cashierId = cashier.getId();
         Long companyId = cashier.getCompanyId();
 

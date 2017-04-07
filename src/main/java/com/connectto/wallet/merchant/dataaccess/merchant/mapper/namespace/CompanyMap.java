@@ -25,6 +25,8 @@ public interface CompanyMap {
 
     public void update(Company data);
 
+    public void updateLogo(Company data);
+
     public void activate(Company data);
 
     public void delete(Company data);

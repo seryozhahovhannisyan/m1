@@ -72,12 +72,12 @@ public class CashierActionTest {
     public static void main(String[] args) throws IOException {
         fileData = initFileData();
         List<FileData> fileDatas = new ArrayList<FileData>();
-        fileDatas.add(fileData);
+        fileDatas.add(initFileData());
         mixed.put("cashier", fileDatas);
 
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
         cashierManager = (ICashierManager) context.getBean("CashierManagerImpl");
-        for (long i = 1; i < 5; i++) {
+        for (long i = 1; i < 500; i++) {
             String result = add(i, i);
             System.out.print("cashier : " + i + " " +result);
         }

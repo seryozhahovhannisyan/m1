@@ -127,6 +127,20 @@
             <result name="error" type="redirect">provide.htm</result>
         </action>
 
+        <action name="provide-cashier-list" class="ProviderCashierAction" method="list">
+            <result name="success" type="json"/>
+        </action>
+
+        <action name="provide-cashier" class="ProviderCashierAction" method="provide">
+            <result name="success" type="redirect">provide.htm</result>
+            <result name="error" type="redirect">provide.htm</result>
+        </action>
+
+        <action name="take-back-cashier" class="TakerCashierAction" method="takeBack">
+            <result name="success" type="redirect">provide.htm</result>
+            <result name="error" type="redirect">provide.htm</result>
+        </action>
+
 
 
     </package>

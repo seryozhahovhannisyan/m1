@@ -28,7 +28,6 @@
 
 
 
-
 </script>
 
 <!-- top navigation -->
@@ -50,8 +49,8 @@
                 <li class="">
                     <a href="cashier-home.htm" class="user-profile dropdown-toggle" data-toggle="dropdown"
                        aria-expanded="false">
-                        <s:if test="%{isUserThumbFileExist(#session.session_user.id, #session.session_user.photoData.fileName)}">
-                            <img class="user-prof-pic" src="<s:property value='%{getUserThumbImg(#session.session_user.id, #session.session_user.photoData.fileName)}'/>" />
+                        <s:if test="%{isLogoExist(#session.cashier.logo)}">
+                            <img class="user-prof-pic" src="<s:property value='%{getLogo(#session.cashier.logo)}'/>" />
                         </s:if>
                         <s:else>
                             <img class="user-prof-pic" src="<%=request.getContextPath()%>/img/general/avatars/avatar.png" alt=""/>
@@ -68,17 +67,17 @@
                     </ul>
                 </li>
 
-                <li role="presentation" onclick="transaction()">
-                    <a href="javascript:;"   data-toggle="dropdown" aria-expanded="false">
-                        <img  width="70px" height="29px" src="<%=request.getContextPath()%>/img/icon/transaction.png"  />
-                    </a>
-                </li>
-
-
-
+                <s:if test="%{#session.cashier.privilege.id == @com.connectto.wallet.merchant.common.data.merchant.lcp.Privilege@CRUD_CASHIER.getId() ||
+                              #session.cashier.privilege.id == @com.connectto.wallet.merchant.common.data.merchant.lcp.Privilege@CASHIER.getId()}">
+                    <li role="presentation" onclick="transaction()">
+                        <a href="javascript:;"   data-toggle="dropdown" aria-expanded="false">
+                            <img  width="70px" height="29px" src="<%=request.getContextPath()%>/img/icon/transaction.png"  />
+                        </a>
+                    </li>
+                </s:if>
 
                 <li role="presentation" class="dropdown">
-                    <a href="javascript:;" ng-click = "transaction_notification('',true)" class="dropdown-toggle info-number" data-toggle="dropdown"
+                    <a href="javascript:" ng-click = "transaction_notification('',true)" class="dropdown-toggle info-number" data-toggle="dropdown"
                        aria-expanded="false">
                         <i class="fa fa fa-refresh"></i>
                         <span ng-show = "notification_count > 0" class="badge bg-green">{{notification_count_refresh}}</span>
@@ -99,7 +98,9 @@
                     <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                         <li class="notification_list_li" ng-repeat = "item in notific_array" ng-show ="not_list_{{$index}}">
                             <div class="notification_list_div" ng-click = "open_notified_transaction($event, item.withdrawId, $index)" >
-                            <span  ng-if = "item.img" class="image"> <img src="<%=request.getContextPath()%>/img/general/avatars/avatar.png" alt="Profile Image"></span>
+                            <span  ng-if = "item.img" class="image">
+                                <img src="<%=request.getContextPath()%>/img/general/avatars/avatar.png" alt="Profile Image">
+                            </span>
                             <span ng-if = "!item.img" class="image"> <img ng-src="{{IMAGE_BASE_URL}}{{item.img}}" alt="Profile Image"></span>
                             <span>{{item.name}} </span>
                             <span>{{item.surname}} </span>

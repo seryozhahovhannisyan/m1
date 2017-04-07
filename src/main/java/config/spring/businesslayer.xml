@@ -33,6 +33,21 @@
         <property name="fileDataDao" ref="FileDataDao"/>
     </bean>
 
+    <bean id="CashierCashBoxProviderManagerImpl" class="com.connectto.wallet.merchant.business.merchant.impl.CashierCashBoxProviderManagerImpl">
+        <property name="dao" ref="CashierCashBoxProviderDao"/>
+        <property name="branchCashBoxDao" ref="BranchCashBoxDao"/>
+        <property name="cashierCashBoxDao" ref="CashierCashBoxDao"/>
+        <property name="cashierDao" ref="CashierDao"/>
+    </bean>
+
+    <bean id="CashierCashBoxTakerManagerImpl" class="com.connectto.wallet.merchant.business.merchant.impl.CashierCashBoxTakerManagerImpl">
+        <property name="dao" ref="CashierCashBoxTakerDao"/>
+        <property name="branchCashBoxDao" ref="BranchCashBoxDao"/>
+        <property name="cashierCashBoxDao" ref="CashierCashBoxDao"/>
+        <property name="cashierDao" ref="CashierDao"/>
+        <property name="cashierCashBoxProviderDao" ref="CashierCashBoxProviderDao"/>
+    </bean>
+
     <bean id="CompanyFormRequestManagerImpl" class="com.connectto.wallet.merchant.business.merchant.impl.CompanyFormRequestManagerImpl">
         <property name="dao" ref="CompanyFormRequestDao"/>
         <property name="companyDao" ref="CompanyDao"/>

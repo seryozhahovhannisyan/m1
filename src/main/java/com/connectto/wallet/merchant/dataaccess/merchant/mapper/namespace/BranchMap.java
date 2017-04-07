@@ -4,14 +4,17 @@ import com.connectto.wallet.merchant.common.data.merchant.Branch;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public interface BranchMap {
 
     public void add(Branch data);
 
-    public Branch getByCompanyId(Long companyId);
+    public Set<Branch> getByCompanyId(Long companyId);
 
     public Branch getById(Long id);
+
+    public Branch getByIdFull(Long id);
 
     public List<Branch> getByParams(Map<String, Object> params);
 
@@ -20,6 +23,8 @@ public interface BranchMap {
     public int getCountByParams(Map<String, Object> params);
 
     public void update(Branch data);
+
+    public void updateLogo(Branch data);
 
     public void activate(Branch data);
 

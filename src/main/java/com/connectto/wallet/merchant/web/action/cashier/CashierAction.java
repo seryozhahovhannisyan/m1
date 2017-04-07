@@ -144,7 +144,8 @@ public class CashierAction extends BaseAction {
         params.put("companyId", companyId);
         try {
             branches =  branchManager.getByParams(params);
-            roles = roleManager.getByParams(params);
+//            List<Role> roles = roleManager.getByParams(params);
+//            dto.addResponse("roles", roles);
             dataCount = cashierManager.getCountByParams(params);
         } catch (InternalErrorException e) {
             writeLog(CashierAction.class.getSimpleName(), e, LogLevel.ERROR, LogAction.READ, null);
@@ -189,6 +190,8 @@ public class CashierAction extends BaseAction {
             dto.addResponse("data", cashiers);
             dto.addResponse("dataCount", dataCount);
             dto.setResponseStatus(ResponseStatus.SUCCESS);
+            List<Role> roles = roleManager.getByParams(params);
+            dto.addResponse("roles", roles);
         } catch (InternalErrorException e) {
             writeLog(CashierAction.class.getSimpleName(), e, LogLevel.ERROR, LogAction.READ, null);
             dto.setResponseStatus(ResponseStatus.INTERNAL_ERROR);

@@ -11,6 +11,7 @@
 <script type="text/javascript">
     var availableRate = '<s:property value="availableRateValuesCompany"/>';
     availableRate = availableRate.split(",")
+
 </script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/general/activate-request-form.js"></script>
 
@@ -42,6 +43,7 @@
 
                 <h1><s:text name="page.home.placeholder.company.request.form.company.info"> Company info </s:text></h1>
             </div>
+
             <div class="contact_info"><h2><s:text
                     name="page.home.placeholder.company.info.according.request">Yours contact info according your request</s:text></h2>
             </div>
@@ -49,7 +51,7 @@
                 <span class="info_span"><h3>
                     <s:text name="page.profile.placeholder.Company.Name">Compnay Name</s:text>
                     </h3></span>
-                <em><span class="info_span_name info_din_span"> <s:property value="nameCompany"/> </span></em>
+                <em><span class="info_span_name info_din_span">  <s:property value="nameCompany"/> </span></em>
             </div>
 
             <div class="company_info_name_div">
@@ -131,8 +133,7 @@
             </div>
             <div>
                 <input type="text" class="company_zipcode_input" name="zipCompany" ng-model="company.zipCompany"
-                       placeholder="Zip Code"
-                       placeholder="<s:text name="page.home.placeholder.company.request.form.zsip.code">Zip Code</s:text>"
+                       placeholder="<s:text name="page.home.placeholder.company.request.form.zip.code">Zip Code</s:text>"
                        required="required" only-digits/>
 
                 <span class="input_error" ng-cloak
@@ -221,7 +222,11 @@
 
             <div>
                 <a ui-sref="form.companyInfo" class="btn btn-block btn-info">
-                    Back <span class="glyphicon glyphicon-circle-arrow-left"></span>
+
+                    <s:text name="page.home.placeholder.company.request.form.back">Back</s:text>
+                    &nbsp
+                    <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+
                 </a>
 
                 <a ng-click="uiSerfCompanyUplod()" class="btn btn-block btn-info  ">
@@ -263,6 +268,12 @@
 
         </div>
 
+        <a ui-sref="form.company" class="btn btn-block btn-info">
+            <s:text name="page.home.placeholder.company.request.form.back">Back</s:text>
+            &nbsp
+            <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        </a>
+
         <a ui-sref="form.setup" class="btn btn-block btn-info  ">
             <s:text name="page.home.placeholder.company.request.form.next">Next</s:text>
             &nbsp
@@ -278,226 +289,99 @@
                 <h1><s:text
                         name="page.home.placeholder.company.request.form.setup.details">Company cashbox details </s:text></h1>
             </div>
-            <%--<div style="height: 40px">
-                <div class="ist_mult_parent">
-                    <div class="ist_mult list_mult_currency" data-currency={{setupCurrencyType}}
-                         on-item-click="curType()"
-                         isteven-multi-select
-                         input-model="currencyType"
-                         output-model="$parent.currencyTypeOut"
-                         button-label="code"
-                         item-label=" name"
-                         tick-property="ticked"
-                         selection-mode="single"
-                         helper-elements="filter"
-                         translation="currency_type"
-                    >
-                    </div>
 
-                    &lt;%&ndash;<input type="hidden" name="currencyTypeMerchantSetup" ng-value="setupCurrencyType"/>&ndash;%&gt;
-
-                </div>
-            </div>--%>
-            <%--<span class="input_error"--%>
-            <%--ng-show="setup_currencyType">--%>
-            <%--<s:text name="page.main.third.block.message.required">Required!</s:text>--%>
-            <%--</span>--%>
-
-            <div>
-                <input type="text" class="company_name_input" name="depositFeePercentMerchantSetup"
-                       ng-blur="percent(setup.depositFeePercentMerchantSetup,'setup_depFeePercent_size')"
-                       ng-model="setup.depositFeePercentMerchantSetup"
-                       value='<s:property value="depositFeePercentMerchantSetup"/>'
-                       placeholder="<s:text name="page.home.placeholder.company.request.form.setup.deposit.fee.percent">Deposit Fee Percent</s:text>"
-                       required="required" only-digits/>
-
-                <span class="input_error"
-                      ng-show="setup_depFeePercent">
-                            <s:text name="page.main.third.block.message.required">Required!</s:text>
-                        </span>
-                <span class="input_error"
-                      ng-show="setup_depFeePercent_size">
-                            <s:text name="page.activation.company.percent.size">The percent must be between 0-100</s:text>
-                        </span>
+            <div class="setup_info_div">
+                <span class="info_span_setup"><h3>
+                    <s:text name="page.profile.placeholder.deposit.Fee.Percent.Merchan.Setup"> Merchant deposit fee</s:text>
+                    </h3></span>
+                <em> <span class="info_span_name info_din_span"> <s:property value="depositFeePercentMerchantSetup"/> </span></em>
             </div>
 
-            <div>
-                <input type="text" class="company_addres_input" name="depositMinFeeMerchantSetup"
-                       ng-model="setup.depositMinFeeMerchantSetup"
-                       value='<s:property value="depositMinFeeMerchantSetup"/>'
-                       placeholder="<s:text name="page.home.placeholder.company.request.form.setup.deposit.min.fee">Deposit Min Fee</s:text>"
-                       required="required" only-digits/>
-                <span class="input_error"
-                      ng-show="setup_depMinFee">
-                             <s:text name="page.main.third.block.message.required">Required!</s:text>
-                        </span>
-            </div>
-            <div>
-                <input type="text" class="company_city_input" name="depositMaxFeeMerchantSetup"
-                       ng-model="setup.depositMaxFeeMerchantSetup"
-                       value='<s:property value="depositMaxFeeMerchantSetup"/>'
-                       placeholder="<s:text name="page.home.placeholder.company.request.form.setup.deposit.max.fee">Deposit Max Fee</s:text>"
-                       required="required" only-digits/>
-
-                <span ng-class="{'input_error_green' : !setup.depositMaxFeeMerchantSetup , 'input_error_red' : setup.depositMinFeeMerchantSetup > setup.depositMaxFeeMerchantSetup}"
-                      ng-show="setup.depositMinFeeMerchantSetup > setup.depositMaxFeeMerchantSetup || depMaxError">
-                            <s:text name="page.home.min.fee.max.fee.error">Deposit min fee must be less than deposit max fee</s:text>
-                        </span>
-
-                <span class="input_error"
-                      ng-show=" setup_depMaxFee">
-                            <s:text name="page.main.third.block.message.required">Required!</s:text>
-                        </span>
-            </div>
-            <div>
-                <input type="text" class="company_street_input" name="withdrawFeePercentMerchantSetup"
-                       ng-blur="percent(setup.withdrawFeePercentMerchantSetup,'setup_withFeePercent_size')"
-                       ng-model="setup.withdrawFeePercentMerchantSetup"
-                       placeholder="<s:text name="page.home.placeholder.company.request.form.setup.withdraw.fee.percent">Withdraw Fee percent</s:text>"
-                       required="required" only-digits/>
-                <span class="input_error"
-                      ng-show="setup_withFeePercent">
-                            <s:text name="page.main.third.block.message.required">Required!</s:text>
-                        </span>
-                <span class="input_error"
-                      ng-show="setup_withFeePercent_size">
-                            <s:text name="page.activation.company.percent.size">The percent must be between 0-100</s:text>
-                        </span>
-            </div>
-            <div>
-                <input type="text" class="company_zipcode_input" name="withdrawMinFeeMerchantSetup"
-                       ng-model="setup.withdrawMinFeeMerchantSetup"
-                       placeholder="<s:text name="page.home.placeholder.company.request.form.setup.withdraw.min.fee"> Withdraw Min Fee</s:text>"
-                       required="required" only-digits/>
-
-                <span class="input_error" ng-cloak
-                      ng-show="setup_withMinFee">
-                            <s:text name="page.main.third.block.message.required">Required!</s:text>
-                        </span>
-
-            </div>
-            <div>
-                <input type="text" class="company_email_input" name="withdrawMaxFeeMerchantSetup"
-                       ng-model="setup.withdrawMaxFeeMerchantSetup"
-                       placeholder="<s:text name="page.home.placeholder.company.request.form.setup.withdraw.max.fee">Withdraw Max Fee</s:text>"
-                       required="required" only-digits/>
-
-                <span class="input_error" ng-cloak
-                      ng-show="setup_withMaxFee">
-                    <s:text name="page.main.third.block.message.required">Required!</s:text>
-                    </span>
-
-                <span ng-class="{'input_error_green' : !setup.withdrawMaxFeeMerchantSetup , 'input_error_red' : setup.withdrawMinFeeMerchantSetup > setup.withdrawMaxFeeMerchantSetup}"
-                      ng-show="setup.withdrawMinFeeMerchantSetup > setup.withdrawMaxFeeMerchantSetup || withMaxError">
-                            <s:text name="page.home.min.fee.max.fee.error">Deposit min fee must be less than deposit max fee</s:text>
-                        </span>
-
+            <div class="setup_info_div">
+                <span class="info_span_setup"><h3>
+                    <s:text name="page.profile.placeholder.deposit.Fee.Percent.Merchan.min">Merchant deposit min fee</s:text>
+                    </h3></span>
+                <em><span class="info_span_name info_din_span"> <s:property value="depositMinFeeMerchantSetup"/> </span></em>
             </div>
 
-            <div>
-                <input type="text" class="company_country_input" name="exchangeDepositFeePercentMerchantSetup"
-                       ng-blur="percent(setup.withdrawFeePercentMerchantSetup,'setup_exchDepFeePercent_size')"
-                       ng-model="setup.exchangeDepositFeePercentMerchantSetup"
-                       placeholder="<s:text name="page.home.placeholder.company.request.form.setup.exchange.deposit.fee.percent">Exchange Deposit Fee Percent</s:text>"
-                       required="required" only-digits/>
-                <span class="input_error" ng-cloak
-                      ng-show="setup_exchDepFeePercent">
-                            <s:text name="page.main.third.block.message.required">Required!</s:text>
-                        </span>
-                <span class="input_error"
-                      ng-show="setup_exchDepFeePercent_size">
-                            <s:text name="page.activation.company.percent.size">The percent must be between 0-100</s:text>
-                        </span>
+            <div class="setup_info_div">
+                <span class="info_span_setup"><h3>
+                    <s:text name="page.profile.placeholder.deposit.Fee.Percent.Merchan.max">Merchant deposit max fee</s:text>
+                    </h3></span>
+                <em><span class="info_span_name info_din_span"> <s:property value="depositMaxFeeMerchantSetup"/> </span></em>
             </div>
 
-            <div>
-                <input type="text" class="company_state_input" name="exchangeDepositMinFeeMerchantSetup"
-                       ng-model="setup.exchangeDepositMinFeeMerchantSetup"
-                       placeholder="<s:text name="page.home.placeholder.company.request.form.setup.exchange.deposit.min.fee">Exchange Deposit Min Fee</s:text>"
-                       required="required" only-digits/>
-                <span class="input_error" ng-cloak
-                      ng-show="setup_exchDepMinFee">
-                            <s:text name="page.main.third.block.message.required">Required!</s:text>
-                        </span>
+            <div class="setup_info_div">
+                <span class="info_span_setup"><h3>
+                    <s:text name="page.profile.placeholder.deposit.Fee.Percent.Merchan.max">Merchant deposit max fee</s:text>
+                    </h3></span>
+                <em><span class="info_span_name info_din_span"> <s:property value="depositMaxFeeMerchantSetup"/> </span></em>
             </div>
-            <div>
-                <input type="text" class="company_state_input" name="exchangeDepositMaxFeeMerchantSetup"
-                       ng-model="setup.exchangeDepositMaxFeeMerchantSetup"
-                       placeholder="<s:text name="page.home.placeholder.company.request.form.setup.exchange.deposit.max.fee">Exchange Deposit Max Fee</s:text>"
-                       required="required" only-digits/>
 
-                <span class="input_error" ng-cloak
-                      ng-show="setup_exchDepMaxFee">
-                            <s:text name="page.main.third.block.message.required">Required!</s:text>
-                        </span>
-
-                <span ng-class="{'input_error_green' : !setup.exchangeDepositMaxFeeMerchantSetup , 'input_error_red' : setup.exchangeDepositMinFeeMerchantSetup > setup.exchangeDepositMaxFeeMerchantSetup}"
-                      ng-show="setup.exchangeDepositMinFeeMerchantSetup > setup.exchangeDepositMaxFeeMerchantSetup || exchDepMaxError">
-                            <s:text name="page.home.min.fee.max.fee.error">Deposit min fee must be less than deposit max fee</s:text>
-                        </span>
+            <div class="setup_info_div" >
+                <span class="info_span_setup"><h3>
+                    <s:text name="page.profile.placeholder.withdraw.Fee.Percent.Merchan.Setup">Merchant withdraw fee</s:text>
+                    </h3></span>
+                <em><span class="info_span_name info_din_span"> <s:property value="withdrawFeePercentMerchantSetup"/> </span></em>
             </div>
-            <div>
-                <input type="text" class="company_state_input" name="exchangeWithdrawFeePercentMerchantSetup"
-                       ng-blur="percent(setup.withdrawFeePercentMerchantSetup,'setup_exchWithFeePercent_size')"
-                       ng-model="setup.exchangeWithdrawFeePercentMerchantSetup"
-                       placeholder="<s:text name="page.home.placeholder.company.request.form.setup.exchange.withdraw.fee.percent"> Exchange Withdraw Fee Percent</s:text>"
-                       required="required" only-digits/>
-                <span class="input_error" ng-cloak
-                      ng-show="setup_exchWithFeePercent">
-                            <s:text name="page.main.third.block.message.required">Required!</s:text>
-                        </span>
-                <span class="input_error"
-                      ng-show="setup_exchWithFeePercent_size">
-                            <s:text name="page.activation.company.percent.size">The percent must be between 0-100</s:text>
-                        </span>
+
+            <div class="setup_info_div">
+                <span class="info_span_setup"><h3>
+                    <s:text name="page.profile.placeholder.withdraw.Fee.Percent.Merchan.min">Merchant withdraw min fee</s:text>
+                    </h3></span>
+                <em><span class="info_span_name info_din_span"> <s:property value="withdrawMinFeeMerchantSetup"/> </span></em>
             </div>
-            <div>
-                <input type="text" class="company_state_input" name="exchangeWithdrawMinFeeMerchantSetup"
-                       ng-model="setup.exchangeWithdrawMinFeeMerchantSetup"
-                       placeholder="<s:text name="page.home.placeholder.company.request.form.setup.exchange.withdraw.min.fee">Exchange Withdraw Min Fee</s:text>"
-                       required="required" only-digits/>
 
-                <span class="input_error" ng-cloak
-                      ng-show="setup_exchWithMinFee">
-                            <s:text name="page.main.third.block.message.required">Required!</s:text>
-                        </span>
+            <div class="setup_info_div">
+                <span class="info_span_setup"><h3>
+                    <s:text name="page.profile.placeholder.withdraw.Fee.Percent.Merchan.max">Merchant withdraw max fee</s:text>
+                    </h3></span>
+                <em><span class="info_span_name info_din_span"> <s:property value="withdrawMaxFeeMerchantSetup"/> </span></em>
             </div>
-            <div>
-                <input type="text" class="company_state_input" name="exchangeWithdrawMaxFeeMerchantSetup"
-                       ng-model="setup.exchangeWithdrawMaxFeeMerchantSetup"
-                       placeholder="<s:text name="page.home.placeholder.company.request.form.setup.exchange.withdraw.max.fee">Exchange Withdraw Max Fee</s:text>"
-                       required="required" only-digits/>
 
-                <span class="input_error" ng-cloak
-                      ng-show="setup_exchWithMaxFee">
-                            <s:text name="page.main.third.block.message.required">Required!</s:text>
-                        </span>
-
-                <span ng-class="{'input_error_green' : !setup.exchangeWithdrawMaxFeeMerchantSetup , 'input_error_red' : setup.exchangeWithdrawMinFeeMerchantSetup > setup.exchangeWithdrawMaxFeeMerchantSetup}"
-                      ng-show="setup.exchangeWithdrawMinFeeMerchantSetup > setup.exchangeWithdrawMaxFeeMerchantSetup || exchWithMaxError">
-                            <s:text name="page.home.min.fee.max.fee.error">Deposit min fee must be less than deposit max fee</s:text>
-                        </span>
+            <div class="setup_info_div">
+                <span class="info_span_setup"><h3>
+                    <s:text name="page.profile.placeholder.exchange.deposit.Fee.Percent.Merchan.setup">Merchant exchange deposit fee</s:text>
+                    </h3></span>
+                <em><span class="info_span_name info_din_span"> <s:property value="exchangeDepositFeePercentMerchantSetup"/> </span></em>
             </div>
-            <%--<div style="height: 40px">
-                <div class="ist_mult_parent">
-                    <div class="ist_mult ist_mult_avile_curency" data-availCurrency={{availCurrencyType}}
-                         on-item-click="availCurType()"
-                         isteven-multi-select
-                         input-model="availableCurrencyType"
-                         output-model="$parent.availableCurrencyTypeOut"
-                         button-label="code"
-                         item-label="name"
-                         tick-property="ticked"
-                         selection-mode="multiple"
-                         helper-elements="filter"
-                         translation="avail_currency_type"
-                    >
-                    </div>
 
-                    &lt;%&ndash;<input type="hidden" name="availableRateValuesMerchantSetup" ng-value="availCurrencyType "/>&ndash;%&gt;
+            <div class="setup_info_div">
+                <span class="info_span_setup"><h3>
+                    <s:text name="page.profile.placeholder.exchange.deposit.Fee.Percent.Merchan.min">Merchant exchange deposit min fee </s:text>
+                    </h3></span>
+                <em><span class="info_span_name info_din_span"> <s:property value="exchangeDepositMinFeeMerchantSetup"/> </span></em>
+            </div>
 
-                </div>
-            </div>--%>
+            <div class="setup_info_div">
+                <span class="info_span_setup"><h3>
+                    <s:text name="page.profile.placeholder.exchange.deposit.Fee.Percent.Merchan.max">Merchant exchange deposit max fee </s:text>
+                    </h3></span>
+                <em><span class="info_span_name info_din_span"> <s:property value="exchangeDepositMaxFeeMerchantSetup"/> </span></em>
+            </div>
+
+            <div class="setup_info_div">
+                <span class="info_span_setup"><h3>
+                    <s:text name="page.profile.placeholder.exchange.withdraw.Fee.Percent.Merchan.setup">Merchant exchange withdraw   fee  </s:text>
+                    </h3></span>
+                <em><span class="info_span_name info_din_span"> <s:property value="exchangeWithdrawFeePercentMerchantSetup"/> </span></em>
+            </div>
+
+            <div class="setup_info_div">
+                <span class="info_span_setup"><h3>
+                    <s:text name="page.profile.placeholder.exchange.withdraw.Fee.Percent.Merchan.min">Merchant exchange withdraw  min fee  </s:text>
+                    </h3></span>
+                <em><span class="info_span_name info_din_span"> <s:property value="exchangeWithdrawMinFeeMerchantSetup"/> </span></em>
+            </div>
+
+            <div class="setup_info_div">
+                <span class="info_span_setup"><h3>
+                    <s:text name="page.profile.placeholder.exchange.withdraw.Fee.Percent.Merchan.max">Merchant exchange withdraw  max fee  </s:text>
+                    </h3></span>
+                <em><span class="info_span_name info_din_span"> <s:property value="exchangeWithdrawMaxFeeMerchantSetup"/> </span></em>
+            </div>
+
+
             <span class="input_error" ng-cloak
                   ng-show="setup_availCurType">
                             <s:text name="page.main.third.block.message.required">Required!</s:text>
@@ -505,7 +389,9 @@
 
             <div>
                 <a ui-sref="form.companyUpload" class="btn btn-block btn-info">
-                    Back <span class="glyphicon glyphicon-circle-arrow-left"></span>
+                    <s:text name="page.home.placeholder.company.request.form.back">Back</s:text>
+                    &nbsp
+                    <i class="fa fa-hand-o-left" aria-hidden="true"></i>
                 </a>
 
                 <a ng-click="uiSerfSetup()" class="btn btn-block btn-info  ">
@@ -674,7 +560,9 @@
 
             <div>
                 <a ui-sref="form.setup" class="btn btn-block btn-info">
-                    Back <span class="glyphicon glyphicon-circle-arrow-left"></span>
+                    <s:text name="page.home.placeholder.company.request.form.back">Back</s:text>
+                    &nbsp
+                    <i class="fa fa-hand-o-left" aria-hidden="true"></i>
                 </a>
 
                 <a ng-click="uiSerfBranch()" class="btn btn-block btn-info  ">
@@ -719,7 +607,9 @@
         </div>
 
         <a ui-sref="form.branch" class="btn btn-block btn-info">
-            Back <span class="glyphicon glyphicon-circle-arrow-left"></span>
+            <s:text name="page.home.placeholder.company.request.form.back">Back</s:text>
+            &nbsp
+            <i class="fa fa-hand-o-left" aria-hidden="true"></i>
         </a>
         <a ui-sref="form.cashier" class="btn btn-block btn-info  ">
             <s:text name="page.home.placeholder.company.request.form.next">Next</s:text>
@@ -799,11 +689,15 @@
 
             <div>
                 <a ui-sref="form.branchUpload" class="btn btn-block btn-info">
-                    Back <span class="glyphicon glyphicon-circle-arrow-left"></span>
+                    <s:text name="page.home.placeholder.company.request.form.back">Back</s:text>
+                    &nbsp
+                    <i class="fa fa-hand-o-left" aria-hidden="true"></i>
                 </a>
 
                 <a ng-click="uiSerfCashier()" class="btn btn-block btn-info">
-                    Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+                    <s:text name="page.home.placeholder.company.request.form.next">Next</s:text>
+                    &nbsp
+                    <i class="fa fa-hand-o-right" aria-hidden="true"></i>>
                 </a>
 
             </div>
@@ -812,9 +706,9 @@
     </script>
 
     <script type="text/ng-template" id="cashierUpload">
-        <div>
+        <div>dsf
             <div class="company_upload_parent">
-                <h1><s:text name="page.home.company.request.upload.branch.logo">Upload Branch Logo</s:text></h1>
+                <h1><s:text name="page.home.company.request.upload.cashier.logo">Upload Cashier Logo</s:text></h1>
                 <div class="company_upload_inpar">
 
                     <label for="cashier_logo" class="first_label" style="background-image: url({{up_img}})">
@@ -840,7 +734,9 @@
         </div>
 
         <a ui-sref="form.cashier" class="btn btn-block btn-info">
-            Back <span class="glyphicon glyphicon-circle-arrow-left"></span>
+            <s:text name="page.home.placeholder.company.request.form.back">Back</s:text>
+            &nbsp
+            <i class="fa fa-hand-o-left" aria-hidden="true"></i>
         </a>
         <a ui-sref="form.role" class="btn btn-block btn-info  ">
             <s:text name="page.home.placeholder.company.request.form.next">Next</s:text>
@@ -859,58 +755,41 @@
                         name="page.home.placeholder.company.request.form.role.details"> Role details </s:text></h1>
             </div>
 
-            <div>
-                <input type="text" class="company_name_input" name="nameRole" ng-model="role.nameRole"
-                       placeholder="<s:text name="page.home.placeholder.company.request.form.Name">Name</s:text>"
-                       required="required"/>
 
-                <span class="input_error" ng-cloak
-                      ng-show="role_name_show">
-                    <s:text name="page.main.third.block.message.required">Required!</s:text>
-                    </span>
-            </div>
-            <div>
-
-                <textarea class="role_textarea" name="descriptionRole" ng-model=role.descriptionRole
-                          placeholder="<s:text name="page.home.placeholder.company.request.form.role.description">Role description</s:text>"
-                >
-
-                </textarea>
-
+            <div class="setup_info_div">
+                <span class="info_span_setup"><h3>
+                    <s:text name="page.profile.placeholder.role.name"> Roll name </s:text>
+                    </h3></span>
+                <em> <span class="info_span_name info_din_span"> <s:property value="nameRole"/> </span></em>
             </div>
 
-            <div>
-                <input type="text" class="company_addres_input" name="transactionMinRole"
-                       ng-model="role.transactionMinRole"
-                       placeholder="<s:text name="page.home.placeholder.company.request.form.role.transaction.min">Role Min Transaction</s:text>"
-                       required="required" only-digits/>
-
-                <span class="input_error" ng-cloak
-                      ng-show="role_transactionMinRole_show">
-                    <s:text name="page.main.third.block.message.required">Required!</s:text>
-                    </span>
+            <div class="setup_info_div">
+                <span class="info_span_setup"><h3>
+                    <s:text name="page.profile.placeholder.role.description"> Roll description </s:text>
+                    </h3></span>
+                <em> <span class="info_span_name info_din_span"> <s:property value="descriptionRole"/> </span></em>
             </div>
 
-            <div>
-                <input type="text" class="company_addres_input" name="transactionMaxRole"
-                       ng-model="role.transactionMaxRole"
-                       placeholder="<s:text name="page.home.placeholder.company.request.form.role.transaction.max">Role Max Transaction</s:text>"
-                       required="required" only-digits/>
-
-                <span class="input_error" ng-cloak
-                      ng-show="role_transactionMaxRole_show">
-                    <s:text name="page.main.third.block.message.required">Required!</s:text>
-                    </span>
-
-                <span ng-class="{'input_error_green' : !role.transactionMaxRole , 'input_error_red' : role.transactionMinRole > role.transactionMaxRole}"
-                      ng-show="role.transactionMinRole > role.transactionMaxRole || transMaxError">
-                            <s:text name="page.home.min.fee.max.fee.error">Deposit min fee must be less than deposit max fee</s:text>
-                        </span>
+            <div class="setup_info_div">
+                <span class="info_span_setup"><h3>
+                    <s:text name="page.profile.placeholder.role.transaction.Min.Role"> Roll min transaction </s:text>
+                    </h3></span>
+                <em> <span class="info_span_name info_din_span"> <s:property value="transactionMinRole"/> </span></em>
             </div>
+
+            <div class="setup_info_div">
+                <span class="info_span_setup"><h3>
+                    <s:text name="page.profile.placeholder.role.transaction.Max.Role"> Roll max transaction </s:text>
+                    </h3></span>
+                <em> <span class="info_span_name info_din_span"> <s:property value="transactionMaxRole"/> </span></em>
+            </div>
+
+
 
             <div style="height: 40px">
                 <div class="ist_mult_parent">
-                    <div class="ist_mult list_mult_currency" data-currency={{roleCurrencyTyRate}}
+                    <div class="ist_mult list_mult_currency"
+                         <%--data-currency={{roleCurrencyTyRate}}--%>
                          on-item-click="curType()"
                          isteven-multi-select
                          input-model="roleCurrencyTyRateValues"
@@ -924,7 +803,7 @@
                     >
                     </div>
 
-                    <input type="hidden" name="availableRateValuesRole" ng-value="roleCurrencyTyRate"/>
+                    <%--<input type="hidden" name="availableRateValuesRole" ng-value="roleCurrencyTyRate"/>--%>
 
                 </div>
             </div>
@@ -936,12 +815,16 @@
 
             <div>
                 <a ui-sref="form.cashierUpload" class="btn btn-block btn-info">
-                    Back <span class="glyphicon glyphicon-circle-arrow-left"></span>
+                    <s:text name="page.home.placeholder.company.request.form.back">Back</s:text>
+                    &nbsp
+                    <i class="fa fa-hand-o-left" aria-hidden="true"></i>
                 </a>
 
 
                 <a ng-click="uiSerfRole()" class="btn btn-block btn-info">
-                    Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+                    <s:text name="page.home.placeholder.company.request.form.next">Next</s:text>
+                    &nbsp
+                    <i class="fa fa-hand-o-right" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -951,12 +834,11 @@
 
         <div class="form_div_conteiner">
             <div class="company_details">
-                <h1><s:text
-                        name="label.verification.text">Verification</s:text></h1>
+                <h1><s:text name="label.verification.text">Verification</s:text></h1>
             </div>
             <ng-form class="ngform" name="verificationForm">
                 <div class="ng_div">
-                    <input type="text" class="company_name_input" ng-cut="$event.preventDefault()"
+                    <input type="password" class="company_name_input" ng-cut="$event.preventDefault()"
                            ng-copy="$event.preventDefault()" ng-paste="$event.preventDefault()"
                            ng-keyup="verificat_fields()" name="passwordCashier" ng-model="verification.passwordCashier"
                            ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#\$%\^\&*\)\(+=._-]{6,}$/"
@@ -969,9 +851,9 @@
                     </span>
                 </div>
                 <div class="ng_div">
-                    <input type="text" class="company_addres_input" ng-cut="$event.preventDefault()"
+                    <input type="password" class="company_addres_input" ng-cut="$event.preventDefault()"
                            ng-copy="$event.preventDefault()" ng-paste="$event.preventDefault()"
-                           ng-keyup="verificat_fields()" name="passwordCashierRepeat"
+                           ng-keyup="verificat_fields()"name="passwordCashierRepeat"
                            ng-model="verification.passwordCashierRepeat"
                            placeholder="<s:text name="label.password.pereat">Repeat password</s:text>"
                            required="required"/>
@@ -989,7 +871,8 @@
                 </div>
 
                 <div class="ng_div">
-                    <input type="text" class="company_addres_input" ng-keyup="verificat_fields()"
+                    <input type="text" class="company_addres_input" ng-cut="$event.preventDefault()"
+                           ng-copy="$event.preventDefault()" ng-paste="$event.preventDefault()" ng-keyup="verificat_fields()"  ng-blur ="serverSendFields()"
                            name="verificationCode" ng-model="verification.verificationCode"
                            placeholder="<s:text name="label.verification.code">Verification code</s:text>"
                            required="required"/>
@@ -1008,7 +891,9 @@
             </ng-form>
             <div>
                 <a ui-sref="form.role" class="btn btn-block btn-info">
-                    Back <span class="glyphicon glyphicon-circle-arrow-left"></span>
+                    <s:text name="page.home.placeholder.company.request.form.back">Back</s:text>
+                    &nbsp
+                    <i class="fa fa-hand-o-left" aria-hidden="true"></i>
                 </a>
                 <div ng-show="show_form" class="main_form">
                     <form action="activate-company.htm" method="post">
@@ -1018,7 +903,7 @@
                                name={{key}} ng-model=value
                         />
 
-                        <button class="btn btn-block  btn-info">
+                        <button type="submit" class="btn btn-block  btn-info">
                             submit
                         </button>
                     </form>

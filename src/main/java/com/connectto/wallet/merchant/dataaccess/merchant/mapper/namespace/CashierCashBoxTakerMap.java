@@ -5,12 +5,15 @@ import com.connectto.wallet.merchant.common.data.transaction.cashbox.CashierCash
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public interface CashierCashBoxTakerMap {
 
-    public void add(CashierCashBoxTaker data);
+    public void add(List<CashierCashBoxTaker> data);
 
     public CashierCashBoxTaker getById(Long id);
+
+    public Set<CashierCashBoxTaker> getByProviderId(Long id);
 
     public List<CashierCashBoxTaker> getByParams(Map<String, Object> params);
 

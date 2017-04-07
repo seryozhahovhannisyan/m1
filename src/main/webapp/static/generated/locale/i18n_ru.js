@@ -1,11 +1,40 @@
 /* Compiled with love by Gruntfile.js */
 var I18N_LOCALE_MESSAGES_ru = {
-   "take.less.money.branch": null,  // Used in: 
-   "provider.branch.not.provided": null,  // Used in: 
-   "provider.branch.provide.not.taken": null,  // Used in: 
-   "provider.less.money.company": null,  // Used in: 
-   "provider.empty.branchIdes": null,  // Used in: 
    "": null,  // Used in: 
+   "page.branches.role": "Role",  // Used in: 
+   "page.branches.cashier": "\u041A\u0430\u0441\u0441\u0438\u0440",  // Used in: 
+   "page.branches.branch": "\u0424\u0438\u043B\u0438\u0430\u043B",  // Used in: 
+   "button.submit ": null,  // Used in: 
+   "page.home.company.request.upload.cashier.photo ": null,  // Used in: 
+   "page.profile.branch.add.new ": null,  // Used in: 
+   "page.profile.branch.details.info ": null,  // Used in: 
+   "take.less.money.cashier": "\u043A\u0430\u0441\u0441\u0438\u0440 \u043D\u0435 \u0438\u043C\u0435\u0435\u0442 \u0434\u043E\u0441\u0442\u0430\u0442\u043E\u0447\u043D\u043E \u0434\u0435\u043D\u0435\u0433",  // Used in: 
+   "provider.cashier.not.provided": "\u041A\u0430\u0441\u0441\u0438\u0440\u0430 \u043D\u0435 \u0434\u0430\u0432\u0430\u043B\u0438 \u0434\u0435\u043D\u0435\u0433, \u043D\u043E \u0438\u0445 \u0432\u0437\u044F\u0442 \u043E\u0431\u0440\u0430\u0442\u043D\u043E",  // Used in: 
+   "provider.cashier.provide.not.taken": "\u041A\u0430\u0441\u0441\u0438\u0440 \u043F\u043E\u043B\u0443\u0447\u0438\u043B \u0434\u0435\u043D\u044C\u0433\u0438, \u043D\u043E \u043D\u0435 \u0432\u0435\u0440\u043D\u0443\u043B \u0438\u0445",  // Used in: 
+   "provider.less.money.branch": "\u0424\u0438\u043B\u0438\u0430\u043B \u043D\u0435 \u0438\u043C\u0435\u0435\u0442 \u0434\u043E\u0441\u0442\u0430\u0442\u043E\u0447\u043D\u043E \u0434\u0435\u043D\u0435\u0433.",  // Used in: 
+   "provider.empty.cashierIdes": "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u0432\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043B\u044E\u0431\u043E\u0433\u043E \u043A\u0430\u0441\u0441\u0438\u0440\u0430",  // Used in: 
+   "error.permission.denied.exception": "\u0412\u044B \u043D\u0435 \u043C\u043E\u0436\u0435\u0442\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0438\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435",  // Used in: 
+   "page.profile.placeholder.role.transaction.Max.Role ": null,  // Used in: 
+   "page.profile.placeholder.role.transaction.Min.Role ": null,  // Used in: 
+   "page.profile.placeholder.role.description ": null,  // Used in: 
+   "page.profile.placeholder.role.name ": null,  // Used in: 
+   "page.profile.placeholder.exchange.withdraw.Fee.Percent.Merchan.max ": null,  // Used in: 
+   "page.profile.placeholder.exchange.withdraw.Fee.Percent.Merchan.min ": null,  // Used in: 
+   "page.profile.placeholder.exchange.withdraw.Fee.Percent.Merchan.setup ": null,  // Used in: 
+   "page.profile.placeholder.exchange.deposit.Fee.Percent.Merchan.max ": null,  // Used in: 
+   "page.profile.placeholder.exchange.deposit.Fee.Percent.Merchan.min ": null,  // Used in: 
+   "page.profile.placeholder.exchange.deposit.Fee.Percent.Merchan.setup ": null,  // Used in: 
+   "page.profile.placeholder.withdraw.Fee.Percent.Merchan.max ": null,  // Used in: 
+   "page.profile.placeholder.withdraw.Fee.Percent.Merchan.min ": null,  // Used in: 
+   "page.profile.placeholder.withdraw.Fee.Percent.Merchan.Setup ": null,  // Used in: 
+   "page.profile.placeholder.deposit.Fee.Percent.Merchan.max ": null,  // Used in: 
+   "page.profile.placeholder.deposit.Fee.Percent.Merchan.min ": null,  // Used in: 
+   "page.profile.placeholder.deposit.Fee.Percent.Merchan.Setup ": null,  // Used in: 
+   "take.less.money.branch": "\u0424\u0438\u043B\u0438\u0430\u043B \u043D\u0435 \u0438\u043C\u0435\u0435\u0442 \u0434\u043E\u0441\u0442\u0430\u0442\u043E\u0447\u043D\u043E \u0434\u0435\u043D\u0435\u0433",  // Used in: 
+   "provider.branch.not.provided": "\u0424\u0438\u043B\u0438\u0430\u043B\u0430 \u043D\u0435 \u0434\u0430\u0432\u0430\u043B\u0438 \u0434\u0435\u043D\u0435\u0433, \u043D\u043E \u0438\u0445 \u0432\u0437\u044F\u0442 \u043E\u0431\u0440\u0430\u0442\u043D\u043E",  // Used in: 
+   "provider.branch.provide.not.taken": "\u0424\u0438\u043B\u0438\u0430\u043B \u043F\u043E\u043B\u0443\u0447\u0438\u043B \u0434\u0435\u043D\u044C\u0433\u0438, \u043D\u043E \u043D\u0435 \u0432\u0435\u0440\u043D\u0443\u043B \u0438\u0445",  // Used in: 
+   "provider.less.money.company": "\u041A\u043E\u043C\u043F\u0430\u043D\u0438\u044F \u043D\u0435 \u0438\u043C\u0435\u0435\u0442 \u0434\u043E\u0441\u0442\u0430\u0442\u043E\u0447\u043D\u043E \u0434\u0435\u043D\u0435\u0433",  // Used in: 
+   "provider.empty.branchIdes": "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u0432\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043B\u044E\u0431\u043E\u0439 \u0444\u0438\u043B\u0438\u0430\u043B",  // Used in: 
    "page.cachier.deposit.transaction ": null,  // Used in: 
    "cashier.transaction.surcharge ": null,  // Used in: 
    "cashier.transaction.transaction.timeout ": null,  // Used in: 
@@ -333,6 +362,28 @@ var I18N_LOCALE_MESSAGES_ru = {
    "errors.required": "\u0422\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044F",  // Used in: 
    "error.internal": "\u041F\u0440\u043E\u0438\u0437\u043E\u0448\u043B\u0430 \u0432\u043D\u0443\u0442\u0440\u0435\u043D\u043D\u044F\u044F \u043E\u0448\u0438\u0431\u043A\u0430. \u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u043F\u043E\u043F\u0440\u043E\u0431\u0443\u0439\u0442\u0435 \u043F\u043E\u0437\u0436\u0435",  // Used in: 
    "page.activation.expired.url": "\u0421\u0440\u043E\u043A \u0430\u043A\u0442\u0438\u0432\u0430\u0446\u0438\u0438 \u0438\u0441\u0442\u0435\u043A",  // Used in: 
+   "page.home.company.request.upload.cashier.photo": "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u0424\u043E\u0442\u043E \u041A\u0430\u0441\u0441\u0438\u0440\u0430",  // Used in: 
+   "button.submit": "\u041F\u043E\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044C",  // Used in: 
+   "page.home.company.request.upload.cashier.logo": "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u041B\u043E\u0433\u043E\u0442\u0438\u043F \u041A\u0430\u0441\u0441\u0438\u0440\u0430",  // Used in: 
+   "page.profile.branch.add.new": "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u043D\u043E\u0432\u044B\u0439 \u0444\u0438\u043B\u0438\u0430\u043B",  // Used in: 
+   "page.profile.branch.details.info": "\u041F\u043E\u0434\u0440\u043E\u0431\u043D\u043E\u0441\u0442\u0438 \u043E \u0444\u0438\u043B\u0438\u0430\u043B\u0435",  // Used in: 
+   "page.cachier.deposit.transaction": "\u0422\u0440\u0430\u043D\u0437\u0430\u043A\u0446\u0438\u0438 \u0434\u0435\u043F\u043E\u0437\u0438\u0442\u0430",  // Used in: 
+   "page.profile.placeholder.role.transaction.Max.Role": "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0435 \u0442\u0440\u0430\u043D\u0437\u0430\u043A\u0446\u0438\u0438 Role-\u0438",  // Used in: 
+   "page.profile.placeholder.role.transaction.Min.Role": "\u041C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0435 \u0442\u0440\u0430\u043D\u0437\u0430\u043A\u0446\u0438\u0438 Role-\u0438",  // Used in: 
+   "page.profile.placeholder.role.name": "\u0418\u043C\u044F role-\u0438",  // Used in: 
+   "page.profile.placeholder.role.description": "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435 role-\u0438",  // Used in: 
+   "page.profile.placeholder.exchange.withdraw.Fee.Percent.Merchan.max": "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F \u043F\u043B\u0430\u0442\u0430 \u0421\u043D\u044F\u0442\u0438\u044F \u041E\u0431\u043C\u0435\u043Da Merchant\u0430",  // Used in: 
+   "page.profile.placeholder.exchange.withdraw.Fee.Percent.Merchan.min": "\u041C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F \u043F\u043B\u0430\u0442\u0430 \u0421\u043D\u044F\u0442\u0438\u044F \u041E\u0431\u043C\u0435\u043Da Merchant\u0430",  // Used in: 
+   "page.profile.placeholder.exchange.withdraw.Fee.Percent.Merchan.setup": "\u041F\u043B\u0430\u0442\u0430 \u0421\u043D\u044F\u0442\u0438\u044F \u041E\u0431\u043C\u0435\u043Da Merchant\u0430",  // Used in: 
+   "page.profile.placeholder.exchange.deposit.Fee.Percent.Merchan.max": "\u041F\u043B\u0430\u0442\u0430 \u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0433\u043E \u0414\u0435\u043F\u043E\u0437\u0438\u0442\u0430 \u041E\u0431\u043C\u0435\u043D\u0430 Merchant\u0430",  // Used in: 
+   "page.profile.placeholder.exchange.deposit.Fee.Percent.Merchan.min": "\u041F\u043B\u0430\u0442\u0430 \u041C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0433\u043E \u0414\u0435\u043F\u043E\u0437\u0438\u0442\u0430 \u041E\u0431\u043C\u0435\u043D\u0430 Merchant\u0430",  // Used in: 
+   "page.profile.placeholder.exchange.deposit.Fee.Percent.Merchan.setup": "O\u043F\u043B\u0430\u0442\u0430 \u0414\u0435\u043F\u043E\u0437\u0438\u0442\u0430 \u041E\u0431\u043C\u0435\u043D\u0430 Merchant\u0430",  // Used in: 
+   "page.profile.placeholder.withdraw.Fee.Percent.Merchan.max": "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F \u043F\u043B\u0430\u0442\u0430 \u0432\u044B\u0432\u043E\u0434\u0430 Merchant\u0430",  // Used in: 
+   "page.profile.placeholder.withdraw.Fee.Percent.Merchan.min": "\u041C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F \u043F\u043B\u0430\u0442\u0430 \u0432\u044B\u0432\u043E\u0434\u0430 Merchant\u0430",  // Used in: 
+   "page.profile.placeholder.withdraw.Fee.Percent.Merchan.Setup": "\u041F\u043B\u0430\u0442\u0430 \u0432\u044B\u0432\u043E\u0434\u0430 Merchant\u0430",  // Used in: 
+   "page.profile.placeholder.deposit.Fee.Percent.Merchan.max": "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F \u041F\u043B\u0430\u0442\u0430 \u0414\u0435\u043F\u043E\u0437\u0438\u0442\u0430 Merchant\u0430",  // Used in: 
+   "page.profile.placeholder.deposit.Fee.Percent.Merchan.min": "\u041C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F \u041F\u043B\u0430\u0442\u0430 \u0414\u0435\u043F\u043E\u0437\u0438\u0442\u0430 Merchant\u0430",  // Used in: 
+   "page.profile.placeholder.deposit.Fee.Percent.Merchan.Setup": "\u041F\u043B\u0430\u0442\u0430 \u0414\u0435\u043F\u043E\u0437\u0438\u0442\u0430 Merchant\u0430",  // Used in: 
    "cashier.transaction.surcharge": "\u0421\u0434\u0435\u043B\u043Aa \u0417\u0430 \u0414\u043E\u043F\u043B\u0430\u0442\u0443",  // Used in: 
    "cashier.transaction.transaction.timeout": "\u0412\u0440\u0435\u043C\u044F \u0441\u0434\u0435\u043B\u043A\u0438 \u0432\u044B\u0448\u043B\u043E",  // Used in: 
    "cashier.transaction.wallet.from": "\u041E\u0442",  // Used in: 
@@ -366,22 +417,22 @@ var I18N_LOCALE_MESSAGES_ru = {
    "page.home.company.request.upload.branch.logo": "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u0435 \u043B\u043E\u0433\u043E\u0442\u0438\u043F \u0444\u0438\u043B\u0438\u0430\u043B\u0430",  // Used in: 
    "page.home.min.fee.max.fee.error": "\u041C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439 \u0432\u0437\u043D\u043E\u0441 \u043D\u0430 \u0434\u0435\u043F\u043E\u0437\u0438\u0442 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435, \u0447\u0435\u043C \u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439 \u0432\u0437\u043D\u043E\u0441",  // Used in: 
    "page.home.placeholder.company.request.form.setup.transfer.currency.default.type": "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0422\u0438\u043F \u0412\u0430\u043B\u044E\u0442\u044B",  // Used in: 
-   "page.home.placeholder.company.request.form.setup.exchange.withdraw.max.fee": "\u041E\u0431\u043C\u0435\u043D\u0438\u0432\u0430\u0442\u044C \u0421\u043D\u044F\u0442\u0438\u0435 \u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0433\u043E \u0432\u0437\u043D\u043E\u0441\u0430",  // Used in: 
-   "page.home.placeholder.company.request.form.setup.exchange.withdraw.min.fee": "\u041E\u0431\u043C\u0435\u043D\u0438\u0432\u0430\u0442\u044C \u0421\u043D\u044F\u0442\u0438\u0435 \u043C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0433\u043E \u0432\u0437\u043D\u043E\u0441\u0430",  // Used in: 
-   "page.home.placeholder.company.request.form.setup.exchange.withdraw.fee.percent": "\u041E\u0431\u043C\u0435\u043D\u0438\u0432\u0430\u0442\u044C \u0421\u043D\u044F\u0442\u0438\u0435 \u041F\u0440\u043E\u0446\u0435\u043D\u0442\u043D\u043E\u0433\u043E \u0421\u0431\u043E\u0440\u0430",  // Used in: 
-   "page.home.placeholder.company.request.form.setup.exchange.deposit.max.fee": "\u041E\u0431\u043C\u0435\u043D\u0438\u0432\u0430\u0442\u044C \u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0443\u044E \u041F\u043B\u0430\u0442\u0443 \u0414\u0435\u043F\u043E\u0437\u0438\u0442\u0430",  // Used in: 
-   "page.home.placeholder.company.request.form.setup.exchange.deposit.min.fee": "\u041E\u0431\u043C\u0435\u043D\u0438\u0432\u0430\u0442\u044C \u041C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u0443\u044E \u041F\u043B\u0430\u0442\u0443 \u0414\u0435\u043F\u043E\u0437\u0438\u0442\u0430",  // Used in: 
-   "page.home.placeholder.company.request.form.setup.exchange.deposit.fee.percent": "\u041E\u0431\u043C\u0435\u043D\u0438\u0432\u0430\u0442\u044C \u041F\u0440\u043E\u0446\u0435\u043D\u0442\u043D\u044B\u0439 \u0421\u0431\u043E\u0440 \u0414\u0435\u043F\u043E\u0437\u0438\u0442\u0430",  // Used in: 
-   "page.home.placeholder.company.request.form.setup.withdraw.max.fee": "\u0421\u043D\u044F\u0442\u044C \u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0443\u044E \u041F\u043B\u0430\u0442\u0443",  // Used in: 
-   "page.home.placeholder.company.request.form.setup.withdraw.min.fee": "\u0421\u043D\u044F\u0442\u044C \u041C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u0443\u044E \u041F\u043B\u0430\u0442\u0443",  // Used in: 
-   "page.home.placeholder.company.request.form.setup.withdraw.fee.percent": "\u0421\u043D\u044F\u0442\u044C \u043F\u0440\u043E\u0446\u0435\u043D\u0442\u043D\u044B\u0439 \u0441\u0431\u043E\u0440",  // Used in: 
+   "page.home.placeholder.company.request.form.setup.exchange.withdraw.max.fee": "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F \u043F\u043B\u0430\u0442\u0430 \u0421\u043D\u044F\u0442\u0438\u044F \u041E\u0431\u043C\u0435\u043Da",  // Used in: 
+   "page.home.placeholder.company.request.form.setup.exchange.withdraw.min.fee": "\u041C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F \u043F\u043B\u0430\u0442\u0430 \u0421\u043D\u044F\u0442\u0438\u044F \u041E\u0431\u043C\u0435\u043Da",  // Used in: 
+   "page.home.placeholder.company.request.form.setup.exchange.withdraw.fee.percent": "\u041F\u0440\u043E\u0446\u0435\u043D\u0442 \u041F\u043B\u0430\u0442\u044B \u0421\u043D\u044F\u0442\u0438\u044F \u041E\u0431\u043C\u0435\u043Da ",  // Used in: 
+   "page.home.placeholder.company.request.form.setup.exchange.deposit.max.fee": "\u041F\u043B\u0430\u0442\u0430 \u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0433\u043E \u0414\u0435\u043F\u043E\u0437\u0438\u0442\u0430 \u041E\u0431\u043C\u0435\u043D\u0430",  // Used in: 
+   "page.home.placeholder.company.request.form.setup.exchange.deposit.min.fee": "\u041F\u043B\u0430\u0442\u0430 \u041C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u043E\u0433\u043E \u0414\u0435\u043F\u043E\u0437\u0438\u0442\u0430 \u041E\u0431\u043C\u0435\u043D\u0430 ",  // Used in: 
+   "page.home.placeholder.company.request.form.setup.exchange.deposit.fee.percent": "\u041F\u0440\u043E\u0446\u0435\u043D\u0442 O\u043F\u043B\u0430\u0442\u044B \u0414\u0435\u043F\u043E\u0437\u0438\u0442\u0430 \u041E\u0431\u043C\u0435\u043D\u0430 ",  // Used in: 
+   "page.home.placeholder.company.request.form.setup.withdraw.max.fee": "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F \u043F\u043B\u0430\u0442\u0430 \u0432\u044B\u0432\u043E\u0434\u0430",  // Used in: 
+   "page.home.placeholder.company.request.form.setup.withdraw.min.fee": "\u041C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F \u043F\u043B\u0430\u0442\u0430 \u0432\u044B\u0432\u043E\u0434\u0430",  // Used in: 
+   "page.home.placeholder.company.request.form.setup.withdraw.fee.percent": "\u041F\u0440\u043E\u0446\u0435\u043D\u0442 \u043F\u043B\u0430\u0442\u044B \u0432\u044B\u0432\u043E\u0434\u0430",  // Used in: 
    "page.home.placeholder.company.request.form.setup.deposit.max.fee": "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F \u041F\u043B\u0430\u0442\u0430 \u0414\u0435\u043F\u043E\u0437\u0438\u0442\u0430",  // Used in: 
    "page.home.placeholder.company.request.form.setup.deposit.min.fee": "\u041C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F \u041F\u043B\u0430\u0442\u0430 \u0414\u0435\u043F\u043E\u0437\u0438\u0442\u0430",  // Used in: 
    "page.home.placeholder.company.request.form.setup.deposit.fee.percent": "\u041F\u0440\u043E\u0446\u0435\u043D\u0442\u043D\u044B\u0439 \u0421\u0431\u043E\u0440 \u0414\u0435\u043F\u043E\u0437\u0438\u0442\u0430",  // Used in: 
-   "page.home.placeholder.company.request.form.role.transaction.max": "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0435 \u0442\u0440\u0430\u043D\u0437\u0430\u043A\u0446\u0438\u0438 \u0440\u043E\u043B\u0438",  // Used in: 
-   "page.home.placeholder.company.request.form.role.transaction.min": "\u041C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0435 \u0442\u0440\u0430\u043D\u0437\u0430\u043A\u0446\u0438\u0438 \u0440\u043E\u043B\u0438",  // Used in: 
-   "page.home.placeholder.company.request.form.role.description": "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435 \u0440\u043E\u043B\u0438",  // Used in: 
-   "page.home.placeholder.company.request.form.role.details": "\u0414\u0435\u0442\u0430\u043B\u0438 \u0440\u043E\u043B\u0438",  // Used in: 
+   "page.home.placeholder.company.request.form.role.transaction.max": "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0435 \u0442\u0440\u0430\u043D\u0437\u0430\u043A\u0446\u0438\u0438 Role-\u0438",  // Used in: 
+   "page.home.placeholder.company.request.form.role.transaction.min": "\u041C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0435 \u0442\u0440\u0430\u043D\u0437\u0430\u043A\u0446\u0438\u0438 Role-\u0438",  // Used in: 
+   "page.home.placeholder.company.request.form.role.description": "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435 Role-\u0438",  // Used in: 
+   "page.home.placeholder.company.request.form.role.details": "\u0414\u0435\u0442\u0430\u043B\u0438 Role-\u0438",  // Used in: 
    "page.home.surname": "\u0424\u0430\u043C\u0438\u043B\u0438\u044F",  // Used in: 
    "label.password.pereat": "\u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C",  // Used in: 
    "label.verification.code": "\u041A\u043E\u0434 \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0438",  // Used in: 

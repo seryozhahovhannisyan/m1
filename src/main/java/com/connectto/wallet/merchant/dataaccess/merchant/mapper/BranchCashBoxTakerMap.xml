@@ -68,7 +68,6 @@
 
         SELECT * FROM cb_branch_taker
         WHERE provider_id = #{id}
-        -- AND status = 1
 
     </select>
 

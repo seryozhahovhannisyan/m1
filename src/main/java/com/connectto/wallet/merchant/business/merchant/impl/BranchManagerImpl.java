@@ -10,6 +10,7 @@ import com.connectto.wallet.merchant.common.data.transaction.cashbox.CashierCash
 import com.connectto.wallet.merchant.common.exception.DatabaseException;
 import com.connectto.wallet.merchant.common.exception.EntityNotFoundException;
 import com.connectto.wallet.merchant.common.exception.InternalErrorException;
+import com.connectto.wallet.merchant.common.util.FileDataUtil;
 import com.connectto.wallet.merchant.common.util.Utils;
 import com.connectto.wallet.merchant.dataaccess.merchant.dao.*;
 import com.connectto.wallet.merchant.web.util.Constants;
@@ -80,52 +81,44 @@ public class BranchManagerImpl implements IBranchManager {
 
             //branchFileDatas
             if (!Utils.isEmpty(branchFileDatas)) {
+                FileData d = branchFileDatas.get(0);
+                d.setBranchId(data.getId());
 
-                for (FileData d : branchFileDatas) {
+                String fileName = d.getFileName();
+                String extension = fileName.substring(fileName.indexOf("."));
+                //
+                fileName = String.format(FileDataUtil.LOGO_FORMAT, FileDataUtil.LOGO_PREFIX_BRANCH, data.getId(), extension);
+                d.setFileName(fileName);
 
-                    d.setBranchId(data.getId());
+                fileDataDao.add(d);
 
-                    String fileName = d.getFileName();
-                    String extension = fileName.substring(fileName.indexOf("."));
-                    //
-                    fileName = System.currentTimeMillis() + extension;
-                    //
-
-                    d.setFileName(fileName);
-
-
-                    fileDataDao.add(d);
-
-                    File originalFile = new File(Initializer.getCompanyDocumentUploadDir() + Constants.FILE_SEPARATOR + data.getId() + Constants.FILE_SEPARATOR + fileName);
-                    FileUtils.writeByteArrayToFile(originalFile, d.getData());
-                }
+                FileDataUtil.createFileCompany(fileName,  d.getData());
+                data.setLogo(fileName);
+                dao.updateLogo(data);
             }
 
             //cashierFileDatas
             if (!Utils.isEmpty(cashierFileDatas)) {
+                FileData d = cashierFileDatas.get(0);
+                d.setCashierId(cashier.getId());
 
-                for (FileData d : cashierFileDatas) {
+                String fileName = d.getFileName();
+                String extension = fileName.substring(fileName.indexOf("."));
+                //
+                fileName = String.format(FileDataUtil.LOGO_FORMAT, FileDataUtil.LOGO_PREFIX_CASHIER, cashier.getId(), extension);
+                d.setFileName(fileName);
 
-                    d.setCashierId(cashier.getId());
+                fileDataDao.add(d);
 
-                    String fileName = d.getFileName();
-                    String extension = fileName.substring(fileName.indexOf("."));
-                    //
-                    fileName = System.currentTimeMillis() + extension;
-                    //
-
-                    d.setFileName(fileName);
-
-
-                    fileDataDao.add(d);
-
-                    File originalFile = new File(Initializer.getCompanyDocumentUploadDir() + Constants.FILE_SEPARATOR + data.getId() + Constants.FILE_SEPARATOR + fileName);
-                    FileUtils.writeByteArrayToFile(originalFile, d.getData());
-                }
+                FileDataUtil.createFileCompany(fileName,  d.getData());
+                cashier.setLogo(fileName);
+                cashierDao.updateLogo(cashier);
             }
         } catch (DatabaseException e) {
             throw new InternalErrorException(e);
         } catch (IOException e) {
+            throw new InternalErrorException(e);
+        } catch (EntityNotFoundException e) {
             throw new InternalErrorException(e);
         }
     }
@@ -134,6 +127,15 @@ public class BranchManagerImpl implements IBranchManager {
     public Branch getById(Long id) throws InternalErrorException, EntityNotFoundException {
         try {
             return dao.getById(id);
+        } catch (DatabaseException e) {
+            throw new InternalErrorException(e);
+        }
+    }
+
+     @Override
+    public Branch getByIdFull(Long id) throws InternalErrorException, EntityNotFoundException {
+        try {
+            return dao.getByIdFull(id);
         } catch (DatabaseException e) {
             throw new InternalErrorException(e);
         }

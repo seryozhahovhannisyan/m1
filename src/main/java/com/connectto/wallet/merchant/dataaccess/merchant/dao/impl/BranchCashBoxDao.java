@@ -38,6 +38,15 @@ public class BranchCashBoxDao implements IBranchCashBoxDao {
     }
 
     @Override
+    public BranchCashBox getBranchCurrentCashBox(Long branchId) throws DatabaseException {
+        try {
+            return map.getBranchCurrentCashBox(branchId);
+        } catch (RuntimeException e) {
+            throw new DatabaseException(e);
+        }
+    }
+
+    @Override
     public List<BranchCashBox> getByParams(Map<String, Object> params) throws DatabaseException {
         try {
             return map.getByParams(params);

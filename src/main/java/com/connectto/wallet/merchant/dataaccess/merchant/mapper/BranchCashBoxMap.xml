@@ -137,6 +137,11 @@
         <if test="status != null">                    , `status` = #{status}                                        </if>
         <if test="balanceProvidedByCompany != null">  , `balance_provided_by_company` = #{balanceProvidedByCompany} </if>
         <if test="balanceCurrent != null">            , `balance_current` = #{balanceCurrent}                       </if>
+
+        <if test="balanceTotalProvidedForCashierCashBox != null"> , `balance_total_provided_for_cashier_cb` = #{balanceTotalProvidedForCashierCashBox} </if>
+        <if test="balanceCurrentProvidedForCashierCashBox != null"> , `balance_current_provided_for_cashier_cb` = #{balanceCurrentProvidedForCashierCashBox} </if>
+        <if test="balanceReturnedFromCashierCashBox != null"> , `balance_returned_from_cashier_cb` = #{balanceReturnedFromCashierCashBox} </if>
+
         WHERE id = #{id}
     </update>
 

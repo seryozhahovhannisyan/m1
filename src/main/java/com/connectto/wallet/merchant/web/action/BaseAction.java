@@ -9,6 +9,8 @@ import com.connectto.wallet.merchant.common.data.merchant.lcp.LogLevel;
 import com.connectto.wallet.merchant.common.data.merchant.lcp.Status;
 import com.connectto.wallet.merchant.common.exception.InternalErrorException;
 import com.connectto.wallet.merchant.common.util.Utils;
+import com.connectto.wallet.merchant.web.util.Constants;
+import com.connectto.wallet.merchant.web.util.Initializer;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
@@ -19,6 +21,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -92,11 +95,9 @@ public class BaseAction extends ActionSupport
         this.session = session;
     }
 
-
     public void setApplication(Map<String, Object> application) {
         this.application = application;
     }
-
 
     public void setCookiesMap(Map<String, String> cookies) {
         this.cookies = cookies;
@@ -121,32 +122,6 @@ public class BaseAction extends ActionSupport
                 : str.toUpperCase();
     }
 
-    /*public CRMType getCRMType(){
-        return Initializer.getCrmTypes();
-    }
-
-    public boolean isSimpleCRM(){
-        return getCRMType() == CRMType.SIMPLE;
-    }
-
-    public boolean isFullCRM(){
-        return getCRMType() == CRMType.FULL;
-    }
-
-    public boolean isMultiBranchCRM(){
-        return getCRMType() == CRMType.MULTI_BRANCH;
-    }
-
-    public boolean isMultiDepartmentCRM(){
-        return getCRMType() == CRMType.MULTI_DEPARTMENT;
-    }
-
-    public boolean isMultiUserCRM(){
-        return getCRMType() == CRMType.MULTI_USER;
-    }*/
-
-
-
     protected synchronized void writeLog(String className, Exception ex, LogLevel logLevel, LogAction logAction, String msg) {
         Date currentDate = new Date(System.currentTimeMillis());
         MerchantLogger merchantLogger;
@@ -170,7 +145,26 @@ public class BaseAction extends ActionSupport
         this.merchantLoggerManager = merchantLoggerManager;
     }
 
-    public Status[] getStatuses(){
+    public Status[] getStatuses() {
         return Status.values();
+    }
+
+    public boolean isLogoExist(String logo) {
+        try {
+            String pPath = Initializer.getUploadDir() + Initializer.getCompanyDocumentUploadDir() + Constants.FILE_SEPARATOR + logo;
+            pPath = pPath.replaceAll("\\\\", "/");
+
+            File file = new File(pPath);
+            return file.exists() && file.isFile();
+        } catch (Exception e) {
+            logger.warn(String.format("file not exist[%s]", logo));
+        }
+        return false;
+    }
+
+    public String getLogo(String logo) {
+        String pPath = Initializer.getCompanyDocumentUploadDir() + Constants.FILE_SEPARATOR + logo;
+        pPath = pPath.replaceAll("\\\\", "/");
+        return pPath;
     }
 }

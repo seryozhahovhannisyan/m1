@@ -11,9 +11,12 @@
         <id property="id" column="id"/>
         <result property="cashierCashBoxId" column="cashier_cash_box_id"/>
         <result property="branchCashBoxId" column="branch_cash_box_id"/>
+
         <result property="balanceTaken" column="balance_taken"/>
         <result property="currencyType" column="currency_type"/>
+        <result property="tookBy" column="took_by"/>
         <result property="tookAt" column="took_at"/>
+        <result property="providerId" column="provider_id"/>
     </resultMap>
 
     <!--
@@ -22,25 +25,27 @@
     ###################################################################################################################
     -->
 
-    <insert id="add" parameterType="CashierCashBoxTaker">
+    <insert id="add" parameterType="List">
 
         INSERT INTO cb_cashier_taker(
         `cashier_cash_box_id`,
         `branch_cash_box_id`,
         `balance_taken`,
         `currency_type`,
-        `took_at`
-        ) VALUES (
-        #{cashierCashBoxId},
-        #{branchCashBoxId},
-        #{balanceTaken},
-        #{currencyType},
-        #{tookAt}
-        )
+        `took_by`,
+        `took_at`,
+        `provider_id`
+        ) VALUES
 
-        <selectKey keyProperty="id" resultType="_long">
-            SELECT LAST_INSERT_ID() AS `id`
-        </selectKey>
+        <foreach item="item" collection="list" open="(" separator="),("  close=");">
+            #{item.cashierCashBoxId},
+            #{item.branchCashBoxId},
+            #{item.balanceTaken},
+            #{item.currencyType},
+            #{item.tookBy},
+            #{item.tookAt},
+            #{item.providerId}
+        </foreach>
 
     </insert>
 
@@ -56,6 +61,15 @@
         SELECT * FROM cb_cashier_taker
         WHERE id = #{id}
         -- AND status = 1
+
+    </select>
+
+    <select id="getByProviderId"
+            resultMap="rmCashierCashBoxTakerSimple"
+            parameterType="_long">
+
+        SELECT * FROM cb_cashier_taker
+        WHERE provider_id = #{id}
 
     </select>
 

@@ -86,10 +86,13 @@ public class BranchActionTest {
 
     public static void main(String[] args) throws IOException {
         fileData = initFileData();
-        List<FileData> fileDatas = new ArrayList<FileData>();
-        fileDatas.add(fileData);
-        mixed.put("cashier", fileDatas);
-        mixed.put("branch", fileDatas);
+
+        List<FileData> cashierFileDatas = new ArrayList<FileData>();
+        List<FileData> branchFileDatas = new ArrayList<FileData>();
+        cashierFileDatas.add(initFileData());
+        branchFileDatas.add(initFileData());
+        mixed.put("cashier", cashierFileDatas);
+        mixed.put("branch", branchFileDatas);
 
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
         branchManager = (IBranchManager) context.getBean("BranchManagerImpl");

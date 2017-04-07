@@ -1,0 +1,29 @@
+
+.input_error_red {
+    color: #ff3f54;
+    font-weight: bold;
+}
+.input_error_green {
+    color: #f3811f;
+    font-weight: bold;
+}
+
+
+
+.ist_mult_parent_branch_list {
+    position: relative;
+    display: inline;
+}
+
+.ist_mult_branch_list {
+    display: inline-block;
+    position: absolute;
+    vertical-align: top;
+    width: 205px
+
+}
+.ist_mult_role{
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}

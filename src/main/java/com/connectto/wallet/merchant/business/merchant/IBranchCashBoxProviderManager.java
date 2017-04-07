@@ -13,11 +13,11 @@ import java.util.Set;
 
 public interface IBranchCashBoxProviderManager {
 
-    public void add( Long cashierId,
-                     Long companyId,
-                     Double provideAmount,
-                     CurrencyType provideCurrencyType,
-                     Set<Long> provideIdes) throws InternalErrorException, PermissionDeniedException;
+    public void add(Long cashierId,
+                    Long companyId,
+                    Double provideAmount,
+                    CurrencyType provideCurrencyType,
+                    Set<Long> provideIdes) throws InternalErrorException, PermissionDeniedException;
 
     public BranchCashBoxProvider getById(Long id) throws InternalErrorException, EntityNotFoundException;
 

@@ -7,7 +7,10 @@
 
     <!--real tiles-->
 
-    <definition name="web-general" template="/WEB-INF/pages/layout/main-general.jsp">
+    <definition name="test-total" template="/test.jsp">
+    </definition>
+
+    <definition name="web-general" template="/WEB-INF/pages/general/main-general.jsp">
         <put-attribute name="header-area" value="/WEB-INF/pages/layout/header-area.jsp"/>
         <put-attribute name="footer" value="/WEB-INF/pages/layout/footer.jsp"/>
         <put-attribute name="content" value=""/>
@@ -16,7 +19,7 @@
 
 
 
-    <definition name="web" template="/WEB-INF/pages/layout/main.jsp">
+    <definition name="web" template="/WEB-INF/pages/general/main.jsp">
         <put-attribute name="header" value="/WEB-INF/pages/layout/header.jsp"/>
         <put-attribute name="menu" value="/WEB-INF/pages/layout/menu.jsp"/>
         <put-attribute name="footer" value="/WEB-INF/pages/layout/footer.jsp"/>
@@ -38,7 +41,7 @@
     <!--</definition>-->
 
     <!--<definition name="guest.view" extends="web">-->
-    <!--<put-attribute name="content" value="/WEB-INF/pages/demo/general/home.jsp"/>-->
+    <!--<put-attribute name="content" value="/WEB-INF/pages/demo/genehome-general.jsp.jsp"/>-->
     <!--</definition>-->
 
     <definition name="general-internal-error" extends="web">
@@ -46,7 +49,7 @@
     </definition>
 
     <definition name="start" extends="web-general">
-        <put-attribute name="content" value="/WEB-INF/pages/general/home.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/pages/general/home-general.jsp"/>
     </definition>
 
     <definition name="company-area" extends="web-general">
@@ -84,7 +87,7 @@
     <!--cashier-->
 
     <definition name="cashier-home" extends="web">
-        <put-attribute name="content" value="/WEB-INF/pages/cashier/home.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/pages/general/home.jsp"/>
         <put-attribute name="detail" value="/WEB-INF/pages/general/modal.jsp"/>
     </definition>
 
@@ -146,6 +149,11 @@
 
     <definition name="provider-admin-branch" extends="web">
         <put-attribute name="content" value="/WEB-INF/pages/provide/admin-branch.jsp"/>
+        <put-attribute name="detail" value="/WEB-INF/pages/general/modal.jsp"/>
+    </definition>
+
+    <definition name="provider-admin-branch-cashier" extends="web">
+        <put-attribute name="content" value="/WEB-INF/pages/provide/admin-branch-cashier.jsp"/>
         <put-attribute name="detail" value="/WEB-INF/pages/general/modal.jsp"/>
     </definition>
 

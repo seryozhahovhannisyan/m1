@@ -7,6 +7,7 @@ import com.connectto.wallet.merchant.common.data.transaction.cashbox.CashierCash
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Created by Serozh on 6/22/2016.
@@ -34,11 +35,8 @@ public class CashierCashBox implements Serializable {
     private Date closedAt;
     private Status status;
 
-    private CashierCashBoxProvider cashBoxProvider;
-    private CashierCashBoxTaker cashBoxTaker;
-
-    private Long cashBoxProviderId;
-    private Long cashBoxTakerId;
+    private CashierCashBoxProvider currentCashierCashBoxProvider;
+    private Set<CashierCashBoxProvider> allCashierCashBoxProviders;
 
     /*##################################################################################################################
      *                                  GETTERS & SETTERS
@@ -141,35 +139,19 @@ public class CashierCashBox implements Serializable {
         this.status = status;
     }
 
-    public CashierCashBoxProvider getCashBoxProvider() {
-        return cashBoxProvider;
+    public CashierCashBoxProvider getCurrentCashierCashBoxProvider() {
+        return currentCashierCashBoxProvider;
     }
 
-    public void setCashBoxProvider(CashierCashBoxProvider cashBoxProvider) {
-        this.cashBoxProvider = cashBoxProvider;
+    public void setCurrentCashierCashBoxProvider(CashierCashBoxProvider currentCashierCashBoxProvider) {
+        this.currentCashierCashBoxProvider = currentCashierCashBoxProvider;
     }
 
-    public CashierCashBoxTaker getCashBoxTaker() {
-        return cashBoxTaker;
+    public Set<CashierCashBoxProvider> getAllCashierCashBoxProviders() {
+        return allCashierCashBoxProviders;
     }
 
-    public void setCashBoxTaker(CashierCashBoxTaker cashBoxTaker) {
-        this.cashBoxTaker = cashBoxTaker;
-    }
-
-    public Long getCashBoxProviderId() {
-        return cashBoxProviderId;
-    }
-
-    public void setCashBoxProviderId(Long cashBoxProviderId) {
-        this.cashBoxProviderId = cashBoxProviderId;
-    }
-
-    public Long getCashBoxTakerId() {
-        return cashBoxTakerId;
-    }
-
-    public void setCashBoxTakerId(Long cashBoxTakerId) {
-        this.cashBoxTakerId = cashBoxTakerId;
+    public void setAllCashierCashBoxProviders(Set<CashierCashBoxProvider> allCashierCashBoxProviders) {
+        this.allCashierCashBoxProviders = allCashierCashBoxProviders;
     }
 }

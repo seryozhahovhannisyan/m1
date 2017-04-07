@@ -23,6 +23,8 @@ public interface ICashierDao {
 
     public void update(Cashier data) throws DatabaseException, EntityNotFoundException;
 
+    public void updateLogo(Cashier data) throws DatabaseException, EntityNotFoundException;
+
     public void activate(Cashier data) throws DatabaseException, EntityNotFoundException;
 
     public void delete(Long id) throws DatabaseException, EntityNotFoundException;

@@ -10,6 +10,7 @@ import com.connectto.wallet.merchant.common.exception.DatabaseException;
 import com.connectto.wallet.merchant.common.exception.EntityNotFoundException;
 import com.connectto.wallet.merchant.common.exception.InternalErrorException;
 import com.connectto.wallet.merchant.common.util.DataConverter;
+import com.connectto.wallet.merchant.common.util.FileDataUtil;
 import com.connectto.wallet.merchant.common.util.Utils;
 import com.connectto.wallet.merchant.dataaccess.merchant.dao.*;
 import com.connectto.wallet.merchant.web.action.util.GeneralUtil;
@@ -150,70 +151,54 @@ public class CompanyFormRequestManagerImpl implements ICompanyFormRequestManager
 
             //companyFileDatas
             if (!Utils.isEmpty(companyFileDatas)) {
+                FileData data = companyFileDatas.get(0);
+                data.setCompanyId(company.getId());
 
-                for (FileData data : companyFileDatas) {
+                String fileName = data.getFileName();
+                String extension = fileName.substring(fileName.indexOf("."));
+                //
+                fileName = String.format(FileDataUtil.LOGO_FORMAT, FileDataUtil.LOGO_PREFIX_COMPANY, company.getId(), extension);
+                data.setFileName(fileName);
 
-                    data.setCompanyId(company.getId());
-
-                    String fileName = data.getFileName();
-                    String extension = fileName.substring(fileName.indexOf("."));
-                    //
-                    fileName = System.currentTimeMillis() + extension;
-                    //
-
-                    data.setFileName(fileName);
-
-                    fileDataDao.add(data);
-
-                    File originalFile = new File(Initializer.getCompanyDocumentUploadDir() + Constants.FILE_SEPARATOR + data.getId() + Constants.FILE_SEPARATOR + fileName);
-                    FileUtils.writeByteArrayToFile(originalFile, data.getData());
-                }
+                fileDataDao.add(data);
+                FileDataUtil.createFileCompany(fileName,  data.getData());
+                company.setLogo(fileName);
+                companyDao.updateLogo(company);
             }
 
             //branchFileDatas
             if (!Utils.isEmpty(branchFileDatas)) {
+                FileData data = branchFileDatas.get(0);
+                data.setBranchId(branch.getId());
 
-                for (FileData data : branchFileDatas) {
+                String fileName = data.getFileName();
+                String extension = fileName.substring(fileName.indexOf("."));
+                //
+                fileName = String.format(FileDataUtil.LOGO_FORMAT, FileDataUtil.LOGO_PREFIX_BRANCH, branch.getId(), extension);
+                data.setFileName(fileName);
 
-                    data.setBranchId(branch.getId());
-
-                    String fileName = data.getFileName();
-                    String extension = fileName.substring(fileName.indexOf("."));
-                    //
-                    fileName = System.currentTimeMillis() + extension;
-                    //
-
-                    data.setFileName(fileName);
-
-
-                    fileDataDao.add(data);
-
-                    File originalFile = new File(Initializer.getCompanyDocumentUploadDir() + Constants.FILE_SEPARATOR + data.getId() + Constants.FILE_SEPARATOR + fileName);
-                    FileUtils.writeByteArrayToFile(originalFile, data.getData());
-                }
+                fileDataDao.add(data);
+                FileDataUtil.createFileCompany(fileName,  data.getData());
+                branch.setLogo(fileName);
+                branchDao.updateLogo(branch);
             }
 
             //cashierFileDatas
             if (!Utils.isEmpty(cashierFileDatas)) {
+                FileData data = cashierFileDatas.get(0);
+                data.setCashierId(cashier.getId());
 
-                for (FileData data : cashierFileDatas) {
+                String fileName = data.getFileName();
+                String extension = fileName.substring(fileName.indexOf("."));
+                //
+                fileName = String.format(FileDataUtil.LOGO_FORMAT, FileDataUtil.LOGO_PREFIX_CASHIER, cashier.getId(), extension);
+                data.setFileName(fileName);
 
-                    data.setCashierId(cashier.getId());
+                fileDataDao.add(data);
 
-                    String fileName = data.getFileName();
-                    String extension = fileName.substring(fileName.indexOf("."));
-                    //
-                    fileName = System.currentTimeMillis() + extension;
-                    //
-
-                    data.setFileName(fileName);
-
-
-                    fileDataDao.add(data);
-
-                    File originalFile = new File(Initializer.getCompanyDocumentUploadDir() + Constants.FILE_SEPARATOR + data.getId() + Constants.FILE_SEPARATOR + fileName);
-                    FileUtils.writeByteArrayToFile(originalFile, data.getData());
-                }
+                FileDataUtil.createFileCompany(fileName,  data.getData());
+                cashier.setLogo(fileName);
+                cashierDao.updateLogo(cashier);
             }
 
         } catch (DatabaseException e) {
@@ -244,15 +229,12 @@ public class CompanyFormRequestManagerImpl implements ICompanyFormRequestManager
             FileData agreementDocument = formResponse.getAgreementDocument();
             CompanyFormRequest formRequest = dao.getById(data.getId());
             company = DataConverter.convertCompanyFormRequestToCompany(formRequest,  formResponse);
-            //tsmCompany = DataConverter.createTsmCompany(company);
-            //tsmCompanyJson = DataConverter.convertToJSON(tsmCompany);
 
             generalOfBranch = DataConverter.convertCompanyFormRequestToBranch(formRequest);
             superAdmin = DataConverter.createSuperAdmin(formRequest, password);
             superRole = DataConverter.createSuperRole(companyCashBox);
 
-
-            agreementDocument.setStatus(status);
+            agreementDocument.setStatus(Status.ACTIVE);
             fileDataDao.add(agreementDocument);
             formResponse.setAgreementDocumentId(agreementDocument.getId());
 
@@ -280,10 +262,8 @@ public class CompanyFormRequestManagerImpl implements ICompanyFormRequestManager
             cashierDao.add(superAdmin);
 
             dao.changeStatus(data);
-
-            File originalFile = new File(Initializer.getAgreementDocumentUploadDir() + Constants.FILE_SEPARATOR + company.getId() + Constants.FILE_SEPARATOR + agreementDocument.getId());
-            FileUtils.writeByteArrayToFile(originalFile, agreementDocument.getData());
-
+            String fileName = agreementDocument.getFileName();
+            FileDataUtil.createFileAgreement(fileName,agreementDocument.getData());
         } catch (DatabaseException e) {
             throw new InternalErrorException(e);
         } catch (EncryptException e) {

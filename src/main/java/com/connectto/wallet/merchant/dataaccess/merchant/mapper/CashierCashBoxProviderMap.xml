@@ -11,9 +11,28 @@
         <id property="id" column="id"/>
         <result property="cashierCashBoxId" column="cashier_cash_box_id"/>
         <result property="branchCashBoxId" column="branch_cash_box_id"/>
+
         <result property="balanceProvided" column="balance_provided"/>
+        <result property="balanceTaken" column="balance_taken"/>
         <result property="currencyType" column="currency_type"/>
+        <result property="providedBy" column="provided_by"/>
         <result property="providedAt" column="provided_at"/>
+        <result property="isTaken" column="is_taken"/>
+    </resultMap>
+
+    <resultMap id="rmCashierCashBoxProviderFull" type="CashierCashBoxProvider">
+        <id property="id" column="id"/>
+        <result property="cashierCashBoxId" column="cashier_cash_box_id"/>
+        <result property="branchCashBoxId" column="branch_cash_box_id"/>
+
+        <result property="balanceProvided" column="balance_provided"/>
+        <result property="balanceTaken" column="balance_taken"/>
+        <result property="currencyType" column="currency_type"/>
+        <result property="providedBy" column="provided_by"/>
+        <result property="providedAt" column="provided_at"/>
+        <result property="isTaken" column="is_taken"/>
+
+        <association property="cashBoxTakers" column="id" select="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.CashierCashBoxTakerMap.getByProviderId"/>
     </resultMap>
 
     <!--
@@ -22,25 +41,27 @@
     ###################################################################################################################
     -->
 
-    <insert id="add" parameterType="CashierCashBoxProvider">
+    <insert id="add" parameterType="List">
 
         INSERT INTO cb_cashier_provider(
         `cashier_cash_box_id`,
         `branch_cash_box_id`,
         `balance_provided`,
         `currency_type`,
-        `provided_at`
-        ) VALUES (
-        #{cashierCashBoxId},
-        #{branchCashBoxId},
-        #{balanceProvided},
-        #{currencyType},
-        #{providedAt}
-        )
+        `provided_by`,
+        `provided_at`,
+        `is_taken`
+        ) VALUES
 
-        <selectKey keyProperty="id" resultType="_long">
-            SELECT LAST_INSERT_ID() AS `id`
-        </selectKey>
+        <foreach item="item" collection="list" open="(" separator="),(" close=");">
+            #{item.cashierCashBoxId},
+            #{item.branchCashBoxId},
+            #{item.balanceProvided},
+            #{item.currencyType},
+            #{item.providedBy},
+            #{item.providedAt},
+            #{item.isTaken}
+        </foreach>
 
     </insert>
 
@@ -56,6 +77,15 @@
         SELECT * FROM cb_cashier_provider
         WHERE id = #{id}
         -- AND status = 1
+
+    </select>
+
+    <select id="getCurrentByCashierCashBoxId"
+            resultMap="rmCashierCashBoxProviderFull"
+            parameterType="_long">
+
+        SELECT * FROM cb_cashier_provider
+        WHERE cashier_cash_box_id = #{id} AND is_taken = 0
 
     </select>
 
@@ -83,6 +113,12 @@
     <update id="update" parameterType="CashierCashBoxProvider">
         UPDATE cb_cashier_provider
         SET id = #{id}
+        <if test="balanceTaken != null">
+            ,balance_taken = #{balanceTaken}
+        </if>
+        <if test="isTaken != null">
+            ,is_taken = #{isTaken}
+        </if>
         WHERE id = #{id}
     </update>
 

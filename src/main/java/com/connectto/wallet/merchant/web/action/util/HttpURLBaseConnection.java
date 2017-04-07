@@ -39,7 +39,7 @@ public class HttpURLBaseConnection {
 
 //        String httpUrl = walletHost + "/wallet/transfer-from-merchant-to-user.htm";
 //        String httpUrl = "http://127.0.0.1:8888/transfer-from-merchant-to-user.htm";
-        String httpUrl = "http://127.0.0.1:8080/wallet/transfer-from-merchant-to-user.htm";
+        String httpUrl = "http://127.0.0.1:8787/transfer-from-merchant-to-user.htm";
 
         return walletTransferTransactionAction(httpUrl, jsonObject, decript);
 
@@ -196,7 +196,7 @@ public class HttpURLBaseConnection {
 
 //        String httpUrl = walletHost + "/wallet/preview-withdraw.htm";
 //        String httpUrl = "http://127.0.0.1:8888/preview-withdraw.htm";
-        String httpUrl = "http://127.0.0.1:8080/wallet/preview-withdraw.htm";
+        String httpUrl = "http://127.0.0.1:8787/preview-withdraw.htm";
 
         return walletTransactionMerchantWithdrawAction(httpUrl, jsonObject, decript);
 
@@ -204,8 +204,8 @@ public class HttpURLBaseConnection {
 
     public static synchronized WalletWithdrawTax walletStartWithdrawAction(String walletHost, JSONObject jsonObject, boolean decript) throws WalletApiException, HttpConnectionDeniedException {
 
-//        String httpUrl = "http://127.0.0.1:8080/wallet/start-withdraw.htm";
-        String httpUrl = "http://127.0.0.1:8080/wallet/start-withdraw.htm";
+//        String httpUrl = "http://127.0.0.1:8787/start-withdraw.htm";
+        String httpUrl = "http://127.0.0.1:8787/start-withdraw.htm";
 //        String httpUrl = walletHost + "/wallet/start-withdraw.htm";
 
         return walletTransactionMerchantWithdrawAction(httpUrl, jsonObject, decript);
@@ -214,7 +214,7 @@ public class HttpURLBaseConnection {
 
     public static synchronized WalletWithdrawTax walletWithdrawTimeOut(String walletHost, JSONObject jsonObject, boolean decript) throws WalletApiException, HttpConnectionDeniedException {
 
-        String httpUrl = "http://127.0.0.1:8080/wallet/merchant-withdraw-time-out.htm";
+        String httpUrl = "http://127.0.0.1:8787/merchant-withdraw-time-out.htm";
 //        Stri httpUrl = "http://127.0.0.1:8888/merchant-withdraw-time-out.htm";
 //        String httpUrl = walletHost + "/wallet/merchant-withdraw-time-out.htm";
 
@@ -384,7 +384,7 @@ public class HttpURLBaseConnection {
 
 //        String httpUrl = walletHost + "/wallet/preview-deposit.htm";
 //        String httpUrl = "http://127.0.0.1:8888/wallet/preview-deposit.htm";
-        String httpUrl = "http://127.0.0.1:8080/wallet/preview-deposit.htm";
+        String httpUrl = "http://127.0.0.1:8787/preview-deposit.htm";
 
         return walletTransactionMerchantDepositAction(httpUrl, jsonObject, decript);
 
@@ -393,7 +393,7 @@ public class HttpURLBaseConnection {
     public static synchronized WalletDepositTax walletStartDepositAction(String walletHost, JSONObject jsonObject, boolean decript) throws WalletApiException, HttpConnectionDeniedException {
 
 //        String httpUrl = "http://127.0.0.1:8888/wallet/start-deposit.htm";
-        String httpUrl = "http://127.0.0.1:8080/wallet/start-deposit.htm";
+        String httpUrl = "http://127.0.0.1:8787/start-deposit.htm";
 //        String httpUrl = walletHost + "/wallet/start-deposit.htm";
 
         return walletTransactionMerchantDepositAction(httpUrl, jsonObject, decript);
@@ -402,7 +402,7 @@ public class HttpURLBaseConnection {
 
     public static synchronized WalletDepositTax walletDepositTimeOut(String walletHost, JSONObject jsonObject, boolean decript) throws WalletApiException, HttpConnectionDeniedException {
 
-        String httpUrl = "hhttp://127.0.0.1:8080/wallet/merchant-deposit-time-out.htm";
+        String httpUrl = "hhttp://127.0.0.1:8787/merchant-deposit-time-out.htm";
 //        String httpUrl =  walletHost + "/wallet/merchant-deposit-time-out.htm.htm";
 
         return walletTransactionMerchantDepositAction(httpUrl, jsonObject, decript);

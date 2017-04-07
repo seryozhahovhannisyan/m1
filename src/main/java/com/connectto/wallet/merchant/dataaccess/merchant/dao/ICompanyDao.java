@@ -27,6 +27,8 @@ public interface ICompanyDao {
 
     public void update(Company data) throws DatabaseException, EntityNotFoundException;
 
+    public void updateLogo(Company data) throws DatabaseException, EntityNotFoundException;
+
     public void activate(Company data) throws DatabaseException, EntityNotFoundException;
 
     public void delete(Company data) throws DatabaseException, EntityNotFoundException;

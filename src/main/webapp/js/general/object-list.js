@@ -1,94 +1,109 @@
-moduls_array.push('ngSanitize');
-moduls_array.push( 'ngTable');
-moduls_array.push('isteven-multi-select');
-// moduls_array.push( 'ngTableDemos');
-console.log("moduls_array",moduls_array);
+moduls_array.push('ngTable');
+console.log("moduls_array", moduls_array);
 
-controllers.listController = ['$scope', '$rootScope','$http', '$filter', '$window', '$sce','ngTableParams','$timeout', function($scope,$rootScope, $http, $filter, $window, $sce, ngTableParams, $timeout) {
+controllers.listController = ['$scope', '$rootScope', '$http', '$filter', '$window',  'ngTableParams', '$timeout', 'transaction_info', function ($scope, $rootScope, $http, $filter, $window,   ngTableParams, $timeout, transaction_info) {
 
-    $scope.item = [];
+    $scope.items = transaction_info.item;
+
     $scope.image = [];
+    $scope.checked={};
+    $scope.selected = [];
     $scope.columns = columns;
     $scope.isteven_branches = typeof isteven_branches === 'undefined' ? null : isteven_branches;
 
 
-    console.log("$scope.isteven_branches",$scope.isteven_branches);
+    console.log("$scope.isteven_branches", $scope.isteven_branches);
     // var check_box_container_height = $('.checkBoxContainer').height;
 
-    var set_interval_function = setInterval(check_if_function_work, 1000);
+//     var set_interval_function = setInterval(check_if_function_work, 1000);
+//
+//     function check_if_function_work() {
+// console.log("esim inch")
+//         if ($('.checkBoxContainer').length) {
+//             $('.checkBoxContainer').bind('scroll', chk_scroll);
+//
+//             function chk_scroll(e) {
+//                 var elem = $(e.currentTarget);
+//                 if (elem[0].scrollHeight - Math.floor(elem.scrollTop()) == elem.outerHeight()) {
+//                     alert('bottom');
+//                 }
+//             }
+//
+//             clearInterval(set_interval_function);
+//         }
+//
+//     }
 
-    function check_if_function_work() {
+    $scope.tableParams = new ngTableParams(
 
-        if ($('.checkBoxContainer').length) {
-            $('.checkBoxContainer').bind('scroll',chk_scroll);
-
-            function chk_scroll(e)
-            {
-                var elem = $(e.currentTarget);
-                if (elem[0].scrollHeight - Math.floor(elem.scrollTop()) == elem.outerHeight())
-                {
-                    alert('bottom');
-                }
-            }
-            clearInterval(set_interval_function);
-        }
-
-    }
-    
-    $scope.tableParams = new ngTableParams (
         {page: 1, count: 10, sorting: {name: 'asc'}},
-        {total: 0,
-            getData: function($defer, params) {
+        {
+            total: 0,
+            getData: function ($defer, params) {
+
                 var path = $scope.actionPath;
                 var orderBy = 'name';
                 var orderType = 'asc';
 
                 var sorting = params.sorting();
 
-                for(var key in sorting){
+                for (var key in sorting) {
                     orderBy = key;
-                    orderType = sorting[key] ;
+                    orderType = sorting[key];
                 }
 
-                var requestJson  = {
-                    page : params.page(),
-                    count : params.count(),
-                    orderBy : orderBy,//addresss :desc
-                    orderType : orderType,
-                    group : params.group,
-                    groupBy : params.groupBy
+                var requestJson = {
+                    page: params.page(),
+                    count: params.count(),
+                    orderBy: orderBy,//addresss :desc
+                    orderType: orderType,
+                    group: params.group,
+                    groupBy: params.groupBy
                 };
 
-                console.log("requestJson",requestJson);
+                console.log("requestJson", requestJson);
 
-                if(params.filter() != null && params.filter().length != null){
+                console.log("params.filter()", params.filter())
+                console.log("params.filter() nulll", params.filter() != null)
+                console.log("params.filter() length", params.filter().length)
+                console.log("params.filter() type", typeof (params.filter()))
+
+                if (params.filter() != null && params.filter().length != null) {
+
+                    console.log("params.filter()========================================")
+                    console.log("params.filter()", params.filter())
+                    console.log("params.filter() nulll", params.filter() != null)
+                    console.log("params.filter() length", params.filter().length)
+                    console.log("params.filter() type", typeof (params.filter()))
+
                     requestJson.filter = params.filter();
                 }
 
-                if($scope.isteven_branches != null){
+                if ($scope.isteven_branches != null) {
                     var ides = [];
                     var branchesOutPut = $scope.isteven_branches[0].outPut;
-                    for(var id in branchesOutPut){
-                       ides.push(branchesOutPut[id].id);
-                        console.log('branchesOutPut[id]', branchesOutPut[id].id);
+                    for (var id in branchesOutPut) {
+                        ides.push(branchesOutPut[id].id);
+                        // console.log('branchesOutPut[id]', branchesOutPut[id].id);
                     }
                     requestJson.branchIdes = ides.toString();
                 }
 
-                 $scope.show_loader();
+                $scope.show_loader();
 
-                requestJson =  JSON.stringify(requestJson);
+                requestJson = JSON.stringify(requestJson);
 
 
                 $http({
                     method: 'post',
                     url: path,
-                    data :  {
-                        requestJson : requestJson
+                    data: {
+                        requestJson: requestJson
                     },
                     dataType: 'json'
                 }).then(
-                    function(response) {
+
+                    function (response) {
 
                         var result = response.data.dto;
 
@@ -96,9 +111,17 @@ controllers.listController = ['$scope', '$rootScope','$http', '$filter', '$windo
                         if (result.responseStatus == 'SUCCESS') {
                             $rootScope.tabelDatas = response.data;
 
+console.log("result.response",response)
+                            if (result.response.roles) {
+                                roles = result.response.roles;
+                                console.log("roles", roles)
+                            }
 
                             var listItems = result.response.data;
+                            $scope.arraytems = listItems;
                             $scope.itemsCount = result.response.dataCount;
+                            $scope.checked.checked_all = false;
+                            $scope.selected = [];
 
                             console.log('listItems', listItems);
 
@@ -112,10 +135,10 @@ controllers.listController = ['$scope', '$rootScope','$http', '$filter', '$windo
                             $defer.resolve(sortedItems);
                         }
                     }
-                ).finally(function() {
-                $scope.hide_loader();
-                    $scope.serch_val="";
-                    
+                ).finally(function () {
+                    $scope.hide_loader();
+                    $scope.serch_val = "";
+
                 });
 
                 // hides count tools as items is less than 10
@@ -126,90 +149,169 @@ controllers.listController = ['$scope', '$rootScope','$http', '$filter', '$windo
         }
     );
 
-    $scope.viewDetail = function(item) {
+    $scope.viewDetail = function (item, modal_name) {
         var path = $scope.actionPathLoad;
         var id = item.currentTarget.getAttribute("data-id");
         var target = item.currentTarget.getAttribute("data-target");
 
+
         $http({
             method: 'post',
             url: path,
-            data :  {
-                id : id
+            data: {
+                id: id
             },
             dataType: 'json'
         }).then(
-            function(response) {
+            function (response) {
 
                 var result = response.data.dto;
 
 
                 if (result.responseStatus == 'SUCCESS') {
 
-                    var item = result.response.item;
-                    console.log('item', item)
-                    $scope.item = item;
+                    var items = result.response.item;
+                    console.log('item', items)
+                    transaction_info.item = items;
+
+
+                    $scope.open_modal('lg', '', modal_name);
+
                 }
             })
 
-        //$('#dlgItemDetail').modal('show');
+
+        // $('#dlgItemDetail').modal('show');
+    };
+
+
+    $scope.deleteCurrRow = function (item) {
+        var path = $scope.actionPathdelete;
+        var id = item.currentTarget.getAttribute("data-id");
+        // var target = item.currentTarget.getAttribute("data-target");
+
+        $http({
+            method: 'post',
+            url: path,
+            data: {
+                id: id
+            },
+            dataType: 'json'
+        }).then(
+            function (response) {
+
+                console.log("response delletic", response)
+
+            })
+    };
+
+    $scope.deleteSelectedRow = function (id_type) {
+      var branchesIdes =  $scope.selected.join();
+      var path = $scope.actionPathdeleteMultiple;
+      if(id_type == "branch"){
+          var data  ={branchIdes: branchesIdes};
+      }
+      if(id_type == "cashier"){
+          var data  ={cashierIdes: branchesIdes};
+      }
+
+        $http({
+            method: 'post',
+            url: path,
+            data: data,
+            dataType: 'json'
+        }).then(
+            function (response) {
+
+                console.log("response delletic", response)
+
+            })
+    };
+
+
+
+    $scope.updateSelection = function ($event, id,all) {
+        if(all== undefined) {
+            var checkbox = $event.currentTarget;
+            var action = checkbox.checked ? 'add' : 'remove';
+            if (action == 'add' & $scope.selected.indexOf(id) == -1) {
+                $scope.selected.push(id);
+            }
+            if (action == 'remove' && $scope.selected.indexOf(id) != -1) {
+                $scope.selected.splice($scope.selected.indexOf(id), 1);
+            }
+        }
+        else{
+            $scope.selected = [];
+            var checkbox = $event.currentTarget;
+            var action = checkbox.checked ? 'add' : 'remove';
+            if (action == 'add' & $scope.selected.indexOf(id) == -1) {
+                angular.forEach($scope.arraytems, function (value, key) {
+                    $scope.selected.push(value.id)
+                })
+            }
+            if (action == 'remove' && $scope.selected.indexOf(id) != -1) {
+                $scope.selected = [];
+            }
+
+        }
+            console.log("$scope.selected",$scope.selected)
     };
 
     $scope.edit_row = function () {
-     $timeout(function () {
-         $scope.show_loader();
-     }, 1000);
-     $timeout(function () {
-         $scope.hide_loader();
-     }, 3000);
-
-     // alert(4)
-     // $('.modal').on('shown', function() {
-     //     alert(45)
-     // });
+        $timeout(function () {
+            $scope.show_loader();
+        }, 1000);
+        $timeout(function () {
+            $scope.hide_loader();
+        }, 3000);
     };
     $scope.dropdown_tds = function ($event) {
-        // $(".branches_crud_ul").hide();
-        var current_element =angular.element($event.currentTarget);
-        var top= current_element.outerHeight(true);
-        var width= current_element.outerWidth(true);
-        current_element.find("ul").css({"top":top, "width": width}).toggle(500);
+        var current_element = angular.element($event.currentTarget);
+        var top = current_element.outerHeight(true);
+        var width = current_element.outerWidth(true);
+        current_element.find("ul").css({"top": top, "width": width}).toggle(500);
     };
+    $scope.add_new_records = function (modal_name) {
 
+        $scope.open_modal('lg', '', modal_name);
+        console.log("modal_name", modal_name)
+    };
     $scope.disable_labels = function (index) {
-        if(index == 0 || index == 1 ||  index == 2){
+        if (index == 0 || index == 1 || index == 2) {
             return true
         }
     };
 
     /*Wallet*/
-    $scope.viewDetail = function(item) {
-        var path = $scope.actionPathLoad;
-        var id = item.currentTarget.getAttribute("data-id");
-        var target = item.currentTarget.getAttribute("data-target");
-
-
-        $http({
-            method: 'post',
-            url: path,
-            data :  {
-                id : id
-            },
-            dataType: 'json'
-        }).then(
-            function(response) {
-
-                var result = response.data.dto;
-                if (result.responseStatus == 'SUCCESS') {
-
-                    var item = result.response.item;
-                    console.log('item', item)
-                    $scope.item = item;
-                }
-            })
-
-        //$('#dlgItemDetail').modal('show');
-    };
+    // $scope.viewDetail = function(item) {
+    //
+    //     var path = $scope.actionPathLoad;
+    //     var id = item.currentTarget.getAttribute("data-id");
+    //     var target = item.currentTarget.getAttribute("data-target");
+    //
+    //
+    //     $http({
+    //         method: 'post',
+    //         url: path,
+    //         data :  {
+    //             id : id
+    //         },
+    //         dataType: 'json'
+    //     }).then(
+    //         function(response) {
+    //
+    //             var result = response.data.dto;
+    //             if (result.responseStatus == 'SUCCESS') {
+    //
+    //                 var item = result.response.item;
+    //                 console.log('item', item)
+    //                 $scope.item = item;
+    //             }
+    //         })
+    //
+    //     //$('#dlgItemDetail').modal('show');
+    // };
 
     // $scope.editing_li = function ($event) {
     //     var current_li =angular.element($event.currentTarget);

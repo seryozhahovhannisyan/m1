@@ -25,7 +25,7 @@ public class EmailNotification {
         String cc="seryozha.hovhannisyan@gmail.com";
 
         Session session = Session.getDefaultInstance(props,
-                new javax.mail.Authenticator() {
+                new Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
                         return new PasswordAuthentication(user,password);
                     }

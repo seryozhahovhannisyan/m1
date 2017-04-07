@@ -5,59 +5,75 @@
   Time: 4:58 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ page contentType = "text/html;charset=UTF-8" language = "java" %>
+<%@ taglib prefix = "s" uri = "/struts-tags" %>
+<link rel = "stylesheet" href = "<%=request.getContextPath()%>/css/branch/branch_detail.css">
+<script type = "text/ng-template" id = "detail">
 
 
-<div class="right_col" role="main" style="min-height: 2519px;">
+    <div class = "row">
+        <div class = "col-md-12 col-sm-12 col-xs-12">
 
-    <div class="clearfix"></div>
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="x_panel">
+            <div class = "close_popup" ng-if = "open_close_popup">
+                <h2>Are you sure you want to close it?</h2>
+                <button class = "btn btn-success" ng-click = "ctrl.cancel()">Yes</button>
+                <button class = "btn btn-danger" ng-click = "ctrl.no_cancel()">NO</button>
+            </div>
 
-                <div class="x_title">
-                    <h2>
-                        Branch
-                    </h2>
+            <div class = "modal-header">
+                <button type = "button" class = "close" ng-click = "ctrl.open_popup()">
+                    <i class = "fa fa-times-circle" aria-hidden = "true"></i>
+                </button>
 
-                    <div class="clearfix"></div>
-                </div>
+                <button type = "button" ng-show = "ctrl.show_full_lg" class = "close"
+                        ng-click = "ctrl.full_screen_large( )">
+                    <i class = "fa fa-clone" aria-hidden = "true"></i>
+                </button>
 
-                <div class="x_content">
+                <button type = "button" ng-show = " ctrl.show_full_sm" class = "close"
+                        ng-click = "ctrl.full_screen_large( )">
+                    <i class = "fa fa-square-o" aria-hidden = "true"></i>
+                </button>
 
-                    <div id="datatable-responsive_wrapper"
-                         class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                <button type = "button" class = "close" ng-click = "ctrl.minimize()">
+                    <i class = "fa fa-minus-square-o" aria-hidden = "true"></i>
+                </button>
 
-                        <div class="row">
-                            <div class="add_div_brch_parent">
-                                <div class="add_div_brch"  data-target="#add" data-toggle="modal"></div>
-                                <div>Edit</div>
-                            </div>
-                            <div class="add_div_brch_parent">
-                                <div class="delete_div_brch" data-target="#add" data-toggle="modal"></div>
-                                <div>Cashiers</div>
-                            </div>
-                        </div>
-                        <div class="row">
+                <h3 class = "modal-title" id = "modal-title">
+                    <s:text name = "page.profile.branch.details.info">Branch details</s:text>
+                </h3>
+            </div>
 
-                            <div ng-controller="listController" id="listContent">
-                                name : <s:property value="branch.name"/>
-                                address: <s:property value="branch.address"/>
-                                city: <s:property value="branch.city"/>
-                                street: <s:property value="branch.street"/>
-                                zip: <s:property value="branch.zip"/>
-                                email: <s:property value="branch.email"/>
-                                phoneCode: <s:property value="branch.phoneCode"/>
-                                phone: <s:property value="branch.phone"/>
-                                policyPhoneCode: <s:property value="branch.policyPhoneCode"/>
-                                policyPhone: <s:property value="branch.policyPhone"/>
-                            </div>
-                        </div>
+            <div class = "modal-body" id = "modal-body" ng-controller = "listController">
+
+                <div class = "x_content">
+
+                    <div>
+                        <ul class = "branch_detail_info">
+                            <li ng-repeat = "(key, value) in items" ng-show = "value">
+                                <h3>{{key}} :</h3>
+                                <p>{{value}}</p>
+                            </li>
+                        </ul>
 
                     </div>
+                    <div style = "clear: both"></div>
                 </div>
+
+                <div style = "clear: both"></div>
+
+
             </div>
         </div>
-    </div>
+        </div>
+</script>
+
+<div class = "mini ng-cloak" ng-show = "show_mini">
+    <button type = "button" ng-click = "close_from_mini()">
+        <i class = "fa fa-times-circle" aria-hidden = "true"></i>
+    </button>
+    <button type = "button" ng-click = "full_screen()">
+        <i class = "fa fa-square-o" aria-hidden = "true"></i>
+    </button>
+    <div style = "clear: both"></div>
 </div>

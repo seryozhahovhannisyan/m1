@@ -13,6 +13,8 @@ public interface CashierCashBoxMap {
 
     public CashierCashBox getById(Long id);
 
+    public CashierCashBox getCurrentCashBox(Long cashierId);
+
     public CompanyCashBox getLastByCashierId(Long id);
 
     public List<CashierCashBox> getByParams(Map<String, Object> params);
@@ -20,6 +22,8 @@ public interface CashierCashBoxMap {
     public int getCountByParams(Map<String, Object> params);
 
     public void update(CashierCashBox data);
+
+    public void provideAmount(Map<String, Object> params);
 
     public void delete(Long id);
 

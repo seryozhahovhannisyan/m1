@@ -192,7 +192,7 @@
         exchange_deposit_max_fee = #{exchangeDepositMaxFee} ,
         exchange_withdraw_fee_percent = #{exchangeWithdrawFeePercent} ,
         exchange_withdraw_min_fee = #{exchangeWithdrawMinFee},
-        exchange_withdraw_max_fee = #{exchangeWithdrawMaxFee}
+        exchange_withdraw_max_fee = #{exchangeWithdrawMaxFee},
         status = #{status}
         WHERE id = #{id}
     </update>

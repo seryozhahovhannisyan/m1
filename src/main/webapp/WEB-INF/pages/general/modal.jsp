@@ -1,111 +1,5 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<style>
-
-    button {
-        margin: 0 5px;
-    }
-
-    .mini {
-        width: 250px;
-        height: auto;
-        background-color: #0c43b7;
-        padding: 5px;
-        bottom: 100px;
-        position: fixed;
-        right: 130px;
-        border-radius: 6px;
-    }
-
-    .modal-content {
-        height: 100%;
-        position: relative;
-    }
-
-    .modal_footer_lg {
-        position: absolute;
-        bottom: 5px;
-        width: 100%;
-    }
-
-    .full_screen {
-        width: 90%;
-        height: 700px;
-    }
-
-    .modal_email {
-        width: 80%;
-        border: 1px solid black !important;
-        margin: 10px auto;
-        float: none;
-        display: block;
-        max-width: 320px;
-        border-radius: 6px;
-        height: 40px;
-        padding: 5px;
-    }
-
-    .modal_email:focus {
-        border: 1px solid #a9a9a9 !important;
-    }
-
-    .mini button {
-        float: right;
-        border: none;
-        padding: 1px;
-        background-color: transparent;
-        color: white;
-
-    }
-
-    .modal_ok {
-        border: none;
-        border-radius: 6px;
-        background-color: #27ccc0;
-        color: #f0f0f0;
-        padding: 6px 12px;
-    }
-
-    .modal_cancel {
-        border: none;
-        border-radius: 6px;
-        background-color: #ff3f54;
-        color: #f0f0f0;
-        padding: 6px 12px;
-    }
-
-    .modal_ok:hover {
-        background-color: #24baaf;
-    }
-
-    .modal_cancel:hover {
-        background-color: #d13545;
-    }
-
-    .summer {
-        width: 80%;
-        margin: 0 auto;
-    }
-
-    .close_popup{
-        width: 300px;
-        height: 100px;
-        background-color: #dce2e1;
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        margin: auto;
-        z-index: 1;
-        text-align: center;
-        padding: 10px;
-        border: 1px solid rgba(0, 0, 0, .2);
-        border-radius: 6px;
-        -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
-        box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
-    }
-
-</style>
+<link rel = "stylesheet" href = "<%=request.getContextPath()%>/css/general/modal.css">
 
 
 <script type="text/ng-template" id="resend_activation_code">
@@ -1002,7 +896,9 @@
         </div>
     </div>
 </script>
-<%--todo create custom modal and overide id needs it --%>
+
+
+<%--todo create custom modal and overide if needs it --%>
 <script type="text/ng-template" id="admin_company_provide_detail">
 
     <%--

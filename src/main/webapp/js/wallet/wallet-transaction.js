@@ -136,6 +136,8 @@ if(url.indexOf('deposit-start.htm') > -1){
 
                         $rootScope.curr_type_text = cashier.currentCashBox.currencyType;
 
+console.log("cashier.currentCashBox.currencyType",cashier.currentCashBox.currencyType)
+console.log("$scope.curr_type_tex",$rootScope.curr_type_text)
                         $rootScope.curr_type =valueOfCurrencyTypeByCode($scope.curr_type_text).id;
                     }
 

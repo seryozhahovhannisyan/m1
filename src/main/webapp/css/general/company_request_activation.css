@@ -3,7 +3,9 @@
     padding: 10px;
     box-shadow: 0 0 5px #484848;
 }
-
+.setup_info_div{
+    width: 100%!important;
+}
 .info_span {
     display: inline-block;
     font-weight: bold;
@@ -12,8 +14,17 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
-.info_span h3 {
+.info_span_setup{
+    display: inline-block;
+    font-weight: bold;
+    width: 37%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    min-width: 300px;
+}
+.info_span h3, .info_span_setup h3 {
     margin: 0;
     color: #859aa7;
 }
@@ -21,9 +32,10 @@
 .info_din_span {
     display: inline-block;
     overflow: hidden;
-    width: 120px;
+    width: 260px;
     color: #859aa7;
 }
+
 .contact_info{
     color: #859aa7;
 }
@@ -43,6 +55,7 @@
     height: auto;
     display: inline-block;
 }
+
 .checkboxLayer {
     height: 156px;
     overflow: auto;

@@ -25,6 +25,26 @@
 
     </resultMap>
 
+    <resultMap id="rmCashierCashBoxFull" type="CashierCashBox">
+        <id property="id" column="id"/>
+        <result property="cashierId" column="cashier_id"/>
+        <result property="balanceProvidedByBranch" column="balance_provided_by_branch"/>
+        <result property="balanceCurrent" column="balance_current"/>
+        <result property="balanceGatheredTax" column="balance_gathered_tax"/>
+        <result property="currencyType" column="currency_type"/>
+
+        <result property="pendingBalanceDeposit" column="pending_balance_deposit"/>
+        <result property="pendingBalanceWithdraw" column="pending_balance_withdraw"/>
+        <result property="pendingTaxAmount" column="pending_tax_amount"/>
+
+        <result property="openedAt" column="opened_at"/>
+        <result property="openedAt" column="closed_at"/>
+        <result property="status" column="status"/>
+
+        <association property="currentCashierCashBoxProvider" column="id" select="com.connectto.wallet.merchant.dataaccess.merchant.mapper.namespace.CashierCashBoxProviderMap.getCurrentByCashierCashBoxId"/>
+
+    </resultMap>
+
     <!--
     ###################################################################################################################
     ################################################    Create     ####################################################
@@ -80,13 +100,23 @@
 
     </select>
 
+    <select id="getCurrentCashBox"
+            resultMap="rmCashierCashBoxFull"
+            parameterType="_long">
+
+        SELECT * FROM cb_cashier_cash_box
+        WHERE cashier_id = #{cashierId}
+        AND status = 1
+
+    </select>
+
     <select id="getLastByCashierId"
             resultMap="rmCashierCashBoxSimple"
             parameterType="_long">
 
         SELECT * FROM cb_cashier_cash_box
         WHERE cashier_id = #{cashierId}
-        AND status = 1
+        ORDER BY `id` DESC limit 1
 
     </select>
 
@@ -117,10 +147,21 @@
         UPDATE cb_cashier_cash_box
         SET id = #{id}
         <if test="status != null">             , `status` = #{status}                     </if>
-
+        <if test="balanceProvidedByBranch != null">   , `balance_provided_by_branch` = #{balanceProvidedByBranch}   </if>
+        <if test="balanceCurrent != null">            , `balance_current` = #{balanceCurrent}                       </if>
 
         WHERE id = #{id}
     </update>
+
+    <update id="provideAmount"  parameterType="map">
+        UPDATE cb_cashier_cash_box
+        SET balance_provided_by_branch = #{provideAmount}, balance_current = #{provideAmount}
+        WHERE id in
+        <foreach item="item" collection="cashierCashBoxIdes" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
 
     <update id="delete" parameterType="_long">
         UPDATE cb_cashier_cash_box

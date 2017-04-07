@@ -99,6 +99,7 @@ public class BranchAction extends BaseAction {
         Long companyId = cashierSes.getCompanyId();
         currentDate = new Date(System.currentTimeMillis());
         currencyType = cashierSes.getCurrentCashBox().getCurrencyType();
+        status = Status.ACTIVE;
 
         Branch branch = new Branch();
         branch.setName(name);
@@ -200,6 +201,13 @@ public class BranchAction extends BaseAction {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("companyId", companyId);
         try {
+
+            Map<String, Object> paramsRole = new HashMap<String, Object>();
+            paramsRole.put("companyId", companyId);
+
+            List<Role> roles = roleManager.getByParams(paramsRole);
+            dto.addResponse("roles", roles);
+
             dataCount = branchManager.getCountByParams(params);
         } catch (InternalErrorException e) {
             writeLog(BranchAction.class.getSimpleName(), e, LogLevel.ERROR, LogAction.READ, null);

@@ -14,6 +14,8 @@ public interface IBranchCashBoxDao {
 
     public BranchCashBox getById(Long id) throws DatabaseException, EntityNotFoundException;
 
+    public BranchCashBox getBranchCurrentCashBox(Long branchId) throws DatabaseException, EntityNotFoundException;
+
     public List<BranchCashBox> getByParams(Map<String, Object> params) throws DatabaseException;
 
     public int getCountByParams(Map<String, Object> params) throws DatabaseException;

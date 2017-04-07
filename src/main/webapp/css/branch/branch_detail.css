@@ -1,0 +1,17 @@
+.branch_detail_info{
+    list-style: none;
+}
+.branch_detail_info li {
+    display: inline-block;
+    width: 49%;
+}
+.branch_detail_info h3{
+    display: inline-block;
+    width: 208px;
+    text-align: left;
+}
+.branch_detail_info p{
+    color: #85c3b3;
+    display: inline-block;
+
+}

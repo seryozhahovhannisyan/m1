@@ -115,6 +115,7 @@ public class CompanyActivationAction extends BaseAction {
 
     @SkipValidation
     //http://127.0.0.1:8383/merchant/activation-redirect-account.htm?user=emailContactTest@gmail.com&token=740u93y9fhrjsczwzw0v2xetsky5wgumo71kqmlri1n1034iaumf2o646f3z160rlxklf5zjvey3eggz3pw7x5yyzi9a5k343p5d1e3kpywxyrzhawk8jya8b4r0tan1
+    //http://127.0.0.1:8888/merchant/activation-redirect-account.htm?user=emailCashier_29mail.gb&token=mypug5wvba2u3debsyc5swv5rzhddhjc3wswo530jw1wuotjxmmf1uvvwyy25gww3vazjmwsb1ekhxwfcewcbjc2sb1alrapppynd49zzy7qtzjvzjz7zv9y1o9eii2d
     public String redirectActivateAccount() {
         session.put("u", user);
         session.put("t", token);
@@ -135,7 +136,7 @@ public class CompanyActivationAction extends BaseAction {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("u", u);
         params.put("t", t);
-        params.put("s", new Integer[]{Status.UNVERIFIED.getKey(), Status.UNCONVERTED.getKey()});
+//        params.put("s", new Integer[]{Status.UNVERIFIED.getKey(), Status.UNCONVERTED.getKey()});
 
         try {
 
@@ -478,6 +479,50 @@ public class CompanyActivationAction extends BaseAction {
     public String getNameRole() {
         return nameRole;
     }
+
+
+    // todo ask Serozh
+
+    public String getDepositFeePercentMerchantSetup() {
+        return depositFeePercentMerchantSetup;
+    }
+
+    public String getDepositMinFeeMerchantSetup() {
+        return depositMinFeeMerchantSetup;
+    }
+
+    public String getDepositMaxFeeMerchantSetup() {
+        return depositMaxFeeMerchantSetup;
+    }
+    public String getWithdrawFeePercentMerchantSetup() {
+        return withdrawFeePercentMerchantSetup;
+    }
+    public String getWithdrawMinFeeMerchantSetup() {
+        return withdrawMinFeeMerchantSetup;
+    }
+    public String getWithdrawMaxFeeMerchantSetup() {
+        return withdrawMaxFeeMerchantSetup;
+    }
+    public String getExchangeDepositFeePercentMerchantSetup() {
+        return exchangeDepositFeePercentMerchantSetup;
+    }
+    public String getExchangeDepositMinFeeMerchantSetup() {
+        return exchangeDepositMinFeeMerchantSetup;
+    }
+    public String getexchangeDepositMaxFeeMerchantSetup() {
+        return exchangeDepositMaxFeeMerchantSetup;
+    }
+    public String getExchangeWithdrawFeePercentMerchantSetup() {
+        return exchangeWithdrawFeePercentMerchantSetup;
+    }
+    public String getExchangeWithdrawMinFeeMerchantSetup() {
+        return exchangeWithdrawMinFeeMerchantSetup;
+    }
+    public String getExchangeWithdrawMaxFeeMerchantSetup() {
+        return exchangeWithdrawMaxFeeMerchantSetup;
+    }
+
+    // end  ask Serozh
 
     public String getDescriptionRole() {
         return descriptionRole;

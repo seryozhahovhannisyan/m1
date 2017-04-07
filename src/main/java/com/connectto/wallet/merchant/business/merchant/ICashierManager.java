@@ -1,6 +1,7 @@
 package com.connectto.wallet.merchant.business.merchant;
 
 import com.connectto.wallet.merchant.common.data.merchant.Cashier;
+import com.connectto.wallet.merchant.common.data.transaction.cashbox.CashierCashBox;
 import com.connectto.wallet.merchant.common.exception.EntityNotFoundException;
 import com.connectto.wallet.merchant.common.exception.InternalErrorException;
 
@@ -12,6 +13,8 @@ public interface ICashierManager {
     public void add(Cashier data) throws InternalErrorException, EntityNotFoundException;
 
     public Cashier getById(Long id) throws InternalErrorException, EntityNotFoundException;
+
+    public CashierCashBox getCashierCashBoxByCashierId(Long cashierId) throws InternalErrorException, EntityNotFoundException;
 
     public Cashier getProfile(Long id) throws InternalErrorException, EntityNotFoundException;
 

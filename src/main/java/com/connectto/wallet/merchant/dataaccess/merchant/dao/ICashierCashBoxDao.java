@@ -14,11 +14,15 @@ public interface ICashierCashBoxDao {
 
     public CashierCashBox getById(Long id) throws DatabaseException, EntityNotFoundException;
 
+   public CashierCashBox getCurrentCashBox(Long cashierId) throws DatabaseException, EntityNotFoundException;
+
     public List<CashierCashBox> getByParams(Map<String, Object> params) throws DatabaseException;
 
     public int getCountByParams(Map<String, Object> params) throws DatabaseException;
 
     public void update(CashierCashBox data) throws DatabaseException, EntityNotFoundException;
+
+    public void provideAmount(Map<String, Object> params) throws DatabaseException, EntityNotFoundException;
 
     public void delete(Long id) throws DatabaseException, EntityNotFoundException;
 

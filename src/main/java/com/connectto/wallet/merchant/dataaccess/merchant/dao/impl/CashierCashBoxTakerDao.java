@@ -20,7 +20,7 @@ public class CashierCashBoxTakerDao implements ICashierCashBoxTakerDao {
     }
 
     @Override
-    public void add(CashierCashBoxTaker data) throws DatabaseException {
+    public void add(List<CashierCashBoxTaker> data) throws DatabaseException {
         try {
             map.add(data);
         } catch (RuntimeException e) {

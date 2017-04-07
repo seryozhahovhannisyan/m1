@@ -59,18 +59,22 @@ public class CompanyMovement {
 
     public static void main(String[] args) throws IOException {
         fileData = initFileData();
-        List<FileData> fileDatas = new ArrayList<FileData>();
-        fileDatas.add(fileData);
-        mixed.put("cashier", fileDatas);
-        mixed.put("branch", fileDatas);
-        mixed.put("company", fileDatas);
+        List<FileData> cashierFileDatas = new ArrayList<FileData>();
+        List<FileData> branchFileDatas = new ArrayList<FileData>();
+        List<FileData> companyrFileDatas = new ArrayList<FileData>();
+        cashierFileDatas.add(initFileData());
+        branchFileDatas.add(initFileData());
+        companyrFileDatas.add(initFileData());
+        mixed.put("cashier", cashierFileDatas);
+        mixed.put("branch", branchFileDatas);
+        mixed.put("company", companyrFileDatas);
 
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
         companyFormRequestManager = (ICompanyFormRequestManager) context.getBean("CompanyFormRequestManagerImpl");
         cashierManager = (ICashierManager) context.getBean("CashierManagerImpl");
 
         Map<String, Object> params = new HashMap<String, Object>();
-        for (int i = 1; i < 50; i++) {//// TODO: 2/28/2017 activation last action  update db neccerry columns
+        for (int i = 1; i < 5; i++) {//// TODO: 2/28/2017 activation last action  update db neccerry columns
             System.out.println("==>"+i);
             setFields(i);
             //create company request
@@ -215,6 +219,7 @@ public class CompanyMovement {
             }
 
             cashBox.setBalanceProvidedByMerchant(Double.parseDouble(balanceProvidedByMerchant));
+            cashBox.setBalanceCurrent(Double.parseDouble(balanceProvidedByMerchant));
             cashBox.setAcceptedOverpayment(Double.parseDouble(acceptedOverpayment));
             cashBox.setOverpayment(0d);
             cashBox.setCurrencyType(DataConverter.convertCurrencyType(currencyType));

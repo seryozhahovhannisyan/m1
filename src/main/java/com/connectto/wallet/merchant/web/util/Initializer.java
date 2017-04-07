@@ -35,13 +35,12 @@ public class Initializer implements ServletContextListener {
      */
 
     public static String MERCHANT_DATA_FOLDER = "merchantData";
+    public static String AGREEMENT_DOCUMENT_FOLDER = "agreementDocument";
+    public static String COMPANY_FOLDER = "company";
+
 
     public static ServletContext context;
-    private static String contextPath;
     private static String dataPath;
-
-    private static final String PROD = "prod";
-    private static final String DEV = "dev";
 
     //private static final String RECAPTCHA_SECRET_KEY = "6Ldf0hETAAAAAP94esg5vk5ch2K19_0khG6HFw8v";
     //private static final String RECAPTCHA_CLIENT_KEY = "6Ldf0hETAAAAAKRPDJYZ-rnVHGI8bQyWPeyN7eiM";
@@ -58,49 +57,45 @@ public class Initializer implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent event) {
 
+        final String PROD = "prod";
+        final String DEV = "dev";
+        logger.info("-- start application -- ");
+
         try {
-            logger.info("-- start application -- ");
+
             System.setProperty("file.encoding", "UTF-8");
 
             context = event.getServletContext();
+            String contextPath = context.getRealPath("/");
 
             applicationContext = (ApplicationContext) context.getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
             setupInfo = (SetupInfo) applicationContext.getBean("setupInfo");
 
-            //context real path
-            contextPath = context.getRealPath("/");
             if (setupInfo.getSetup().equals(DEV)) {
 
-                String[] contextPathDirs = contextPath.split("\\\\");
-
-                /*StringBuffer contextPathBuffer = new StringBuffer();
-                for (int i = 0; i < contextPathDirs.length - 1; i++) {
-                    String dir = contextPathDirs[i];
-                    contextPathBuffer.append(dir).append(File.separator);
-                }*/
-
-                //contextPath = contextPathBuffer.toString();
                 logger.info("**************************************************************************************************");
                 logger.info("contextPath=>" + contextPath);
                 logger.info("**************************************************************************************************");
+
                 //images real path
-                if (!Utils.isEmpty(setupInfo.getStaticDir())) {
-                    dataPath = contextPath + File.separator + MERCHANT_DATA_FOLDER;
+                if (Utils.isEmpty(setupInfo.getStaticDir())) {
+                    dataPath = contextPath;
                 } else {
                     dataPath = setupInfo.getStaticDir();
                 }
+
             } else if (setupInfo.getSetup().equals(PROD)) {
-
-                //images real path
-                dataPath = setupInfo.getStaticDirProd() + File.separator + MERCHANT_DATA_FOLDER;
-
-                //images context path
+                dataPath = setupInfo.getStaticDirProd();
             } else {
                 throw new RuntimeException("application init fail " + setupInfo.getSetup());
             }
+
             logger.info(String.format("Application %s intitilize params [imagePath:%s]", setupInfo.getVersion(), dataPath));
-            //init data folder
+
             initFolders(dataPath);
+            initFolders(dataPath + File.separator + MERCHANT_DATA_FOLDER);
+            initFolders(dataPath + File.separator + MERCHANT_DATA_FOLDER +  File.separator + AGREEMENT_DOCUMENT_FOLDER);
+            initFolders(dataPath + File.separator + MERCHANT_DATA_FOLDER +  File.separator + COMPANY_FOLDER);
 
 
             //set tmp dir
@@ -121,7 +116,7 @@ public class Initializer implements ServletContextListener {
         deRegistering();
     }
 
-    private void  deRegistering(){
+    private void deRegistering() {
         Enumeration<Driver> drivers = DriverManager.getDrivers();
         while (drivers.hasMoreElements()) {
             Driver driver = drivers.nextElement();
@@ -154,7 +149,7 @@ public class Initializer implements ServletContextListener {
 
             //webapp config
 
-            Velocity.setProperty("resource.loader","webapp");
+            Velocity.setProperty("resource.loader", "webapp");
             Velocity.setProperty("webapp.resource.loader.class", "org.apache.velocity.tools.view.WebappResourceLoader");
             Velocity.setProperty("webapp.resource.loader.path", "/WEB-INF/webapptemplate/");
             Velocity.setApplicationAttribute("javax.servlet.ServletContext", context);
@@ -169,8 +164,8 @@ public class Initializer implements ServletContextListener {
 
             //VelocityLogger vLogger = new VelocityLogger(this.getClass());
             //Velocity.setProperty(RuntimeConstants.RUNTIME_LOG_LOGSYSTEM, vLogger);
-            Velocity.setProperty( RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS,
-                    "org.apache.velocity.runtime.log.Log4JLogChute" );
+            Velocity.setProperty(RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS,
+                    "org.apache.velocity.runtime.log.Log4JLogChute");
 
             Velocity.setProperty("runtime.log.logsystem.log4j.logger", "VLOG");
 
@@ -185,7 +180,7 @@ public class Initializer implements ServletContextListener {
     }
 
     public static String getUploadDir() {
-        return dataPath  ;
+        return dataPath;
     }
 
     private void initFolders(String contextRealPath) {
@@ -226,24 +221,12 @@ public class Initializer implements ServletContextListener {
         return true;
     }
 
-    public static String getWalletTransactionUploadDir() {
-        return dataPath ;//+ File.separator + WALLET_UPLOAD_FOLDER + File.separator + WALLET_TRANSACTION_FOLDER;
-    }
-
-    @Deprecated
     public static String getAgreementDocumentUploadDir() {
-        String staticDirProd = "/opt/tomcat/webapps";
-        String AGREEMENT_DOCUMENT_FOLDER = "agreementDocument";
-        String dataPath = staticDirProd + File.separator + MERCHANT_DATA_FOLDER;
-        return dataPath + File.separator + AGREEMENT_DOCUMENT_FOLDER;
+        return File.separator + MERCHANT_DATA_FOLDER + File.separator + AGREEMENT_DOCUMENT_FOLDER;
     }
 
-    @Deprecated
     public static String getCompanyDocumentUploadDir() {
-        String staticDirProd = "/opt/tomcat/webapps";
-        String AGREEMENT_DOCUMENT_FOLDER = "company";
-        String dataPath = staticDirProd + File.separator + MERCHANT_DATA_FOLDER;
-        return dataPath + File.separator + AGREEMENT_DOCUMENT_FOLDER;
+        return File.separator + MERCHANT_DATA_FOLDER + File.separator + COMPANY_FOLDER;
     }
 
 }

@@ -20,6 +20,7 @@ public class Cashier implements Serializable {
     //Personal
     private String name;
     private String surname;
+    private String logo;
     //
     private String email;
     private String phoneCode;
@@ -36,7 +37,7 @@ public class Cashier implements Serializable {
     private Branch branch;
     private Role role;
     private Cashier headCashier;
-    private FileData logo;
+    private FileData logoFileData;
     private CashierCashBox currentCashBox;
 
     private Privilege privilege;
@@ -180,12 +181,20 @@ public class Cashier implements Serializable {
         this.headCashier = headCashier;
     }
 
-    public FileData getLogo() {
+    public String getLogo() {
         return logo;
     }
 
-    public void setLogo(FileData logo) {
+    public void setLogo(String logo) {
         this.logo = logo;
+    }
+
+    public FileData getLogoFileData() {
+        return logoFileData;
+    }
+
+    public void setLogoFileData(FileData logoFileData) {
+        this.logoFileData = logoFileData;
     }
 
     public CashierCashBox getCurrentCashBox() {

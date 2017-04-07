@@ -43,7 +43,7 @@ public class CompanyDao implements ICompanyDao {
         try {
             Company data = map.getById(id);
             if (data == null) {
-                throw new EntityNotFoundException(String.format("Could not found Company id=[%d]",id));
+                throw new EntityNotFoundException(String.format("Could not found Company id=[%d]", id));
             }
             return data;
         } catch (RuntimeException e) {
@@ -56,7 +56,7 @@ public class CompanyDao implements ICompanyDao {
         try {
             Company data = map.getByName(name);
             if (data == null) {
-                throw new EntityNotFoundException(String.format("Could not found Company name=[%s]",name));
+                throw new EntityNotFoundException(String.format("Could not found Company name=[%s]", name));
             }
             return data;
         } catch (RuntimeException e) {
@@ -69,7 +69,7 @@ public class CompanyDao implements ICompanyDao {
         try {
             Company data = map.signIn(params);
             if (data == null) {
-                throw new EntityNotFoundException(String.format("Could not sign in Company params=[%s]",params));
+                throw new EntityNotFoundException(String.format("Could not sign in Company params=[%s]", params));
             }
             return data;
         } catch (RuntimeException e) {
@@ -105,11 +105,19 @@ public class CompanyDao implements ICompanyDao {
     }
 
 
-
     @Override
     public void update(Company data) throws DatabaseException, EntityNotFoundException {
         try {
             map.update(data);
+        } catch (RuntimeException e) {
+            throw new DatabaseException(e);
+        }
+    }
+
+    @Override
+    public void updateLogo(Company data) throws DatabaseException, EntityNotFoundException {
+        try {
+            map.updateLogo(data);
         } catch (RuntimeException e) {
             throw new DatabaseException(e);
         }

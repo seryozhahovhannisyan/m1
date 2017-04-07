@@ -13,6 +13,8 @@ public interface IBranchDao {
 
     public Branch getById(Long id) throws DatabaseException, EntityNotFoundException;
 
+    public Branch getByIdFull(Long id) throws DatabaseException, EntityNotFoundException;
+
     public List<Branch> getByParams(Map<String, Object> params) throws DatabaseException;
 
     public List<Branch> getByParamsFull(Map<String, Object> params) throws DatabaseException;
@@ -20,6 +22,8 @@ public interface IBranchDao {
     public int getCountByParams(Map<String, Object> params) throws DatabaseException;
 
     public void update(Branch data) throws DatabaseException, EntityNotFoundException;
+
+    public void updateLogo(Branch data) throws DatabaseException, EntityNotFoundException;
 
     public void activate(Branch data) throws DatabaseException, EntityNotFoundException;
 

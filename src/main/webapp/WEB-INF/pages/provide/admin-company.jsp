@@ -171,7 +171,7 @@
                                                     <td ng-show="columns[9].visible" sortable="columns[9].field">
                                                         {{item.currentCashBox ? item.currentCashBox.balanceProvidedByCompany : 'N/A'}}
                                                     </td>
-                                                    <%--<td ng-show="columns[10].visible" sortable="columns[10].field">
+                                                    <td ng-show="columns[10].visible" sortable="columns[10].field">
                                                         {{item.currentCashBox ? item.currentCashBox.balanceCurrent : 'N/A'}}
                                                     </td>
                                                     <td ng-show="columns[11].visible" sortable="columns[11].field">
@@ -185,7 +185,7 @@
                                                     </td>
                                                     <td ng-show="columns[14].visible" sortable="columns[14].field">
                                                         {{item.currentCashBox ? item.currentCashBox.balanceGatheredTax : 'N/A'}}
-                                                    </td>--%>
+                                                    </td>
                                                     <td ng-show="columns[15].visible" sortable="columns[15].field">
                                                         {{item.currentCashBox ? item.currentCashBox.currencyType : 'N/A'}}
                                                     </td>

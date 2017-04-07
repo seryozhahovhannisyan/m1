@@ -38,6 +38,15 @@ public class CashierCashBoxDao implements ICashierCashBoxDao {
     }
 
     @Override
+    public CashierCashBox getCurrentCashBox(Long cashierId) throws DatabaseException {
+        try {
+            return map.getCurrentCashBox(cashierId);
+        } catch (RuntimeException e) {
+            throw new DatabaseException(e);
+        }
+    }
+
+    @Override
     public List<CashierCashBox> getByParams(Map<String, Object> params) throws DatabaseException {
         try {
             return map.getByParams(params);
@@ -59,6 +68,15 @@ public class CashierCashBoxDao implements ICashierCashBoxDao {
     public void update(CashierCashBox data) throws DatabaseException {
         try {
             map.update(data);
+        } catch (RuntimeException e) {
+            throw new DatabaseException(e);
+        }
+    }
+
+     @Override
+    public void provideAmount(Map<String, Object> params) throws DatabaseException {
+        try {
+            map.provideAmount(params);
         } catch (RuntimeException e) {
             throw new DatabaseException(e);
         }

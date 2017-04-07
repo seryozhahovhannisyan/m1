@@ -2,10 +2,21 @@
     font-family: 'GothaProReg.otf';
     src: url(../fonts/GothaProReg.otf);
 }
-
+#listContent{
+    position: relative;
+}
+#listContent .btn-group {
+    margin-bottom: 10px;
+}
+.search_data_box{
+    position: absolute;
+    right: 0;
+    top: -42px;
+}
 /*branch table*/
 .table_parent_div{
-    overflow: auto;
+    position: relative;
+    /*overflow: auto;*/
 }
 
 .table_br_csh td {
@@ -19,6 +30,9 @@
 }
 .table_br_csh td img {
     width: 40px;
+}
+section button {
+    margin:0;
 }
 .branches_crud_ul{
     min-width:70px;
@@ -133,7 +147,11 @@
 }
 
 
-
+.checkboxLayer {
+    height: auto;
+    max-height: 156px;
+    overflow: auto;
+}
 
 
 .main_footer {
@@ -294,4 +312,8 @@
     margin-top: -5px;
     margin-right: 10px;
     cursor: pointer;
+}
+.ng_div div:nth-child(1) {
+    width: auto !important;
+    margin: 10px 0;
 }

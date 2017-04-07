@@ -8,6 +8,7 @@ var moduls_array = [];
 
 var mainApp = angular.module('mainApp', moduls_array);
 moduls_array.push('modal');
+moduls_array.push('isteven-multi-select');
 
 mainApp.config(['$httpProvider', function ($httpProvider) {
 
@@ -78,6 +79,8 @@ mainApp.directive('onlyDigits', function () {
         }
     };
 });
+
+
 mainApp.directive('tooltip', function(){
     return {
         restrict: 'A',
@@ -93,6 +96,8 @@ mainApp.directive('tooltip', function(){
         }
     };
 });
+
+
 controllers.mainLoginCtrl = function ($scope,$uibModal, $log, $document,$rootScope,$http, $window, $timeout) {
     $rootScope.clock_start = true;// this flag is for modal timer
 
@@ -183,14 +188,14 @@ controllers.mainLoginCtrl = function ($scope,$uibModal, $log, $document,$rootSco
         $ctrl.content = angular.element('.right_col');
 
         if ($ctrl.win_height < $ctrl.doc_height) {
-            $ctrl.footer.css("position","relative")
-            console.log("no fixed")
+            $ctrl.footer.css("position","relative");
+            console.log("no fixed");
         }
         else {
             $ctrl.content.css("height", $ctrl.content_height);
             // $ctrl.footer.addClass("fixed");
-            $ctrl.footer.css("position","fixed")
-            console.log("fixed")
+            $ctrl.footer.css("position","fixed");
+            console.log("fixed");
         }
     };
 

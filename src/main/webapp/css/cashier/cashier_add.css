@@ -1,0 +1,182 @@
+.form_div_conteiner {
+    text-align: center;
+    padding: 10px;
+
+}
+
+.form_div_conteiner > div {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.company_details {
+    text-align: center;
+
+}
+
+.company_details h1 {
+    font-weight: bold;
+    color:#859aa7;
+}
+
+.company_name_input, .company_addres_input, .company_city_input, .company_street_input, .company_zipcode_input, .company_email_input, .company_phone_input, .company_policphone_input, .company_country_input, .company_state_input, .company_files_input {
+    width: 100%;
+    min-width: 280px;
+    margin:0 0 5px 0!important;
+    height: 40px;
+    padding: 5px 10px;
+    text-align: center;
+}
+.input_error {
+    color: #ff3f54;
+    font-weight: bold;
+}
+
+.input_error_red {
+    color: #ff3f54;
+    font-weight: bold;
+}
+.input_error_green {
+    color: #f3811f;
+    font-weight: bold;
+}
+
+
+
+.ist_mult_parent {
+    position: relative;
+}
+
+.ist_mult {
+
+    position: absolute;
+
+}
+.ist_mult_role{
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}
+
+.company_upload_parent {
+    width: 100%;
+    min-height: 300px;
+    height: auto;
+    border: 1px solid #e5e5e5;
+    text-align: center;
+}
+
+.company_upload_parent h1 {
+    text-align: center;
+}
+
+.company_upload_inpar {
+    text-align: center;
+    display: inline-block;
+    padding: 10px;
+}
+
+.company_upload_inpar .first_label {
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    float: left;
+    margin-right: 20px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.company_upload_inpar .second_label {
+    width: 150px;
+    height: 150px;
+    background-image: url(./../../img/general/icon/upload.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.company_upload_inpar input {
+    width: 100%;
+    background-color: lime;
+    height: 100%;
+    opacity: 0 !important;
+    min-width: 10px;
+}
+
+.remove {
+    width: 150px;
+    height: 150px;
+    background-image: url(./../../img/general/icon/remove.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    float: right;
+}
+
+.upload_success {
+    color: #3daeae;
+}
+
+.upload_error {
+    color: #bc140d;
+}
+
+.upload_remove_succsses {
+    color: #3daeae;
+}
+
+.checkboxLayer {
+    height: auto;
+    max-height: 156px;
+    overflow: auto;
+}
+
+.form_div_conteiner > div {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.ngform .ng_div {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.ng_div div:nth-child(1) {
+    width: auto !important;
+    margin: 10px 0;
+}
+
+.info_span_setup{
+    /*display: inline-block;*/
+}
+
+
+.animate-show-hide.ng-hide-add         { animation:0.5s lightSpeedOut ease; }
+
+.animate-show-hide.ng-hide-remove      { animation:0.5s flipInX ease;
+
+}
+
+/* ANIMATIONS (FROM ANIMATE.CSS) ======================== */
+/* flip in */
+@keyframes flipInX {
+    0% {
+
+        opacity: 0;
+    }
+
+    100% {
+
+        opacity: 1;
+    }
+}
+
+/* light speed out */
+@keyframes lightSpeedOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+

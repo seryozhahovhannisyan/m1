@@ -10,6 +10,7 @@
         <id property="id" column="id"/>
         <result property="tsmCompanyId" column="tsm_company_id"/>
         <result property="name" column="name"/>
+        <result property="logo" column="logo"/>
         <result property="address" column="address"/>
         <result property="city" column="city"/>
         <result property="street" column="street"/>
@@ -31,6 +32,7 @@
         <id property="id" column="id"/>
         <result property="tsmCompanyId" column="tsm_company_id"/>
         <result property="name" column="name"/>
+        <result property="logo" column="logo"/>
         <result property="address" column="address"/>
         <result property="city" column="city"/>
         <result property="street" column="street"/>
@@ -68,7 +70,8 @@
         INSERT INTO c_company(            
             `tsm_company_id`,
             `name`,
-            `address`,            
+            `logo`,
+            `address`,
             `city`,
             `street`,
             `zip`,
@@ -86,6 +89,7 @@
         ) VALUES (
             #{tsmCompanyId},
             #{name},
+            #{logo},
             #{address},
             #{city},
             #{street},
@@ -114,6 +118,7 @@
         INSERT INTO c_company(
         `tsm_company_id`,
         `name`,
+        `logo`,
         `address`,
         `city`,
         `street`,
@@ -136,6 +141,7 @@
         ) VALUES (
         #{tsmCompanyId},
         #{name},
+        #{logo},
         #{address},
         #{city},
         #{street},
@@ -186,13 +192,21 @@
 
     </select>
 
+    <select id="getByIdSimple"
+            resultMap="rmCompanySimple"
+            parameterType="_long">
+
+        SELECT * FROM c_company
+        WHERE id = #{id}
+
+    </select>
+
     <select id="getById"
             resultMap="rmCompanyFull"
             parameterType="_long">
 
         SELECT * FROM c_company
         WHERE id = #{id}
-        -- AND status = 1
 
     </select>
 
@@ -246,6 +260,12 @@
         <if test="countryRegion != null">      , `region` = #{countryRegion}               </if>
 
 
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateLogo" parameterType="Company">
+        UPDATE c_company
+        SET logo = #{logo}
         WHERE id = #{id}
     </update>
 

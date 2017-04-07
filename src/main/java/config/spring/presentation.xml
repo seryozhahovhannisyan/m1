@@ -58,6 +58,7 @@
 
     <bean id="ProviderAction" class="com.connectto.wallet.merchant.web.action.cashbox.ProviderAction" scope="prototype">
         <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="cashierManager" ref="CashierManagerImpl"/>
         <property name="branchManager" ref="BranchManagerImpl"/>
     </bean>
 
@@ -68,10 +69,23 @@
         <property name="cashBoxProviderManager" ref="BranchCashBoxProviderManagerImpl"/>
     </bean>
 
+    <bean id="ProviderCashierAction" class="com.connectto.wallet.merchant.web.action.cashbox.ProviderCashierAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="dto" ref="ResponseDto"/>
+        <property name="cashierManager" ref="CashierManagerImpl"/>
+        <property name="cashierCashBoxProviderManager" ref="CashierCashBoxProviderManagerImpl"/>
+    </bean>
+
     <bean id="ProviderTakerAction" class="com.connectto.wallet.merchant.web.action.cashbox.TakerBranchAction" scope="prototype">
         <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
         <property name="dto" ref="ResponseDto"/>
         <property name="cashBoxTakerManager" ref="BranchCashBoxTakerManagerImpl"/>
+    </bean>
+
+    <bean id="TakerCashierAction" class="com.connectto.wallet.merchant.web.action.cashbox.TakerCashierAction" scope="prototype">
+        <property name="merchantLoggerManager" ref="MerchantLoggerManagerImpl"/>
+        <property name="dto" ref="ResponseDto"/>
+        <property name="cashBoxTakerManager" ref="CashierCashBoxTakerManagerImpl"/>
     </bean>
 
     <bean id="RoleAction" class="com.connectto.wallet.merchant.web.action.cashier.RoleAction" scope="prototype">

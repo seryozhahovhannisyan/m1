@@ -10,11 +10,12 @@
         <!-- menu profile quick info -->
         <div class="profile">
             <div class="profile_pic">
-                <s:if test="%{isUserThumbFileExist(#session.session_user.id, #session.session_user.photoData.fileName)}">
-                    <img  class="img-circle profile_img" src="<s:property value='%{getUserThumbImg(#session.session_user.id, #session.session_user.photoData.fileName)}'/>" />
+
+                <s:if test="%{isLogoExist(#session.cashier.logo)}">
+                    <img  class="img-circle profile_img" src="<s:property value='%{getLogo(#session.cashier.logo)}'/>" />
                 </s:if>
                 <s:else>
-                    <img  class="img-circle profile_img" src="<%=request.getContextPath()%>/img/general/avatars/avatar.png" alt=""/>
+                    <img  class="img-circle profile_img" src="<%=request.getContextPath()%>/img/general/avatars/avatar.png" alt="avatar"/>
                 </s:else>
             </div>
             <div class="profile_info">
@@ -58,8 +59,8 @@
                         <li>
                             <a><i class="fa fa-money"></i> Provider <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
-                                <li><a href="provide.htm">Provided by Connectto</a></li>
-                                <li><a href="branches.htm">Provide to Branches</a></li>
+                                <li><a href="provide-cashiers.htm">Provided by <s:property value="#session.cashier.company.name"/></a></li>
+                                <li><a href="provide.htm">Provide to Cashiers</a></li>
                             </ul>
                         </li>
                     </s:elseif>
@@ -74,7 +75,7 @@
                             <a><i class="fa fa-money"></i> Provider <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <li><a href="provide.htm">Provided by Connectto</a></li>
-                                <li><a href="branches.htm">Provide to Branches</a></li>
+                                <li><a href="branches.htm">Completed transactions</a></li>
                             </ul>
                         </li>
                     </s:elseif>
@@ -84,7 +85,7 @@
                             <a><i class="fa fa-money"></i> Provider <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <li><a href="provide.htm">Provided by Connectto</a></li>
-                                <li><a href="branches.htm">Provide to Branches</a></li>
+                                <li><a href="branches.htm">Completed transactions</a></li>
                             </ul>
                         </li>
                     </s:elseif>

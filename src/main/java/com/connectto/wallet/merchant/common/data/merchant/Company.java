@@ -20,6 +20,7 @@ public class Company implements Serializable {
 
     private Long tsmCompanyId;
     private String name;
+    private String logo;
     private String address;
 
     private String city;
@@ -47,7 +48,7 @@ public class Company implements Serializable {
     private CompanyFormRequest request;
     private CompanyFormResponse response;
     private CompanyCashBox currentCashBox;
-    private FileData logo;
+    private FileData logoFileData;
     private Branch headBranch;
     private Cashier headCashier;
 
@@ -302,12 +303,20 @@ public class Company implements Serializable {
         this.currentCashBox = currentCashBox;
     }
 
-    public FileData getLogo() {
+    public String getLogo() {
         return logo;
     }
 
-    public void setLogo(FileData logo) {
+    public void setLogo(String logo) {
         this.logo = logo;
+    }
+
+    public FileData getLogoFileData() {
+        return logoFileData;
+    }
+
+    public void setLogoFileData(FileData logoFileData) {
+        this.logoFileData = logoFileData;
     }
 
     public Branch getHeadBranch() {

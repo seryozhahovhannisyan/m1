@@ -20,6 +20,14 @@
                 <interceptor-ref name="languageGuest"/>
             </interceptor-stack>
 
+            <interceptor-stack name="fileUploadStack">
+                <interceptor-ref name="fileUpload">
+                    <param name="maximumSize">1024000</param>
+                    <param name="allowedTypes"> image/jpeg,image/gif,image/png</param>
+                </interceptor-ref>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+
         </interceptors>
         <!--The default filter/interceptor, action and class -->
         <default-interceptor-ref name="generalGuestStack"/>
@@ -95,6 +103,7 @@
         </action>
 
         <action name="upload-mixed" class="DataUploadAction"  method="uploadMixed">
+            <interceptor-ref name="fileUploadStack"/>
             <result name="success" type="stream">
                 <param name="contentType">text/html</param>
                 <param name="inputName">result</param>
@@ -149,7 +158,13 @@
             <result name="success" type="redirect" >admin-company-form-request-load.htm</result>
             <result name="error">index.jsp</result>
         </action>-->
+        <action name="pre-test" >
+            <result name="success" type="tiles">test-total</result>
+        </action>
 
+        <action name="run-test" class="com.connectto.wallet.merchant.web.action.admin.TotalTestAction" method="main">
+            <result name="success" type="redirect">pre-test.htm</result>
+        </action>
 
     </package>
 

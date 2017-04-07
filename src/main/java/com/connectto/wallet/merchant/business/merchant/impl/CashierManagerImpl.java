@@ -8,6 +8,7 @@ import com.connectto.wallet.merchant.common.data.transaction.cashbox.CashierCash
 import com.connectto.wallet.merchant.common.exception.DatabaseException;
 import com.connectto.wallet.merchant.common.exception.EntityNotFoundException;
 import com.connectto.wallet.merchant.common.exception.InternalErrorException;
+import com.connectto.wallet.merchant.common.util.FileDataUtil;
 import com.connectto.wallet.merchant.common.util.Utils;
 import com.connectto.wallet.merchant.dataaccess.merchant.dao.ICashierCashBoxDao;
 import com.connectto.wallet.merchant.dataaccess.merchant.dao.ICashierDao;
@@ -70,25 +71,20 @@ public class CashierManagerImpl implements ICashierManager {
 
             //cashierFileDatas
             if (!Utils.isEmpty(cashierFileDatas)) {
+                FileData d = cashierFileDatas.get(0);
+                d.setCashierId(data.getId());
 
-                for (FileData d : cashierFileDatas) {
+                String fileName = d.getFileName();
+                String extension = fileName.substring(fileName.indexOf("."));
+                //
+                fileName = String.format(FileDataUtil.LOGO_FORMAT, FileDataUtil.LOGO_PREFIX_CASHIER, data.getId(), extension);
+                d.setFileName(fileName);
 
-                    d.setCashierId(data.getId());
+                fileDataDao.add(d);
 
-                    String fileName = d.getFileName();
-                    String extension = fileName.substring(fileName.indexOf("."));
-                    //
-                    fileName = System.currentTimeMillis() + extension;
-                    //
-
-                    d.setFileName(fileName);
-
-
-                    fileDataDao.add(d);
-
-                    File originalFile = new File(Initializer.getCompanyDocumentUploadDir() + Constants.FILE_SEPARATOR + data.getId() + Constants.FILE_SEPARATOR + fileName);
-                    FileUtils.writeByteArrayToFile(originalFile, d.getData());
-                }
+                FileDataUtil.createFileCompany(fileName,  d.getData());
+                data.setLogo(fileName);
+                dao.updateLogo(data);
             }
         } catch (DatabaseException e) {
             throw new InternalErrorException(e);
@@ -101,6 +97,15 @@ public class CashierManagerImpl implements ICashierManager {
     public Cashier getById(Long id) throws InternalErrorException, EntityNotFoundException {
         try {
             return dao.getById(id);
+        } catch (DatabaseException e) {
+            throw new InternalErrorException(e);
+        }
+    }
+
+    @Override
+    public CashierCashBox getCashierCashBoxByCashierId(Long cashierId) throws InternalErrorException, EntityNotFoundException {
+        try {
+            return cashierCashBoxDao.getCurrentCashBox(cashierId);
         } catch (DatabaseException e) {
             throw new InternalErrorException(e);
         }

@@ -43,6 +43,19 @@ public class BranchDao implements IBranchDao {
     }
 
     @Override
+    public Branch getByIdFull(Long id) throws DatabaseException, EntityNotFoundException {
+        try {
+            Branch data = map.getByIdFull(id);
+            if (data == null) {
+                throw new EntityNotFoundException(String.format("Could not found Branch id=[%d]",id));
+            }
+            return data;
+        } catch (RuntimeException e) {
+            throw new DatabaseException(e);
+        }
+    }
+
+    @Override
     public List<Branch> getByParams(Map<String, Object> params) throws DatabaseException {
         try {
             return map.getByParams(params);
@@ -73,6 +86,15 @@ public class BranchDao implements IBranchDao {
     public void update(Branch data) throws DatabaseException, EntityNotFoundException {
         try {
             map.update(data);
+        } catch (RuntimeException e) {
+            throw new DatabaseException(e);
+        }
+    }
+
+    @Override
+    public void updateLogo(Branch data) throws DatabaseException, EntityNotFoundException {
+        try {
+            map.updateLogo(data);
         } catch (RuntimeException e) {
             throw new DatabaseException(e);
         }

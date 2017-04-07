@@ -14,7 +14,7 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/angular-summernote.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/angular.scroll.min.0.6.1.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/angular-parallax.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/static/generated/lcp/lcp/Country.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/static/generated/lcp/Country.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/libs/js/angular/isteven-multi-select.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/general/home-controller.js"></script>
 

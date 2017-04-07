@@ -100,6 +100,15 @@ public class CashierDao implements ICashierDao {
     }
 
     @Override
+    public void updateLogo(Cashier data) throws DatabaseException, EntityNotFoundException {
+        try {
+            map.updateLogo(data);
+        } catch (RuntimeException e) {
+            throw new DatabaseException(e);
+        }
+    }
+
+    @Override
     public void activate(Cashier data) throws DatabaseException, EntityNotFoundException {
         try {
             map.activate(data);

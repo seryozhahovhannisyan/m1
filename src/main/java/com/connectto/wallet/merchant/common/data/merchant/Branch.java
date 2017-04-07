@@ -18,6 +18,7 @@ public class Branch implements Serializable {
     private Long id;
 
     private String name;
+    private String logo;
     private String address;
 
     private String city;
@@ -31,7 +32,7 @@ public class Branch implements Serializable {
 
     private Company company;
     private Cashier headCashier;
-    private FileData logo;
+    private FileData logoFileData;
     private BranchCashBox currentCashBox;
 
     private Long companyId;
@@ -162,12 +163,20 @@ public class Branch implements Serializable {
         this.headCashier = headCashier;
     }
 
-    public FileData getLogo() {
+    public String getLogo() {
         return logo;
     }
 
-    public void setLogo(FileData logo) {
+    public void setLogo(String logo) {
         this.logo = logo;
+    }
+
+    public FileData getLogoFileData() {
+        return logoFileData;
+    }
+
+    public void setLogoFileData(FileData logoFileData) {
+        this.logoFileData = logoFileData;
     }
 
     public BranchCashBox getCurrentCashBox() {

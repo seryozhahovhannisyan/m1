@@ -10,7 +10,7 @@ import java.util.Map;
 
 public interface ICashierCashBoxTakerDao {
 
-    public void add(CashierCashBoxTaker data) throws DatabaseException;
+    public void add(List<CashierCashBoxTaker> data) throws DatabaseException;
 
     public CashierCashBoxTaker getById(Long id) throws DatabaseException, EntityNotFoundException;
 
